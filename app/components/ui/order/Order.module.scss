@@ -1,0 +1,50 @@
+.gallery {
+	@apply grid grid-cols-2 gap-4;
+
+	@media (max-width: 1420px) {
+		@apply grid-cols-1;
+	}
+}
+
+.item {
+	@apply relative transition-all flex shadow-lg rounded-2xl overflow-hidden;
+	flex: 0 0 auto;
+
+	&:hover {
+		transform: translateY(-5px);
+		@apply bg-gray-100 dark:bg-gray-800;
+	}
+
+	&.horizontal {
+		@apply mb-8 h-48;
+		width: 95%;
+	}
+
+	&.withText {
+		&::before {
+			@apply rounded-layout;
+		}
+	}
+	.img {
+		@apply image-like-bg rounded-pxt;
+	}
+
+	.image {
+		@apply bg-primary rounded-2xl;
+	}
+
+	.content {
+		@apply relative z-2  m-3 w-full;
+
+		.title {
+			@apply font-semibold text-xl  mb-1 text-primary dark:text-primary;
+		}
+		.price {
+			@apply font-semibold text-2lg  mb-1 text-black dark:text-white;
+		}
+
+		.subTitle {
+			@apply text-black dark:text-gray-500;
+		}
+	}
+}
