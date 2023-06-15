@@ -1,47 +1,50 @@
 import { FC } from 'react'
 import { useForm } from 'react-hook-form'
 
-import { ISystemEditInput } from '@/screens/admin/system/system-edit-interface'
-import { useSystemEdit } from '@/screens/admin/system/useSystemEdit'
+import { IImportantEditInput } from '@/screens/admin/important/important-edit-interface'
+import { useImportantEdit } from '@/screens/admin/important/useImportantEdit'
 
 import AdminNavigation from '@/ui/admin-navigation/AdminNavigation'
 import Button from '@/ui/button/Button'
 import Field from '@/ui/form-elements/Field'
 import formStyles from '@/ui/form-elements/adminForm.module.scss'
 import Heading from '@/ui/heading/Heading'
+import SubHeading from '@/ui/heading/SubHeading'
 import SkeletonLoader from '@/ui/skeleton-loader/SkeletonLoader'
 
 import Meta from '@/utils/meta/Meta'
 
-const SystemEdit: FC = () => {
+const ImportantEdit: FC = () => {
 	const {
 		handleSubmit,
 		register,
-		formState,
 		setValue,
-		control,
 		formState: { errors },
-	} = useForm<ISystemEditInput>({
+	} = useForm<IImportantEditInput>({
 		mode: 'onChange',
 	})
 
-	const { isLoading, onSubmit } = useSystemEdit(setValue)
+	const { isLoading, onSubmit } = useImportantEdit(setValue)
 
 	return (
-		<Meta title="Редактирование статуса">
+		<Meta title="Редактирование срочности">
 			<AdminNavigation />
-			<Heading title="Редактирование статуса" />
+			<Heading title="Редактирование срочности" />
 			{isLoading ? (
 				<SkeletonLoader count={1} className={formStyles.form} />
 			) : (
-				<form onSubmit={handleSubmit(onSubmit)} className={formStyles.formUser}>
-					<div className={formStyles.fieldsUser}>
+				<form onSubmit={handleSubmit(onSubmit)} className={formStyles.form}>
+					<div className={formStyles.fields}>
+						<SubHeading
+							title="Срочность"
+							className="text-gray-800 dark:text-gray-300 text-opacity-80 text-[18px]"
+						/>
 						<Field
-							{...register('system_name', {
-								required: 'Система не указана!',
+							{...register('important_name', {
+								required: 'Срочность не указана!',
 							})}
-							placeholder="Название система"
-							error={errors.system_name}
+							placeholder="Название срочности"
+							error={errors.important_name}
 							style={{ width: '49%' }}
 						/>
 					</div>
@@ -52,4 +55,4 @@ const SystemEdit: FC = () => {
 	)
 }
 
-export default SystemEdit
+export default ImportantEdit

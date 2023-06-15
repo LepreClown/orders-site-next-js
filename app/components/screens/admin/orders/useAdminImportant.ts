@@ -7,7 +7,7 @@ import { ImportantService } from '@/services/important/important.service'
 import { toastError } from '@/utils/api/withToastrErrorRedux'
 
 export const useAdminImportant = () => {
-	const queryData = useQuery('list of important', () => ImportantService.getAll(), {
+	const queryData = useQuery('list of important for create', () => ImportantService.getAll(), {
 		select: ({ data }) =>
 			data.map(
 				(important): IOption => ({

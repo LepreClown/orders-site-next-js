@@ -7,7 +7,7 @@ import { SystemService } from '@/services/system/system.service'
 import { toastError } from '@/utils/api/withToastrErrorRedux'
 
 export const useAdminSystem = () => {
-	const queryData = useQuery('list of system', () => SystemService.getAll(), {
+	const queryData = useQuery('list of system for create', () => SystemService.getAll(), {
 		select: ({ data }) =>
 			data.map(
 				(system): IOption => ({

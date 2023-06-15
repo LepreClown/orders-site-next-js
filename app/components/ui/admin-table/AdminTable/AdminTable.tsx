@@ -11,7 +11,8 @@ interface IAdminTable {
 	tableItems: ITableItem[]
 	headerItems: string[]
 	isLoading: boolean
-	removeHandler: (id: string) => void
+
+	removeHandler: (id: number) => void
 }
 
 const AdminTable: FC<IAdminTable> = ({ tableItems, headerItems, isLoading, removeHandler }) => {
@@ -20,13 +21,15 @@ const AdminTable: FC<IAdminTable> = ({ tableItems, headerItems, isLoading, remov
 			<AdminTableHeader headerItems={headerItems} />
 
 			{isLoading ? (
-				<SkeletonLoader count={1} height={48} className="mt-4" />
+				<SkeletonLoader count={6} height={48} className="mt-4" />
 			) : tableItems.length ? (
 				tableItems.map((tableItem) => (
-					<AdminTableItem key={tableItem._id} tableItem={tableItem} removeHandler={removeHandler} />
+					<AdminTableItem key={tableItem.id} tableItem={tableItem} removeHandler={removeHandler} />
 				))
 			) : (
-				<div className={styles.notFound}>Elements not found</div>
+				<div className={styles.notFound}>
+					<span>Ничего не найдено</span>
+				</div>
 			)}
 		</div>
 	)

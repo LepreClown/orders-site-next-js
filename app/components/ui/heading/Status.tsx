@@ -4,9 +4,9 @@ import MaterialIcon from '@/ui/icons/MaterialIcon'
 
 const Status: FC<{ title: string; isAdmin: boolean }> = ({ title, isAdmin }) => {
 	return (
-		<div className="flex items-center  gap-1.5 mb-12">
+		<div className="flex items-center gap-1.5 mb-12">
 			<MaterialIcon name={isAdmin ? 'MdAdminPanelSettings' : 'MdSupervisedUserCircle'} />
-			<h2 className="text-gray-600 text-lg  font-semibold">{title}</h2>
+			<h2 className="text-gray-950 dark:text-gray-600 text-lg  font-semibold">{title}</h2>
 		</div>
 	)
 }

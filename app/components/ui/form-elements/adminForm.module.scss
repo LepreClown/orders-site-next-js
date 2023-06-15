@@ -1,6 +1,29 @@
 .form {
 	@apply mt-12;
+
 	.fields {
+		@apply flex flex-col;
+		> div {
+			@apply flex gap-10;
+			width: 100%;
+		}
+	}
+}
+
+.formCreate {
+	@apply mt-12;
+
+	.fieldsCreate {
+		@apply flex items-center flex-wrap justify-between;
+		> div {
+			width: 28%;
+		}
+	}
+}
+
+.formTest {
+	@apply mt-12;
+	.fieldsTest {
 		@apply flex items-center flex-wrap justify-between;
 		> div {
 			width: 48%;

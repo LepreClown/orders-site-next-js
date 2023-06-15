@@ -1,33 +1,27 @@
-import { IUser } from '@/shared/types/user.types'
+import { IUserItem } from '@/shared/types/user.types'
 
 export interface IUserState {
-	email: string
-	isAdmin: boolean
+	role: string
+	id: number
+	exp: number
 }
-
 export interface ITokens {
-	accessToken: string
-	refreshToken: string
+	access_token: string
+	type_token: string
 }
-
-export enum Status {
-	PENDING = 'pending',
-	SUCCESS = 'succeeded',
-	ERROR = 'error',
-}
-
 export interface IInitialState {
 	user: IUserState | null
 	status: boolean
 }
 
 export interface IEmailPassword {
-	email: string
+	telephone: string
 	password: string
 }
 
 export interface IAuthResponse extends ITokens {
-	user: IUser & {
-		isAdmin: boolean
+	user: IUserItem & {
+		role: string
+		exp: number
 	}
 }

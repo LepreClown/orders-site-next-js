@@ -3,50 +3,54 @@ import { SubmitHandler, UseFormSetValue } from 'react-hook-form'
 import { useMutation, useQuery } from 'react-query'
 import { toastr } from 'react-redux-toastr'
 
-import { IStatusEditInput } from '@/screens/admin/status/status-edit-interface'
+import { IBuildingEditInput } from '@/screens/admin/building/building-edit-interface'
 
-import { StatusService } from '@/services/status/status.service'
+import { BuildingService } from '@/services/building/building.service'
 
 import { toastError } from '@/utils/api/withToastrErrorRedux'
 import { getKeys } from '@/utils/object/getKeys'
 
 import { getAdminUrl } from '../../../../config/url.config'
 
-export const useStatusEdit = (setValue: UseFormSetValue<IStatusEditInput>) => {
+export const useBuildingEdit = (setValue: UseFormSetValue<IBuildingEditInput>) => {
 	const { push, query } = useRouter()
 
-	const statusId = Number(query.id)
+	const buildingId = Number(query.id)
 
-	const { isLoading } = useQuery(['status', statusId], () => StatusService.getById(statusId), {
-		onSuccess: ({ data }) => {
-			getKeys(data).forEach((key) => {
-				setValue(key, data[key])
-			})
+	const { isLoading } = useQuery(
+		['building', buildingId],
+		() => BuildingService.getById(buildingId),
+		{
+			onSuccess: ({ data }) => {
+				getKeys(data).forEach((key) => {
+					setValue(key, data[key])
+				})
+			},
+			onError: (error) => {
+				toastError(error, 'Ошибка при получение объекта')
+			},
+			enabled: !!query.id,
 		},
-		onError: (error) => {
-			toastError(error, 'Ошибка при получение статуса')
-		},
-		enabled: !!query.id,
-	})
+	)
 
 	const { mutateAsync } = useMutation(
-		'update status',
-		(data: IStatusEditInput) =>
-			StatusService.update(statusId, {
-				status_name: data.status_name,
+		'update building',
+		(data: IBuildingEditInput) =>
+			BuildingService.update(buildingId, {
+				building_name: data.building_name,
 			}),
 		{
 			onSuccess: () => {
-				toastr.success('Обновление статуса', 'Статус был успешно обновлен')
-				push(getAdminUrl('statuses'))
+				toastr.success('Обновление объекта', 'Объект был успешно обновлен')
+				push(getAdminUrl('buildings'))
 			},
 			onError(error) {
-				toastError(error, 'Ошибка при обновление статуса')
+				toastError(error, 'Ошибка при обновление объекта')
 			},
 		},
 	)
 
-	const onSubmit: SubmitHandler<IStatusEditInput> = async (data) => {
+	const onSubmit: SubmitHandler<IBuildingEditInput> = async (data) => {
 		await mutateAsync(data)
 	}
 	return { onSubmit, isLoading }

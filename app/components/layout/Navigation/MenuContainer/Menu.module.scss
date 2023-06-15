@@ -2,17 +2,17 @@
 	@apply mb-14 animate-fade;
 
 	.heading {
-		@apply text-gray-500 uppercase text-sm font-semibold pl-layout;
+		@apply text-gray-950 dark:text-gray-300  uppercase text-sm font-semibold pl-layout;
 	}
 
 	.ul {
 		> li {
 			@apply px-8 border-r-4 border-r-transparent transition-colors;
 			> a {
-				@apply flex  items-center text-gray-600 px-3 mt-6 cursor-pointer;
+				@apply flex  items-center text-gray-600 dark:text-gray-600 px-3 mt-6 cursor-pointer;
 
 				> span {
-					@apply ml-3 text-lg hover:text-white;
+					@apply ml-3 text-lg hover:text-gray-950 dark:hover:text-white;
 				}
 
 				> svg {
@@ -26,13 +26,13 @@
 			}
 
 			&.active {
-				@apply border-r-primary;
+				@apply border-r-primary dark:border-r-primary;
 				> a > span {
-					@apply text-white;
+					@apply text-gray-950 dark:text-white font-semibold;
 				}
 
 				> a > svg {
-					@apply fill-primary;
+					@apply fill-primary dark:fill-primary;
 				}
 			}
 		}

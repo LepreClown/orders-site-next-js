@@ -1,58 +1,37 @@
-import axios from 'axios'
-import Cookies from 'js-cookie'
+import axios from 'api/interceptors'
+import axios2 from 'axios'
 
 import { IAuthResponse } from '@/store/user/user.interface'
 
-import { getContentType } from '../../api/api.helpers'
 import { API_URL, getAuthUrl } from '../../config/api.config'
 
-import { removeTokensStorage, saveToStorage } from './auth.helper'
+import { removeTokensStorage, saveToStorage, saveTokensStorage } from './auth.helper'
 
 export const AuthService = {
-	async register(email: string, password: string) {
-		const response = await axios.post<IAuthResponse>(`${API_URL}${getAuthUrl('/register')}`, {
-			email,
+	async login(telephone: string, password: string) {
+		const response = await axios2.post<IAuthResponse>(`${API_URL}${getAuthUrl('/login')}`, {
+			telephone,
 			password,
 		})
+		const token = response.data.access_token
+		if (token) saveTokensStorage(response.data)
 
-		if (response.data.accessToken) {
-			saveToStorage(response.data)
-		}
-		return response
-	},
+		const user = await axios.post(
+			`${API_URL}${getAuthUrl('/user_data_by_token')}`,
+			{},
+			{
+				headers: {
+					token,
+				},
+			},
+		)
+		if (user) saveToStorage(user.data)
 
-	async login(email: string, password: string) {
-		const response = await axios.post<IAuthResponse>(`${API_URL}${getAuthUrl('/login')}`, {
-			email,
-			password,
-		})
-
-		if (response.data.accessToken) {
-			saveToStorage(response.data)
-		}
-		return response
+		return { data: { response, user } }
 	},
 
 	async logout() {
 		removeTokensStorage()
 		localStorage.removeItem('user')
-	},
-
-	async getNewTokens() {
-		const refreshToken = Cookies.get('refreshToken')
-		const response = await axios.post<IAuthResponse>(
-			`${API_URL}${getAuthUrl('/login/access-token')}`,
-			{
-				refreshToken,
-			},
-			{
-				headers: getContentType(),
-			},
-		)
-
-		if (response.data.accessToken) {
-			saveToStorage(response.data)
-		}
-		return response
 	},
 }

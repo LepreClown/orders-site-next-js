@@ -1,0 +1,66 @@
+.root {
+	@apply flex justify-center items-center mt-10;
+
+	li {
+		@apply inline-block;
+
+		a {
+			@apply flex text-center items-center ml-3 transition-all justify-center text-primary border-2 border-primary rounded-layout cursor-pointer select-none hover:text-white hover:bg-primary;
+			width: 35px;
+			height: 35px;
+		}
+	}
+	li:first-child {
+		a {
+			@apply ml-0;
+		}
+	}
+
+	:global {
+		.selected {
+			a {
+				@apply bg-primary text-white;
+			}
+		}
+	}
+}
+
+//.container {
+//	padding: 0 2rem;
+//}
+//
+//.pagination {
+//	display: flex;
+//	justify-content: space-between;
+//	align-items: center;
+//	list-style: none;
+//}
+//
+//.pageLink {
+//	cursor: pointer;
+//}
+//
+///* pagination pageItem */
+//.pageItem {
+//	display: flex;
+//	justify-content: center;
+//	align-items: center;
+//	width: 2rem;
+//	height: 2rem;
+//	border: 1px solid #eaeaea;
+//	border-radius: 0.5rem;
+//	cursor: pointer;
+//}
+//
+///* pagination page item when active */
+//.pageItemActive {
+//	display: flex;
+//	justify-content: center;
+//	align-items: center;
+//	width: 2rem;
+//	height: 2rem;
+//	border: 1px solid #eaeaea;
+//	border-radius: 0.5rem;
+//	cursor: pointer;
+//	background-color: red;
+//}

@@ -1,3 +1,3 @@
-import { ISystem } from '@/shared/types/system.types'
+import { IImportant } from '@/shared/types/important.types'
 
-export interface ISystemEditInput extends ISystem {}
+export interface IImportantEditInput extends IImportant {}

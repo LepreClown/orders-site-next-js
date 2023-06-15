@@ -1,0 +1,19 @@
+.form {
+	@apply w-full mt-12;
+
+	.fields {
+		@apply flex flex-col;
+		> div {
+			@apply flex gap-10;
+			width: 100%;
+		}
+	}
+
+	svg {
+		@apply fill-gray-600 text-2xl;
+	}
+
+	> button {
+		@apply mt-5;
+	}
+}

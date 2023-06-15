@@ -2,21 +2,21 @@ import { useQuery } from 'react-query'
 
 import { IOption } from '@/ui/select/select.interface'
 
-import { BuildingService } from '@/services/building/building.service'
+import { UserService } from '@/services/user/user.service'
 
 import { toastError } from '@/utils/api/withToastrErrorRedux'
 
-export const useAdminBuilding = () => {
-	const queryData = useQuery('list of building', () => BuildingService.getAll(), {
+export const useAdminUsers = () => {
+	const queryData = useQuery('list of users for create', () => UserService.getAll(), {
 		select: ({ data }) =>
-			data.map(
-				(building): IOption => ({
-					label: building.building_name,
-					value: building.id,
+			data.users.map(
+				(user): IOption => ({
+					label: user.name,
+					value: user.id,
 				}),
 			),
 		onError(error) {
-			toastError(error, 'Ошибка при получение списка объектов')
+			toastError(error, 'Ошибка при получение списка пользователей')
 		},
 	})
 

@@ -1,24 +1,35 @@
 .item {
-	@apply flex items-center justify-between bg-gray-700 bg-opacity-20 mt-4 px-5 rounded-lg transition-colors hover:bg-opacity-50;
+	@apply flex items-center justify-between bg-gray-500 bg-opacity-20 dark:bg-gray-700 dark:bg-opacity-20 mt-4 px-5 rounded-lg transition-colors hover:bg-gray-600 hover:bg-opacity-30 dark:hover:bg-opacity-50 overflow-auto;
 
 	> div {
-		@apply text-white text-opacity-80 py-3;
-		width: 24%;
+		@apply text-gray-950 opacity-90 dark:text-white dark:text-opacity-80 py-3;
+		width: 25%;
 
 		&:last-child {
 			@apply text-right justify-end;
+			width: 10%;
 		}
 	}
 }
 
 .itemHeader {
-	@apply bg-primary bg-opacity-20 shadow-lg mt-8 hover:bg-opacity-20;
+	@apply flex items-center justify-between  transition-colors bg-primary bg-opacity-100 dark:bg-opacity-60 shadow-lg mt-4  px-5 rounded-lg overflow-auto;
 
 	> div {
-		@apply text-opacity-90 font-semibold py-2.5;
+		@apply text-gray-950 opacity-80 dark:text-white dark:text-opacity-80  font-semibold py-3;
+		width: 25%;
+		&:last-child {
+			@apply text-right justify-end;
+			width: 10%;
+		}
 	}
 }
 
 .notFound {
-	@apply text-lg text-white text-opacity-60 text-center py-3;
+	@apply flex items-center justify-center;
+	height: 500px;
+
+	> span {
+		@apply text-2xl text-gray-950 dark:text-white text-opacity-60;
+	}
 }

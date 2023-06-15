@@ -1,11 +1,11 @@
-import ImportantEdit from '@/screens/admin/important/ImportantEdit'
+import BuildingEdit from '@/screens/admin/building/BuildingEdit'
 
 import { NextPageAuth } from '@/shared/types/auth.types'
 
-const ImportantEditPage: NextPageAuth = () => {
-	return <ImportantEdit />
+const BuildingEditPage: NextPageAuth = () => {
+	return <BuildingEdit />
 }
 
-ImportantEditPage.isOnlyAdmin = 'admin'
+BuildingEditPage.isOnlyAdmin = 'admin'
 
-export default ImportantEditPage
+export default BuildingEditPage

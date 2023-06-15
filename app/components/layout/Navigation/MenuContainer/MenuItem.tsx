@@ -11,9 +11,12 @@ import styles from './Menu.module.scss'
 
 const MenuItem: FC<{ item: IMenuItem }> = ({ item }) => {
 	const { asPath } = useRouter()
-
+	console.log(asPath)
 	return (
-		<li className={cn({ [styles.active]: asPath === item.link })}>
+		<li
+			className={cn({
+				[styles.active]: asPath === item.link || (asPath.includes(item.link) && item.link !== '/'),
+			})}>
 			<Link href={item.link}>
 				<MaterialIcon name={item.icon} />
 				<span>{item.title}</span>

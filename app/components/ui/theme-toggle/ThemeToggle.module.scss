@@ -1,0 +1,15 @@
+.toggle {
+	@apply px-layout flex gap-3.5;
+
+	.light {
+		path {
+			@apply transition-colors duration-100 fill-primary dark:fill-black;
+		}
+	}
+
+	.dark {
+		path {
+			@apply transition-colors duration-100 dark:fill-white fill-black;
+		}
+	}
+}

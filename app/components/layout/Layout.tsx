@@ -2,14 +2,14 @@ import React, { FC, PropsWithChildren } from 'react'
 
 import styles from './Layout.module.scss'
 import Navigation from './Navigation/Navigation'
-import Sidebar from './SideBar/Sidebar'
 
 const Layout: FC<PropsWithChildren> = ({ children }) => {
 	return (
 		<div className={styles.layout}>
-			<Navigation />
+			<div>
+				<Navigation />
+			</div>
 			<div className={styles.center}>{children}</div>
-			<Sidebar />
 		</div>
 	)
 }

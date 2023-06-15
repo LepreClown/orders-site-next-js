@@ -9,30 +9,30 @@ const AuthFields: FC<IAuthFields> = ({ register, formState, isPasswordRequired =
 	return (
 		<>
 			<Field
-				{...register('email', {
-					required: 'Email is required!',
+				{...register('telephone', {
+					required: 'Номер телефона является обязательным полем!',
 					pattern: {
 						value: validEmail,
-						message: 'Please enter a valid email',
+						message: 'Введите действительный номер телефона',
 					},
 				})}
-				placeholder="E-mail"
-				error={formState.errors.email}
+				placeholder="Номер телефона"
+				error={formState.errors.telephone}
 			/>
 			<Field
 				{...register(
 					'password',
 					isPasswordRequired
 						? {
-								required: 'Password is required!',
+								required: 'Пароль является обязательным!',
 								minLength: {
-									value: 6,
-									message: 'Min length should more 6 symbols!',
+									value: 5,
+									message: 'Минимальная длина 5 символов!',
 								},
 						  }
 						: {},
 				)}
-				placeholder="Password"
+				placeholder="Пароль"
 				type="password"
 				error={formState.errors.password}
 			/>

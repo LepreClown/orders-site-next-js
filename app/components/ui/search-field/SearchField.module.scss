@@ -1,18 +1,18 @@
 .search {
-	@apply rounded-3xl border border-gray-700 px-3 py-2 flex items-center transition-colors;
+	@apply rounded-3xl border border-gray-700 dark:border-gray-700 px-3 py-2 flex items-center transition-colors;
 
 	> svg {
-		@apply fill-gray-600 mr-2 text-3xl transition-colors;
+		@apply fill-gray-700 dark:fill-gray-600 mr-2 text-3xl transition-colors;
 	}
 
 	> input {
-		@apply text-white placeholder:text-gray-600 block w-full bg-transparent outline-none;
+		@apply text-gray-950 placeholder:text-gray-600 dark:text-white dark:placeholder:text-gray-600 block w-full bg-transparent outline-none;
 	}
 
 	&:focus-within {
-		@apply border-gray-600;
+		@apply border-gray-950 dark:border-gray-600;
 		> svg {
-			@apply fill-gray-500;
+			@apply fill-gray-950 dark:fill-gray-500;
 		}
 	}
 }

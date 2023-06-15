@@ -1,10 +1,10 @@
 export interface ITableItem {
-	_id: string
+	id: number
 	editUrl: string
 	items: string[]
 }
 
 export interface IAdminTableItem {
 	tableItem: ITableItem
-	removeHandler: (id: string) => void
+	removeHandler: (id: number) => void
 }

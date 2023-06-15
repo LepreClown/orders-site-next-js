@@ -1,4 +1,4 @@
-/* React Select */
+/* React SelectRoles */
 .custom-select {
 	&__control {
 		background-color: transparent !important;
@@ -10,6 +10,10 @@
 		&--menu-is-open {
 			border-color: var(--primary-color) !important;
 		}
+	}
+
+	&__single-value {
+		color: #999aa5 !important;
 	}
 
 	&__value-container {

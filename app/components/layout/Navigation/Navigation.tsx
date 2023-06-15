@@ -3,6 +3,8 @@ import { FC } from 'react'
 import Logo from '@/components/layout/Navigation/Logo'
 import MenuContainer from '@/components/layout/Navigation/MenuContainer/MenuContainer'
 
+import ThemeToggle from '@/ui/theme-toggle/ThemeToggle'
+
 import styles from './Navigation.module.scss'
 
 const Navigation: FC = () => {
@@ -10,6 +12,7 @@ const Navigation: FC = () => {
 		<div className={styles.navigation}>
 			<Logo />
 			<MenuContainer />
+			<ThemeToggle />
 		</div>
 	)
 }

@@ -2,15 +2,11 @@ import { FC } from 'react'
 
 import Button from '@/ui/button/Button'
 
-import { useModal } from '@/hooks/useModal'
-
-const AdminCreateButton: FC<{
-	onClick?: () => void
+const AdminModalButton: FC<{
+	toggle: () => void
 	title?: string
-}> = ({ onClick, title }) => {
-	const { toggle, isShow } = useModal()
-
+}> = ({ title, toggle }) => {
 	return <Button onClick={toggle}>{`Создать ${title ? title : ''}`}</Button>
 }
 
-export default AdminCreateButton
+export default AdminModalButton

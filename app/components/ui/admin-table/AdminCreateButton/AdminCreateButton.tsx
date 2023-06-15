@@ -1,9 +1,12 @@
 import { FC } from 'react'
 
-import Button from '@/ui/form-elements/Button'
+import Button from '@/ui/button/Button'
 
-const AdminCreateButton: FC<{ onClick?: () => void }> = ({ onClick }) => {
-	return <Button onClick={onClick}>Create new</Button>
+const AdminCreateButton: FC<{
+	onClick?: () => void
+	title?: string
+}> = ({ onClick, title }) => {
+	return <Button onClick={onClick}>{`Создать ${title ? title : ''}`}</Button>
 }
 
 export default AdminCreateButton

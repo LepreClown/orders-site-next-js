@@ -11,7 +11,7 @@ export const useAdminRole = () => {
 	const user = 'Пользователь'
 	const advancedUser = 'Менеджер'
 
-	const queryData = useQuery('list of roles', () => RoleService.getRoles(), {
+	const queryData = useQuery('list of roles for create', () => RoleService.getRoles(), {
 		select: ({ data }) =>
 			data?.roles?.map(
 				(role, index): IOptionForUser => ({
@@ -20,7 +20,7 @@ export const useAdminRole = () => {
 				}),
 			),
 		onError(error) {
-			toastError(error, 'Ошибка при получение списка роли')
+			toastError(error, 'Ошибка при получение списка ролей')
 		},
 	})
 

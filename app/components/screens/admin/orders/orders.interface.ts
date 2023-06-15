@@ -1,3 +1,30 @@
-export interface IImportantCreate {
-	important_name: string
+import { Control, FieldErrors, UseFormRegister } from 'react-hook-form'
+
+import { IOption } from '@/ui/select/select.interface'
+
+export interface IOrderCreate {
+	building_id: number
+	system_id: number
+	important_id: number
+	material: string
+	quantity: number
+	creator_id: number
+	status_id: number
+	expected_time: string
+}
+
+export interface IOrdersFields {
+	errors: FieldErrors<IOrderCreate>
+	register: UseFormRegister<IOrderCreate>
+	control: Control<IOrderCreate, any>
+	importants: IOption[] | undefined
+	building: IOption[] | undefined
+	users: IOption[] | undefined
+	systems: IOption[] | undefined
+	statuses: IOption[] | undefined
+	isUsersLoading: boolean
+	isImportantsLoading: boolean
+	isBuildingsLoading: boolean
+	isSystemsLoading: boolean
+	isStatusLoading: boolean
 }

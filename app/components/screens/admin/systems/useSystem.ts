@@ -1,30 +1,33 @@
 import { useRouter } from 'next/router'
 import { ChangeEvent, useMemo, useState } from 'react'
+import { SubmitHandler } from 'react-hook-form'
 import { useMutation, useQuery } from 'react-query'
 import { toastr } from 'react-redux-toastr'
 
+import { ISystemCreate } from '@/screens/admin/systems/systems.interface'
+
 import { useDebounce } from '@/hooks/useDebounce'
 
-import { StatusService } from '@/services/status/status.service'
+import { SystemService } from '@/services/system/system.service'
 
 import { toastError } from '@/utils/api/withToastrErrorRedux'
 
 import { getAdminUrl } from '../../../../config/url.config'
 
-export const useStatus = () => {
+export const useSystem = () => {
 	const [searchTerm, setSearchTerm] = useState('')
 	const debouncedSearch = useDebounce(searchTerm, 500)
 	const { push } = useRouter()
 
-	const queryData = useQuery(['status list', debouncedSearch], () => StatusService.getAll(), {
+	const queryData = useQuery(['systems list', debouncedSearch], () => SystemService.getAll(), {
 		select: ({ data }) =>
-			data.map((status) => ({
-				id: status.id,
-				editUrl: getAdminUrl(`status/edit/${status.id}`),
-				items: [String(status.id), status.status_name],
+			data.map((system) => ({
+				id: system.id,
+				editUrl: getAdminUrl(`system/edit/${system.id}`),
+				items: [String(system.id), system.system_name],
 			})),
 		onError(error) {
-			toastError(error, 'Список статусов')
+			toastError(error, 'Список систем')
 		},
 	})
 
@@ -33,35 +36,45 @@ export const useStatus = () => {
 	}
 
 	const { mutateAsync: deleteAsync } = useMutation(
-		'delete status',
-		(id: number) => StatusService.delete(id),
+		'delete system',
+		(id: number) => SystemService.delete(id),
 		{
 			onError(error) {
-				toastError(error, 'Статус не удален')
+				toastError(error, 'Система не удален')
 			},
 			onSuccess({ data: id }) {
-				toastr.success('Статус', 'Статус успешно удален')
+				toastr.success('Система', 'Система успешно удален')
 				queryData.refetch()
 			},
 		},
 	)
 
-	const { mutateAsync: createAsync } = useMutation('create status', () => StatusService.create(), {
-		onError(error) {
-			toastError(error, 'Статус не создан')
+	const { mutateAsync: createAsync } = useMutation(
+		'create system',
+		(data: ISystemCreate) =>
+			SystemService.create({
+				system_name: data.system_name,
+			}),
+		{
+			onError(error) {
+				toastError(error, 'Система не создана')
+			},
+			onSuccess({ data: id }) {
+				toastr.success('Система', 'Система успешно создана')
+				push(getAdminUrl('systems'))
+			},
 		},
-		onSuccess({ data: id }) {
-			toastr.success('Статус', 'Статус успешно создан')
-			push(getAdminUrl(`status/edit/${id}`))
-		},
-	})
-
+	)
+	const onSubmit: SubmitHandler<ISystemCreate> = async (data) => {
+		await createAsync(data)
+	}
 	return useMemo(
 		() => ({
 			deleteAsync,
 			handleSearch,
 			createAsync,
 			searchTerm,
+			onSubmit,
 			...queryData,
 		}),
 		[queryData, searchTerm, deleteAsync, createAsync],

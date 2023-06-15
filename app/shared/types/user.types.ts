@@ -1,8 +1,14 @@
-export interface IUser {
-	_id: string
-	email: string
+export interface IUserItem {
+	id: number
+	name: string
+	surname: string
+	role: string
 	password: string
-	isAdmin: boolean
-	favorites: string[]
-	createdAt: string
+	telephone: string
+	created_at: string
+}
+
+export interface IUser {
+	quantity_users: number
+	users: IUserItem[]
 }

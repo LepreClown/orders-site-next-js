@@ -1,3 +1,3 @@
-import { IStatus } from '@/shared/types/status.types'
+import { ISystem } from '@/shared/types/system.types'
 
-export interface IStatusEditInput extends IStatus {}
+export interface ISystemEditInput extends ISystem {}

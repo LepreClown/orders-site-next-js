@@ -1,9 +1,11 @@
-import StatusList from '@/screens/admin/statuses/StatusList'
+import BuildingList from '@/screens/admin/buildings/BuildingList'
 
 import { NextPageAuth } from '@/shared/types/auth.types'
 
-const StatusListPage: NextPageAuth = () => {
-	return <StatusList />
+const BuildingListPage: NextPageAuth = () => {
+	return <BuildingList />
 }
 
-export default StatusListPage
+BuildingListPage.isOnlyAdmin = 'admin'
+
+export default BuildingListPage

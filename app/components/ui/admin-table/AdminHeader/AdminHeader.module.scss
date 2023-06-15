@@ -1,7 +1,7 @@
 .header {
-	@apply flex items-center justify-between mt-8;
+	@apply flex items-start justify-between mt-8;
 
 	> button {
-		@apply bg-primary bg-opacity-80;
+		@apply h-12 btn-primary;
 	}
 }

@@ -1,0 +1,25 @@
+.overlay {
+	@apply max-h-screen top-0 left-0 absolute flex justify-center items-center;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.6);
+	z-index: 2;
+}
+
+.wrapper {
+	@apply flex items-center justify-center w-full h-full;
+}
+
+.modal {
+	@apply bg-white dark:bg-gray-900 p-4 w-1/2 h-1/2 shadow-gray-700 dark:shadow-gray-950 shadow-xl rounded-xl border-gray-800 dark:border-gray-700 border-4;
+
+	> div:first-child {
+		@apply flex items-center justify-between;
+		> div:last-child {
+			@apply text-gray-950 dark:text-white text-2xl transition-colors cursor-pointer hover:text-primary dark:hover:text-primary;
+		}
+	}
+}
+.title {
+	@apply font-semibold text-2xl text-gray-950 dark:text-white;
+}

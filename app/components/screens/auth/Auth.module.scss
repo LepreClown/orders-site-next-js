@@ -1,0 +1,31 @@
+.wrapper {
+	@apply mt-32;
+
+	> form {
+		@apply mx-auto w-1/2 air-block bg-opacity-80  p-7 text-center;
+
+		.subHeading {
+			h2 {
+				@apply text-xs text-gray-500 dark:text-gray-500 underline cursor-pointer transition-colors;
+
+				&:hover {
+					@apply text-gray-600 dark:text-gray-300;
+				}
+				&:active {
+					transform: translateY(-1px);
+				}
+			}
+		}
+		.buttons {
+			@apply p-2 mt-6 shadow-lg rounded-layout;
+
+			> button {
+				@apply transition-opacity bg-primary;
+
+				&:active {
+					transform: translateY(-1px);
+				}
+			}
+		}
+	}
+}

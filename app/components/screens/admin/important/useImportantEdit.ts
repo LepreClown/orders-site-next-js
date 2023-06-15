@@ -3,50 +3,54 @@ import { SubmitHandler, UseFormSetValue } from 'react-hook-form'
 import { useMutation, useQuery } from 'react-query'
 import { toastr } from 'react-redux-toastr'
 
-import { ISystemEditInput } from '@/screens/admin/system/system-edit-interface'
+import { IImportantEditInput } from '@/screens/admin/important/important-edit-interface'
 
-import { SystemService } from '@/services/system/system.service'
+import { ImportantService } from '@/services/important/important.service'
 
 import { toastError } from '@/utils/api/withToastrErrorRedux'
 import { getKeys } from '@/utils/object/getKeys'
 
 import { getAdminUrl } from '../../../../config/url.config'
 
-export const useSystemEdit = (setValue: UseFormSetValue<ISystemEditInput>) => {
+export const useImportantEdit = (setValue: UseFormSetValue<IImportantEditInput>) => {
 	const { push, query } = useRouter()
 
-	const systemId = Number(query.id)
+	const importantId = Number(query.id)
 
-	const { isLoading } = useQuery(['system', systemId], () => SystemService.getById(systemId), {
-		onSuccess: ({ data }) => {
-			getKeys(data).forEach((key) => {
-				setValue(key, data[key])
-			})
+	const { isLoading } = useQuery(
+		['important', importantId],
+		() => ImportantService.getById(importantId),
+		{
+			onSuccess: ({ data }) => {
+				getKeys(data).forEach((key) => {
+					setValue(key, data[key])
+				})
+			},
+			onError: (error) => {
+				toastError(error, 'Ошибка при получение срочности')
+			},
+			enabled: !!query.id,
 		},
-		onError: (error) => {
-			toastError(error, 'Ошибка при получение системы')
-		},
-		enabled: !!query.id,
-	})
+	)
 
 	const { mutateAsync } = useMutation(
-		'update system',
-		(data: ISystemEditInput) =>
-			SystemService.update(systemId, {
-				system_name: data.system_name,
+		'update important',
+		(data: IImportantEditInput) =>
+			ImportantService.update(importantId, {
+				important_name: data.important_name,
 			}),
 		{
 			onSuccess: () => {
-				toastr.success('Обновление системы', 'Система была успешно обновлена')
-				push(getAdminUrl('systems'))
+				toastr.success('Обновление срочности', 'Срочность была успешно обновлена')
+				push(getAdminUrl('importants'))
 			},
 			onError(error) {
-				toastError(error, 'Ошибка при обновление системы')
+				toastError(error, 'Ошибка при обновление срочности')
 			},
 		},
 	)
 
-	const onSubmit: SubmitHandler<ISystemEditInput> = async (data) => {
+	const onSubmit: SubmitHandler<IImportantEditInput> = async (data) => {
 		await mutateAsync(data)
 	}
 	return { onSubmit, isLoading }

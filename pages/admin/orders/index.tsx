@@ -1,9 +1,11 @@
-import UserList from '@/screens/admin/users/UsersList'
+import OrdersList from '@/screens/admin/orders/OrdersList'
 
 import { NextPageAuth } from '@/shared/types/auth.types'
 
-const UserListPage: NextPageAuth = () => {
-	return <UserList />
+const OrderListPage: NextPageAuth = () => {
+	return <OrdersList />
 }
 
-export default UserListPage
+OrderListPage.isOnlyAdmin = 'admin'
+
+export default OrderListPage

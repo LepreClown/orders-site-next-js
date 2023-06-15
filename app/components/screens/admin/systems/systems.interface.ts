@@ -1,3 +1,3 @@
 export interface ISystemCreate {
-	important_name: string
+	system_name: string
 }

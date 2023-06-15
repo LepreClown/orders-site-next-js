@@ -1,51 +1,138 @@
+import dynamic from 'next/dynamic'
 import { FC } from 'react'
+import { Controller, useForm } from 'react-hook-form'
+
+import { useAdminRole } from '@/screens/admin/user/useAdminRole'
+import { useUsers } from '@/screens/admin/users/useUsers'
+import { IUserCreate } from '@/screens/admin/users/users.interface'
 
 import AdminNavigation from '@/ui/admin-navigation/AdminNavigation'
 import AdminHeader from '@/ui/admin-table/AdminHeader/AdminHeader'
 import AdminTable from '@/ui/admin-table/AdminTable/AdminTable'
+import Button from '@/ui/button/Button'
+import Field from '@/ui/form-elements/Field'
+import formStyles from '@/ui/form-elements/adminForm.module.scss'
 import Heading from '@/ui/heading/Heading'
+import Modal from '@/ui/modal/Modal'
+import Pagination from '@/ui/pagination/Pagination'
+
+import { useModal } from '@/hooks/useModal'
 
 import Meta from '@/utils/meta/Meta'
 
-import { getAdminUrl } from '../../../../config/url.config'
-
-const data = [
-	{
-		_id: String(123),
-		editUrl: getAdminUrl(`user/edit/${123}`),
-		items: ['serp2004@mail.ru', '29.01.21', 'пользователь'],
-	},
-	{
-		_id: String(123),
-		editUrl: getAdminUrl(`user/edit/${123}`),
-		items: ['velikiy@mail.ru', '21.04.23', 'пользователь'],
-	},
-	{
-		_id: String(123),
-		editUrl: getAdminUrl(`user/edit/${123}`),
-		items: ['ivan2004@mail.ru', '23.05.23', 'администратор'],
-	},
-	{
-		_id: String(123),
-		editUrl: getAdminUrl(`user/edit/${123}`),
-		items: ['antipLOX2003@mail.ru', '12.08.23', 'менеджер'],
-	},
-]
+const DynamicSelect = dynamic(() => import('@/ui/selectForRoles/SelectRoles'), {
+	ssr: false,
+})
 
 const UserList: FC = () => {
-	const isLoading = false
-	const deleteAsync = (id: string) => id
+	const {
+		handleSubmit,
+		register,
+		control,
+		formState: { errors },
+	} = useForm<IUserCreate>({
+		mode: 'onChange',
+	})
+
+	const {
+		onSubmit,
+		currentPage,
+		onPageChange,
+		handleSearch,
+		quantityUsers,
+		dataUsers,
+		isLoading,
+		deleteAsync,
+		searchTerm,
+	} = useUsers()
+
+	const { data: roles, isLoading: isRoleLoading } = useAdminRole()
+	const { isShow, toggle } = useModal()
+
 	return (
 		<Meta title="Пользователи">
 			<AdminNavigation />
 			<Heading title="Пользователи" />
-			<AdminHeader searchTerm="" handleSearch={(event) => 0} />
+			<AdminHeader
+				quantity={quantityUsers}
+				toggle={toggle}
+				title="пользователя"
+				searchTerm={searchTerm}
+				handleSearch={handleSearch}
+			/>
 			<AdminTable
-				tableItems={data || []}
-				headerItems={['Email', 'Дата регистрации', 'Роль']}
+				tableItems={dataUsers || []}
+				headerItems={['Номер телефона', 'Имя', 'Фамилия', 'Роль', 'Дата создания']}
 				isLoading={isLoading}
 				removeHandler={deleteAsync}
 			/>
+			<Pagination
+				items={dataUsers ? dataUsers.length : 0}
+				currentPage={currentPage}
+				onPageChange={onPageChange}
+				quantity={quantityUsers}
+			/>
+			{isShow && (
+				<Modal toggle={toggle} title="пользователя">
+					<form onSubmit={handleSubmit(onSubmit)} className={formStyles.formCreate}>
+						<div className={formStyles.fieldsCreate}>
+							<Field
+								{...register('telephone', {
+									required: 'Телефон не указан',
+								})}
+								placeholder="Телефон"
+								error={errors.telephone}
+								style={{ width: '31%' }}
+							/>
+							<Field
+								{...register('name', {
+									required: 'Имя не указано!',
+								})}
+								placeholder="Имя"
+								error={errors.name}
+								style={{ width: '31%' }}
+							/>
+							<Field
+								{...register('password', {
+									required: 'Пароль не указан!',
+								})}
+								placeholder="Пароль"
+								error={errors.password}
+								style={{ width: '31%' }}
+							/>
+
+							<Field
+								{...register('surname', {
+									required: 'Фамилия не указана!',
+								})}
+								placeholder="Фамилия"
+								error={errors.surname}
+								style={{ width: '31%' }}
+							/>
+
+							<div style={{ width: '31%' }}>
+								<Controller
+									name="role"
+									control={control}
+									rules={{
+										required: 'Пожалуйста выберите роль!',
+									}}
+									render={({ field, fieldState: { error } }) => (
+										<DynamicSelect
+											error={error}
+											field={field}
+											placeholder="Роль"
+											options={roles || []}
+											isLoading={isRoleLoading}
+										/>
+									)}
+								/>
+							</div>
+						</div>
+						<Button>Создать</Button>
+					</form>
+				</Modal>
+			)}
 		</Meta>
 	)
 }

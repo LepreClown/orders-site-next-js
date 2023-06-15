@@ -1,3 +1,3 @@
-export interface IImportantCreate {
-	important_name: string
+export interface IBuildingCreate {
+	building_name: string
 }

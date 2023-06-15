@@ -2,7 +2,7 @@ import { FC } from 'react'
 import ReactSelect, { OnChangeValue } from 'react-select'
 import makeAnimated from 'react-select/animated'
 
-import { IOption, ISelect } from '@/ui/select/select.interface'
+import { IOptionForRoles, ISelectForRoles } from '@/ui/selectForRoles/selectRoles.interface'
 
 import formStyles from '../form-elements/form.module.scss'
 
@@ -10,24 +10,32 @@ import styles from './Select.module.scss'
 
 const animatedComponents = makeAnimated()
 
-const Select: FC<ISelect> = ({ placeholder, error, isMulti, options, field, isLoading }) => {
-	const onChange = (newValue: OnChangeValue<IOption, boolean>) => {
+const SelectRoles: FC<ISelectForRoles> = ({
+	placeholder,
+	error,
+	isMulti,
+	options,
+	field,
+	isLoading,
+}) => {
+	const onChange = (newValue: OnChangeValue<IOptionForRoles, boolean>) => {
 		field.onChange(
 			isMulti
-				? (newValue as IOption[]).map((item: IOption) => item.value)
-				: (newValue as IOption).value,
+				? (newValue as IOptionForRoles[]).map((item: IOptionForRoles) => item.value)
+				: (newValue as IOptionForRoles).value,
 		)
 	}
 
 	const getValue = () => {
 		if (field.value) {
 			return isMulti
-				? options.filter((option) => String(field.value).indexOf(String(option.value)) >= 0)
+				? options.filter((option) => field.value.indexOf(option.value) >= 0)
 				: options.find((option) => option.value === field.value)
 		} else {
 			return isMulti ? [] : ('' as any)
 		}
 	}
+
 	return (
 		<div className={styles.selectContainer}>
 			<label>
@@ -49,4 +57,4 @@ const Select: FC<ISelect> = ({ placeholder, error, isMulti, options, field, isLo
 	)
 }
 
-export default Select
+export default SelectRoles

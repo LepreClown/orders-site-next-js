@@ -16,7 +16,7 @@
 	}
 
 	&.horizontal {
-		@apply mb-8 h-48;
+		@apply h-full;
 		width: 95%;
 	}
 
@@ -25,26 +25,38 @@
 			@apply rounded-layout;
 		}
 	}
-	.img {
-		@apply image-like-bg rounded-pxt;
-	}
-
-	.image {
-		@apply bg-primary rounded-2xl;
-	}
 
 	.content {
-		@apply relative z-2  m-3 w-full;
-
-		.title {
-			@apply font-semibold text-xl  mb-1 text-primary dark:text-primary;
+		@apply relative z-2 m-3 w-full;
+		div {
+			@apply mb-2;
 		}
-		.price {
-			@apply font-semibold text-2lg  mb-1 text-black dark:text-white;
+		.building {
+			@apply flex font-semibold text-2lg mb-4 text-primary dark:text-primary;
 		}
 
-		.subTitle {
-			@apply text-black dark:text-gray-500;
+		.params {
+			@apply flex text-[16px] text-gray-900 dark:text-gray-300 gap-6;
+			div:first-child {
+				@apply flex-col flex font-semibold;
+			}
+			div:last-child {
+				@apply flex-col flex font-semibold;
+			}
+		}
+
+		.footer {
+			@apply flex justify-between;
+			> div:first-child {
+				@apply text-gray-600 dark:text-gray-600;
+			}
+
+			> div:last-child {
+				@apply flex justify-end gap-12 text-gray-900 dark:text-gray-300 font-semibold pr-16;
+				> span:last-child {
+					@apply text-primary;
+				}
+			}
 		}
 	}
 }

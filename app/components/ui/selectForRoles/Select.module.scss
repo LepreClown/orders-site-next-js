@@ -5,7 +5,7 @@
 		@apply block;
 
 		> span {
-			@apply text-xs uppercase text-gray-600 block mb-1;
+			@apply text-xs uppercase text-gray-950 dark:text-gray-600 block mb-1;
 		}
 	}
 }

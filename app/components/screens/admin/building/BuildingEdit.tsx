@@ -1,47 +1,50 @@
 import { FC } from 'react'
 import { useForm } from 'react-hook-form'
 
-import { IStatusEditInput } from '@/screens/admin/status/status-edit-interface'
-import { useStatusEdit } from '@/screens/admin/status/useStatusEdit'
+import { IBuildingEditInput } from '@/screens/admin/building/building-edit-interface'
+import { useBuildingEdit } from '@/screens/admin/building/useBuildingEdit'
 
 import AdminNavigation from '@/ui/admin-navigation/AdminNavigation'
 import Button from '@/ui/button/Button'
 import Field from '@/ui/form-elements/Field'
 import formStyles from '@/ui/form-elements/adminForm.module.scss'
 import Heading from '@/ui/heading/Heading'
+import SubHeading from '@/ui/heading/SubHeading'
 import SkeletonLoader from '@/ui/skeleton-loader/SkeletonLoader'
 
 import Meta from '@/utils/meta/Meta'
 
-const StatusEdit: FC = () => {
+const BuildingEdit: FC = () => {
 	const {
 		handleSubmit,
 		register,
-		formState,
 		setValue,
-		control,
 		formState: { errors },
-	} = useForm<IStatusEditInput>({
+	} = useForm<IBuildingEditInput>({
 		mode: 'onChange',
 	})
 
-	const { isLoading, onSubmit } = useStatusEdit(setValue)
+	const { isLoading, onSubmit } = useBuildingEdit(setValue)
 
 	return (
-		<Meta title="Редактирование статуса">
+		<Meta title="Редактирование объекта">
 			<AdminNavigation />
-			<Heading title="Редактирование статуса" />
+			<Heading title="Редактирование объекта" />
 			{isLoading ? (
 				<SkeletonLoader count={1} className={formStyles.form} />
 			) : (
-				<form onSubmit={handleSubmit(onSubmit)} className={formStyles.formUser}>
-					<div className={formStyles.fieldsUser}>
+				<form onSubmit={handleSubmit(onSubmit)} className={formStyles.form}>
+					<div className={formStyles.fields}>
+						<SubHeading
+							title="Объект"
+							className="text-gray-800 dark:text-gray-300 text-opacity-80 text-[18px]"
+						/>
 						<Field
-							{...register('status_name', {
-								required: 'Статус не указана!',
+							{...register('building_name', {
+								required: 'Объект не указан!',
 							})}
-							placeholder="Статус"
-							error={errors.status_name}
+							placeholder="Название объекта"
+							error={errors.building_name}
 							style={{ width: '49%' }}
 						/>
 					</div>
@@ -52,4 +55,4 @@ const StatusEdit: FC = () => {
 	)
 }
 
-export default StatusEdit
+export default BuildingEdit

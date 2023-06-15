@@ -1,3 +1,7 @@
 .navigation {
-	@apply py-layout;
+	@apply py-layout h-full;
+
+	> div:last-child {
+		@apply absolute bottom-4;
+	}
 }

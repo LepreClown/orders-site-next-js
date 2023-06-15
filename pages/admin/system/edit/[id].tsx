@@ -1,11 +1,11 @@
-import StatusEdit from '@/screens/admin/status/StatusEdit'
+import SystemEdit from '@/screens/admin/system/SystemEdit'
 
 import { NextPageAuth } from '@/shared/types/auth.types'
 
-const StatusEditPage: NextPageAuth = () => {
-	return <StatusEdit />
+const SystemEditPage: NextPageAuth = () => {
+	return <SystemEdit />
 }
 
-StatusEditPage.isOnlyAdmin = 'admin'
+SystemEditPage.isOnlyAdmin = 'admin'
 
-export default StatusEditPage
+export default SystemEditPage

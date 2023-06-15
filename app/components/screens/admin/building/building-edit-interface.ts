@@ -1,3 +1,3 @@
-import { IStatus } from '@/shared/types/status.types'
+import { IBuildingItem } from '@/shared/types/building.types'
 
-export interface IStatusEditInput extends IStatus {}
+export interface IBuildingEditInput extends IBuildingItem {}

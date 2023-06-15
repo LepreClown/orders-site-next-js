@@ -6,7 +6,7 @@ import { IOrderItemProps } from '@/ui/order/order.interface'
 
 import styles from './Order.module.scss'
 
-const OrderItem: FC<IOrderItemProps> = ({ order, variant }) => {
+const OrderTableItem: FC<IOrderItemProps> = ({ order, variant }) => {
 	return (
 		<Link
 			href={order.editUrl}
@@ -15,14 +15,39 @@ const OrderItem: FC<IOrderItemProps> = ({ order, variant }) => {
 				[styles.horizontal]: variant === 'horizontal',
 				[styles.vertical]: variant === 'vertical',
 			})}>
-			{order.creator && (
+			{order && (
 				<div className={styles.content}>
-					<div className={styles.title}>{order.creator.name}</div>
-					{order.creator.surname && <div className={styles.subTitle}> {order.creator.surname}</div>}
+					<div className={styles.building}>
+						<span>{order.building.building_name}</span>
+						{/*<span>{order.system.system_name}</span>*/}
+						{/*<span>{order.material}</span>*/}
+					</div>
+
+					<div className={styles.params}>
+						<div>
+							<span>Материал:</span>
+							<span>Количество:</span>
+							<span>Система:</span>
+							<span> Важность:</span>
+						</div>
+						<div>
+							<span>{order.material}</span>
+							<span>{order.quantity}</span>
+							<span>{order.system.system_name}</span>
+							<span>{order.important.important_name}</span>
+						</div>
+					</div>
+					<div className={styles.footer}>
+						<div>{order.building.building_name}</div>
+						<div>
+							<span>{order.created_at}</span>
+							<span>{order.status.status_name}</span>
+						</div>
+					</div>
 				</div>
 			)}
 		</Link>
 	)
 }
 
-export default OrderItem
+export default OrderTableItem

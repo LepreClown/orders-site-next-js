@@ -8,13 +8,13 @@ export interface IOption {
 	value: number
 }
 
-export interface IOptionForUser {
+export interface IOptionForRoles {
 	label: string
 	value: string
 }
 
-export interface ISelect extends IFieldProps {
-	options: Options<IOption>
+export interface ISelectForRoles extends IFieldProps {
+	options: Options<IOptionForRoles>
 	isMulti?: boolean
 	field: ControllerRenderProps<any, any>
 	isLoading?: boolean

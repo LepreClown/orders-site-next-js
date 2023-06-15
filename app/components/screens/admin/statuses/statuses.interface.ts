@@ -1,3 +1,3 @@
-export interface IOrderCreate {
-	important_name: string
+export interface IStatusCreate {
+	status_name: string
 }

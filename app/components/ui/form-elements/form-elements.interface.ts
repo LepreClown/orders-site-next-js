@@ -1,5 +1,4 @@
-import { EditorProps } from 'draft-js'
-import { ButtonHTMLAttributes, CSSProperties, InputHTMLAttributes } from 'react'
+import { InputHTMLAttributes } from 'react'
 import { FieldError } from 'react-hook-form'
 
 export interface IFieldProps {
@@ -10,21 +9,3 @@ export interface IFieldProps {
 type TypeInputPropsField = InputHTMLAttributes<HTMLInputElement> & IFieldProps
 
 export interface IField extends TypeInputPropsField {}
-export interface IUploadField {
-	folder?: string
-	file?: string
-	onChange: (...event: any[]) => void
-	placeholder: string
-	error?: FieldError | undefined
-	style?: CSSProperties
-	isNoImage?: boolean
-}
-
-export interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {}
-
-type TypeEditorPropsField = EditorProps & IFieldProps
-
-export interface ITextEditor extends Omit<TypeEditorPropsField, 'editorState'> {
-	onChange: (...event: any[]) => void
-	value: string
-}

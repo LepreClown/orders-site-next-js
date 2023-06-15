@@ -7,9 +7,9 @@ import { BuildingService } from '@/services/building/building.service'
 import { toastError } from '@/utils/api/withToastrErrorRedux'
 
 export const useAdminBuilding = () => {
-	const queryData = useQuery('list of building', () => BuildingService.getAll(), {
+	const queryData = useQuery('list of building for create', () => BuildingService.getBuildings(), {
 		select: ({ data }) =>
-			data.map(
+			data.buildings.map(
 				(building): IOption => ({
 					label: building.building_name,
 					value: building.id,
