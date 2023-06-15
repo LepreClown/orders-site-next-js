@@ -43,6 +43,7 @@ const StatusEdit: FC = () => {
 							{...register('status_name', {
 								required: 'Статус не указана!',
 							})}
+							type="text"
 							placeholder="Название статуса"
 							error={errors.status_name}
 							style={{ width: '49%' }}

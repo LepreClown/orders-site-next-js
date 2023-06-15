@@ -43,6 +43,7 @@ const BuildingEdit: FC = () => {
 							{...register('building_name', {
 								required: 'Объект не указан!',
 							})}
+							type="text"
 							placeholder="Название объекта"
 							error={errors.building_name}
 							style={{ width: '49%' }}

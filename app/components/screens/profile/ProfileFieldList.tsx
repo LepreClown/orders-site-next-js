@@ -22,6 +22,7 @@ const ProfileFieldList: FC<IProfileField> = ({ user, register, formState }) => {
 						{...register('name', {
 							required: 'Имя не указано',
 						})}
+						type="text"
 						disabled={user?.role === 'user'}
 						placeholder="Имя"
 						error={formState.errors.name}
@@ -31,6 +32,7 @@ const ProfileFieldList: FC<IProfileField> = ({ user, register, formState }) => {
 						{...register('surname', {
 							required: 'Фимилия не указана',
 						})}
+						type="text"
 						disabled={user?.role === 'user'}
 						placeholder="Фамилия"
 						error={formState.errors.surname}
@@ -52,6 +54,7 @@ const ProfileFieldList: FC<IProfileField> = ({ user, register, formState }) => {
 						})}
 						disabled={user?.role === 'user'}
 						placeholder="Номер телефона"
+						type="number"
 						error={formState.errors.telephone}
 						style={{ width: '20%' }}
 					/>
@@ -64,6 +67,7 @@ const ProfileFieldList: FC<IProfileField> = ({ user, register, formState }) => {
 					{...register('role', {
 						required: 'Роль не указана',
 					})}
+					type="text"
 					disabled={true}
 					placeholder="Роль"
 					error={formState.errors.role}

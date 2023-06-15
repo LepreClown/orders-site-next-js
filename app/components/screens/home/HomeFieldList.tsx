@@ -30,6 +30,7 @@ const HomeFieldList: FC<IOrderHomeFields> = ({
 				{...register('material', {
 					required: 'Материал не указан',
 				})}
+				type="text"
 				placeholder="Материал"
 				error={errors.material}
 				style={{ width: '31%' }}
@@ -46,6 +47,7 @@ const HomeFieldList: FC<IOrderHomeFields> = ({
 				{...register('quantity', {
 					required: 'Количество не указано',
 				})}
+				type="number"
 				placeholder="Количество"
 				error={errors.quantity}
 				style={{ width: '31%' }}

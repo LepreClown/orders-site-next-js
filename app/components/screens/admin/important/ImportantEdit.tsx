@@ -43,6 +43,7 @@ const ImportantEdit: FC = () => {
 							{...register('important_name', {
 								required: 'Срочность не указана!',
 							})}
+							type="text"
 							placeholder="Название срочности"
 							error={errors.important_name}
 							style={{ width: '49%' }}

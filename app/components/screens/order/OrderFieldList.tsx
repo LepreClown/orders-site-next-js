@@ -26,6 +26,7 @@ const OrderFieldList: FC<IOrderFields> = ({ register, errors, order }) => {
 					{...register('creator.name', {
 						required: 'Имя не указано',
 					})}
+					type="text"
 					disabled={true}
 					placeholder="Имя"
 					error={errors.creator?.name}
@@ -35,6 +36,7 @@ const OrderFieldList: FC<IOrderFields> = ({ register, errors, order }) => {
 					{...register('creator.surname', {
 						required: 'Фимилия не указана',
 					})}
+					type="text"
 					disabled={true}
 					placeholder="Фамилия"
 					error={errors.creator?.surname}
@@ -44,6 +46,7 @@ const OrderFieldList: FC<IOrderFields> = ({ register, errors, order }) => {
 					{...register('creator.telephone', {
 						required: 'Телефон не указан',
 					})}
+					type="number"
 					disabled={true}
 					placeholder="Телефон"
 					error={errors.creator?.telephone}
@@ -59,6 +62,7 @@ const OrderFieldList: FC<IOrderFields> = ({ register, errors, order }) => {
 					{...register('material', {
 						required: 'Материал не указан',
 					})}
+					type="text"
 					disabled={true}
 					placeholder="Материал"
 					error={errors.material}
@@ -68,6 +72,7 @@ const OrderFieldList: FC<IOrderFields> = ({ register, errors, order }) => {
 					{...register('quantity', {
 						required: 'Количество не указано',
 					})}
+					type="number"
 					disabled={true}
 					placeholder="Количество"
 					error={errors.quantity}
@@ -83,6 +88,7 @@ const OrderFieldList: FC<IOrderFields> = ({ register, errors, order }) => {
 					{...register('building.building_name', {
 						required: 'Название объекта не указано',
 					})}
+					type="text"
 					disabled={true}
 					placeholder="Объект"
 					error={errors.building?.building_name}
@@ -92,6 +98,7 @@ const OrderFieldList: FC<IOrderFields> = ({ register, errors, order }) => {
 					{...register('system.system_name', {
 						required: 'Название системы не указано',
 					})}
+					type="text"
 					disabled={true}
 					placeholder="Cистема"
 					error={errors.system?.system_name}
@@ -107,6 +114,7 @@ const OrderFieldList: FC<IOrderFields> = ({ register, errors, order }) => {
 					{...register('important.important_name', {
 						required: 'Название важности не указано',
 					})}
+					type="text"
 					disabled={true}
 					placeholder="Важность"
 					error={errors.important?.important_name}
@@ -117,6 +125,7 @@ const OrderFieldList: FC<IOrderFields> = ({ register, errors, order }) => {
 					{...register('status.status_name', {
 						required: 'Статус не указан',
 					})}
+					type="text"
 					placeholder="Статус"
 					error={errors.status?.status_name}
 					disabled={true}

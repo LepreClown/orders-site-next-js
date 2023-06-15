@@ -52,6 +52,7 @@ const UserList: FC = () => {
 								{...register('status_name', {
 									required: 'Статус не указан!',
 								})}
+								type="text"
 								placeholder="Название статуса"
 								error={errors.status_name}
 								style={{ width: '31%' }}

@@ -80,6 +80,7 @@ const UserList: FC = () => {
 								{...register('telephone', {
 									required: 'Телефон не указан',
 								})}
+								type="number"
 								placeholder="Телефон"
 								error={errors.telephone}
 								style={{ width: '31%' }}
@@ -88,6 +89,7 @@ const UserList: FC = () => {
 								{...register('name', {
 									required: 'Имя не указано!',
 								})}
+								type="text"
 								placeholder="Имя"
 								error={errors.name}
 								style={{ width: '31%' }}
@@ -96,6 +98,7 @@ const UserList: FC = () => {
 								{...register('password', {
 									required: 'Пароль не указан!',
 								})}
+								type="password"
 								placeholder="Пароль"
 								error={errors.password}
 								style={{ width: '31%' }}
@@ -105,6 +108,7 @@ const UserList: FC = () => {
 								{...register('surname', {
 									required: 'Фамилия не указана!',
 								})}
+								type="text"
 								placeholder="Фамилия"
 								error={errors.surname}
 								style={{ width: '31%' }}

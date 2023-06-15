@@ -36,6 +36,7 @@ const OrderAdminFieldList: FC<IOrderEditFields> = ({
 					{...register('creator.name', {
 						required: 'Имя не указано',
 					})}
+					type="text"
 					disabled={true}
 					placeholder="Имя"
 					error={errors.creator?.name}
@@ -45,6 +46,7 @@ const OrderAdminFieldList: FC<IOrderEditFields> = ({
 					{...register('creator.surname', {
 						required: 'Фимилия не указана',
 					})}
+					type="text"
 					disabled={true}
 					placeholder="Фамилия"
 					error={errors.creator?.surname}
@@ -55,6 +57,7 @@ const OrderAdminFieldList: FC<IOrderEditFields> = ({
 					{...register('creator.telephone', {
 						required: 'Телефон не указан',
 					})}
+					type="number"
 					placeholder="Телефон"
 					error={errors.creator?.telephone}
 					style={{ width: '21%' }}
@@ -63,6 +66,7 @@ const OrderAdminFieldList: FC<IOrderEditFields> = ({
 					{...register('creator.role', {
 						required: 'Роль не указана',
 					})}
+					type="text"
 					placeholder="Роль"
 					error={errors.creator?.role}
 					disabled={true}
@@ -78,6 +82,7 @@ const OrderAdminFieldList: FC<IOrderEditFields> = ({
 					{...register('material', {
 						required: 'Материал не указан',
 					})}
+					type="text"
 					placeholder="Материал"
 					error={errors.material}
 					style={{ width: '21%' }}
@@ -86,6 +91,7 @@ const OrderAdminFieldList: FC<IOrderEditFields> = ({
 					{...register('quantity', {
 						required: 'Количество не указано',
 					})}
+					type="number"
 					placeholder="Количество"
 					error={errors.quantity}
 					style={{ width: '21%' }}
@@ -181,6 +187,7 @@ const OrderAdminFieldList: FC<IOrderEditFields> = ({
 					required: 'Время уже указана',
 				})}
 				disabled={true}
+				type="time"
 				placeholder="Время изменения"
 				error={errors.modified_at}
 				style={{ width: '11%' }}

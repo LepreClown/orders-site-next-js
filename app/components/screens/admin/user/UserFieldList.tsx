@@ -23,6 +23,7 @@ const UserFiledList: FC<IUserFields> = ({ errors, register, control, roles, isRo
 				{...register('name', {
 					required: 'Имя не указано!',
 				})}
+				type="text"
 				placeholder="Имя"
 				error={errors.name}
 				style={{ width: '31%' }}
@@ -31,6 +32,7 @@ const UserFiledList: FC<IUserFields> = ({ errors, register, control, roles, isRo
 				{...register('surname', {
 					required: 'Фамилия не указана!',
 				})}
+				type="text"
 				placeholder="Фамилия"
 				error={errors.surname}
 				style={{ width: '31%' }}
@@ -43,6 +45,7 @@ const UserFiledList: FC<IUserFields> = ({ errors, register, control, roles, isRo
 				{...register('telephone', {
 					required: 'Телефон не указан',
 				})}
+				type="number"
 				placeholder="Телефон"
 				error={errors.telephone}
 				style={{ width: '31%' }}

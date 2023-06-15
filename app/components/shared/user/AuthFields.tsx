@@ -16,6 +16,7 @@ const AuthFields: FC<IAuthFields> = ({ register, formState, isPasswordRequired =
 						message: 'Введите действительный номер телефона',
 					},
 				})}
+				type="number"
 				placeholder="Номер телефона"
 				error={formState.errors.telephone}
 			/>

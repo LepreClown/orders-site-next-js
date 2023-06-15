@@ -70,6 +70,7 @@ const BuildingList: FC = () => {
 								{...register('building_name', {
 									required: 'Объект не указан!',
 								})}
+								type="text"
 								placeholder="Название объкта"
 								error={errors.building_name}
 								style={{ width: '31%' }}

@@ -43,6 +43,7 @@ const SystemEdit: FC = () => {
 							{...register('system_name', {
 								required: 'Система не указана!',
 							})}
+							type="text"
 							placeholder="Название системы"
 							error={errors.system_name}
 							style={{ width: '49%' }}
