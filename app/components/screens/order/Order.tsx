@@ -30,7 +30,9 @@ const Order: FC = () => {
 		<Meta title="Заявка">
 			<Heading title="Заявка" />
 			{isLoading ? (
-				<SkeletonLoader count={3} className={formStyles.form} />
+				<div className="mt-12">
+					<SkeletonLoader count={4} className="mb-12" height={90} />
+				</div>
 			) : (
 				<form className={formStyles.form}>
 					<OrderFieldList {...dataFields} />

@@ -16,7 +16,7 @@
 	@apply flex items-center justify-between  transition-colors bg-primary bg-opacity-100 dark:bg-opacity-60 shadow-lg mt-4  px-5 rounded-lg overflow-auto;
 
 	> div {
-		@apply text-gray-950 opacity-80 dark:text-white dark:text-opacity-80  font-semibold py-3;
+		@apply text-gray-950 text-opacity-80 dark:text-white dark:text-opacity-80  font-semibold py-3;
 		width: 25%;
 		&:last-child {
 			@apply text-right justify-end;

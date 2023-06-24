@@ -16,7 +16,7 @@ const OrderTable: FC<{ orders: IOrderItem[]; isLoading: boolean }> = ({ orders, 
 						<SkeletonLoader height={224} />
 					</div>
 				))
-			) : orders.length ? (
+			) : orders.length > 0 ? (
 				orders.map((order) => <OrderTableItem key={order.id} order={order} variant="horizontal" />)
 			) : (
 				<div className="text-lg text-gray-950 dark:text-white text-opacity-60 py-8">

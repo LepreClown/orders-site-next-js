@@ -49,7 +49,7 @@ export const useStatus = () => {
 		},
 	)
 
-	const { mutateAsync: createAsync } = useMutation(
+	const { mutateAsync: createAsync, status: createStatus } = useMutation(
 		'create status',
 		(data: IStatusCreate) =>
 			StatusService.create({
@@ -74,10 +74,11 @@ export const useStatus = () => {
 			deleteAsync,
 			handleSearch,
 			createAsync,
+			createStatus,
 			onSubmit,
 			searchTerm,
 			...queryData,
 		}),
-		[queryData, searchTerm, deleteAsync, createAsync],
+		[queryData, createStatus, searchTerm, deleteAsync, createAsync],
 	)
 }

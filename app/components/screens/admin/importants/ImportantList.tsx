@@ -27,7 +27,7 @@ const ImportantList: FC = () => {
 		mode: 'onChange',
 	})
 
-	const { searchTerm, handleSearch, onSubmit, data, isLoading, deleteAsync, createAsync } =
+	const { searchTerm, createStatus, handleSearch, onSubmit, data, isLoading, deleteAsync } =
 		useImportant()
 
 	const { isShow, toggle } = useModal()
@@ -62,7 +62,9 @@ const ImportantList: FC = () => {
 								style={{ width: '31%' }}
 							/>
 						</div>
-						<Button>Создать</Button>
+						<Button type="submit" disabled={createStatus === 'loading'}>
+							Создать
+						</Button>
 					</form>
 				</Modal>
 			)}

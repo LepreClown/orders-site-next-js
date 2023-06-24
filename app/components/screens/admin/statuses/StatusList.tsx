@@ -26,7 +26,8 @@ const UserList: FC = () => {
 		mode: 'onChange',
 	})
 	const { isShow, toggle } = useModal()
-	const { searchTerm, onSubmit, handleSearch, data, isLoading, deleteAsync } = useStatus()
+	const { searchTerm, onSubmit, createStatus, handleSearch, data, isLoading, deleteAsync } =
+		useStatus()
 
 	return (
 		<Meta title="Статусы">
@@ -58,7 +59,9 @@ const UserList: FC = () => {
 								style={{ width: '31%' }}
 							/>
 						</div>
-						<Button>Создать</Button>
+						<Button type="submit" disabled={createStatus === 'loading'}>
+							Создать
+						</Button>
 					</form>
 				</Modal>
 			)}

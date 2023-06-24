@@ -5,7 +5,12 @@ import Field from '@/components/ui/form-elements/Field'
 
 import { validEmail } from '@/shared/regex'
 
-const AuthFields: FC<IAuthFields> = ({ register, formState, isPasswordRequired = false }) => {
+const AuthFields: FC<IAuthFields> = ({
+	register,
+	formState,
+	isPasswordRequired = false,
+	type = true,
+}) => {
 	return (
 		<>
 			<Field
@@ -34,7 +39,7 @@ const AuthFields: FC<IAuthFields> = ({ register, formState, isPasswordRequired =
 						: {},
 				)}
 				placeholder="Пароль"
-				type="password"
+				type={type ? 'password' : 'text'}
 				error={formState.errors.password}
 			/>
 		</>

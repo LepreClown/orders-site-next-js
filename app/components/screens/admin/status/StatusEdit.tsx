@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import React, { FC } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { IStatusEditInput } from '@/screens/admin/status/status-edit-interface'
@@ -31,7 +31,9 @@ const StatusEdit: FC = () => {
 			<AdminNavigation />
 			<Heading title="Редактирование статуса" />
 			{isLoading ? (
-				<SkeletonLoader count={1} className={formStyles.form} />
+				<div className="mt-12">
+					<SkeletonLoader count={2} className="mb-12" height={24} width={400} />
+				</div>
 			) : (
 				<form onSubmit={handleSubmit(onSubmit)} className={formStyles.form}>
 					<div className={formStyles.fields}>
@@ -49,7 +51,7 @@ const StatusEdit: FC = () => {
 							style={{ width: '49%' }}
 						/>
 					</div>
-					<Button>Обновить</Button>
+					<Button type="submit">Обновить</Button>
 				</form>
 			)}
 		</Meta>

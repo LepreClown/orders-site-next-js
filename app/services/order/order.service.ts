@@ -37,6 +37,6 @@ export const OrderService = {
 	},
 
 	async delete(id: number) {
-		return axios.delete<string>(getOrderUrl(`/delete/${id}`))
+		return axios.delete<string>(getOrderUrl(`delete/${id}`))
 	},
 }

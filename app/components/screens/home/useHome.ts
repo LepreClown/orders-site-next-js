@@ -55,7 +55,7 @@ export const useHome = () => {
 
 	const quantityOrders = Number(data?.quantity_orders)
 
-	const { mutateAsync: createAsync } = useMutation(
+	const { mutateAsync: createAsync, status: createStatus } = useMutation(
 		'create home order',
 		(data: IOrderCreate) =>
 			OrderService.create({
@@ -98,9 +98,10 @@ export const useHome = () => {
 			searchTerm,
 			ordersData,
 			isLoading,
+			createStatus,
 			quantityOrders,
 			onSubmit,
 		}),
-		[handleSearch, ordersData, isLoading, searchTerm],
+		[handleSearch, createStatus, ordersData, isLoading, searchTerm],
 	)
 }

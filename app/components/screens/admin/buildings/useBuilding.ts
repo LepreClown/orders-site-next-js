@@ -59,7 +59,7 @@ export const useBuilding = () => {
 		},
 	)
 
-	const { mutateAsync: createAsync } = useMutation(
+	const { mutateAsync: createAsync, status: createStatus } = useMutation(
 		'create building',
 		(data: IBuildingCreate) =>
 			BuildingService.create({
@@ -88,6 +88,7 @@ export const useBuilding = () => {
 			handleSearch,
 			createAsync,
 			onSubmit,
+			createStatus,
 			buildingsData,
 			quantityBuildings,
 			searchTerm,
@@ -95,6 +96,6 @@ export const useBuilding = () => {
 			onPageChange,
 			...queryData,
 		}),
-		[queryData, searchTerm, buildingsData, deleteAsync, createAsync, handleSearch],
+		[queryData, searchTerm, createStatus, buildingsData, deleteAsync, createAsync, handleSearch],
 	)
 }

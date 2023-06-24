@@ -38,6 +38,7 @@ const UserList: FC = () => {
 		onSubmit,
 		currentPage,
 		onPageChange,
+		createStatus,
 		handleSearch,
 		quantityUsers,
 		dataUsers,
@@ -133,7 +134,9 @@ const UserList: FC = () => {
 								/>
 							</div>
 						</div>
-						<Button>Создать</Button>
+						<Button type="submit" disabled={createStatus === 'loading'}>
+							Создать
+						</Button>
 					</form>
 				</Modal>
 			)}

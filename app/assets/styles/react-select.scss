@@ -1,4 +1,12 @@
 /* React SelectRoles */
+// Определение переменных для светлой темы
+$light-primary-color: #007bff;
+$light-background-color: #f8f8f8;
+
+// Определение переменных для темной темы
+$dark-primary-color: #ffffff;
+$dark-background-color: #000000;
+
 .custom-select {
 	&__control {
 		background-color: transparent !important;
@@ -8,12 +16,12 @@
 		box-shadow: none !important;
 
 		&--menu-is-open {
-			border-color: var(--primary-color) !important;
+			border-color: #a6ce47 !important;
 		}
 	}
 
 	&__single-value {
-		color: #999aa5 !important;
+		@apply text-gray-950 dark:text-gray-500;
 	}
 
 	&__value-container {
@@ -22,7 +30,7 @@
 	}
 
 	&__input-container {
-		color: #999aa5 !important;
+		@apply text-gray-950 dark:text-gray-500;
 	}
 
 	&__indicator-separator {
@@ -34,10 +42,10 @@
 	}
 
 	&__indicator {
-		color: #66676e !important;
+		@apply text-gray-500 dark:text-gray-600;
 
 		&:hover {
-			color: #999aa5 !important;
+			@apply text-gray-950 dark:text-gray-500;
 		}
 	}
 
@@ -61,15 +69,24 @@
 	}
 
 	&__menu {
-		background-color: #292a2e !important;
-		color: rgba(white, 0.6) !important;
+		@apply bg-white dark:bg-gray-800 text-gray-950 dark:text-white;
 	}
 
 	&__option {
-		cursor: pointer !important;
+		@apply transition-colors cursor-pointer;
+
 		&--is-focused {
-			background-color: lighten(#292a2e, 8%) !important;
+			cursor: pointer !important;
+			background-color: #999aa5 !important;
 		}
+	}
+
+	&__option--is-selected {
+		background-color: #a6ce47 !important;
+	}
+
+	&__option:hover {
+		@apply bg-gray-100 dark:bg-gray-700;
 	}
 
 	&-container {

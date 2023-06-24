@@ -49,7 +49,7 @@ export const useImportant = () => {
 		},
 	)
 
-	const { mutateAsync: createAsync } = useMutation(
+	const { mutateAsync: createAsync, status: createStatus } = useMutation(
 		'create important',
 		(data: IImportantCreate) =>
 			ImportantService.create({
@@ -74,10 +74,11 @@ export const useImportant = () => {
 			deleteAsync,
 			handleSearch,
 			createAsync,
+			createStatus,
 			searchTerm,
 			onSubmit,
 			...queryData,
 		}),
-		[queryData, searchTerm, deleteAsync, createAsync],
+		[queryData, searchTerm, createStatus, deleteAsync, createAsync],
 	)
 }

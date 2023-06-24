@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 import { IAuthInput } from '@/screens/auth/auth.interface'
@@ -8,7 +8,7 @@ import AuthFields from '@/components/shared/user/AuthFields'
 
 import Button from '@/ui/button/Button'
 import Heading from '@/ui/heading/Heading'
-import SubHeading from '@/ui/heading/SubHeading'
+import MaterialIcon from '@/ui/icons/MaterialIcon'
 
 import { useActions } from '@/hooks/useActions'
 import { useAuth } from '@/hooks/useAuth'
@@ -30,12 +30,19 @@ const Auth: FC = () => {
 	} = useForm<IAuthInput>({
 		mode: 'onChange',
 	})
+	const [type, setType] = useState<boolean>(true)
+
 	const { login, logout } = useActions()
+
+	const toggleVisible = () => {
+		setType(!type)
+	}
 
 	const onSubmit: SubmitHandler<IAuthInput> = (data) => {
 		login(data)
 		reset()
 	}
+
 	return (
 		<Meta title="Авторизация">
 			<section className={styles.wrapper}>
@@ -44,9 +51,14 @@ const Auth: FC = () => {
 						title="Добро пожаловать!"
 						className="mb-6 text-950 dark:text-white dark:text-opacity-80"
 					/>
-					<AuthFields register={registerInput} formState={formState} isPasswordRequired />
-					<span className={styles.subHeading}>
-						<SubHeading title="Забыли пароль?" />
+					<AuthFields
+						type={type}
+						register={registerInput}
+						formState={formState}
+						isPasswordRequired
+					/>
+					<span className={styles.eye} onClick={toggleVisible}>
+						<MaterialIcon name="MdRemoveRedEye" />
 					</span>
 					<div className={styles.buttons}>
 						<Button type="submit" disabled={status}>

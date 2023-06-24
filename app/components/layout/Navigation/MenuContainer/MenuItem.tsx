@@ -11,7 +11,7 @@ import styles from './Menu.module.scss'
 
 const MenuItem: FC<{ item: IMenuItem }> = ({ item }) => {
 	const { asPath } = useRouter()
-	console.log(asPath)
+
 	return (
 		<li
 			className={cn({

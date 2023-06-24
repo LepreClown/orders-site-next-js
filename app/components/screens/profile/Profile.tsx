@@ -27,11 +27,14 @@ const Profile: FC = () => {
 		register,
 		formState,
 	}
+	const isLoading2 = true
 	return (
 		<Meta title="Профиль">
 			<Heading title="Профиль" />
 			{isLoading ? (
-				<SkeletonLoader count={2} />
+				<div className="mt-12">
+					<SkeletonLoader count={6} className="mb-4" height={48} width={400} />
+				</div>
 			) : (
 				<form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
 					<ProfileFieldList {...dataField} />

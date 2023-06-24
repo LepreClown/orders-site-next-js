@@ -66,7 +66,7 @@ export const useUsers = () => {
 			},
 		},
 	)
-	const { mutateAsync: createAsync } = useMutation(
+	const { mutateAsync: createAsync, status: createStatus } = useMutation(
 		'create user',
 		(data: IUserCreate) =>
 			UserService.create({
@@ -101,11 +101,12 @@ export const useUsers = () => {
 			onPageChange,
 			dataUsers,
 			quantityUsers,
+			createStatus,
 			currentPage,
 			onSubmit,
 			createAsync,
 			...queryData,
 		}),
-		[handleSearch, searchTerm, deleteAsync, queryData, createAsync],
+		[handleSearch, searchTerm, createStatus, deleteAsync, queryData, createAsync],
 	)
 }

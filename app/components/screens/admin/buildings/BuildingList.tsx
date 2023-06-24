@@ -35,6 +35,7 @@ const BuildingList: FC = () => {
 		quantityBuildings,
 		currentPage,
 		onPageChange,
+		createStatus,
 		isLoading,
 		deleteAsync,
 	} = useBuilding()
@@ -76,7 +77,9 @@ const BuildingList: FC = () => {
 								style={{ width: '31%' }}
 							/>
 						</div>
-						<Button>Создать</Button>
+						<Button type="submit" disabled={createStatus === 'loading'}>
+							Создать
+						</Button>
 					</form>
 				</Modal>
 			)}

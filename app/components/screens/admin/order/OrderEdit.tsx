@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import React, { FC } from 'react'
 import { useForm } from 'react-hook-form'
 
 import OrderAdminFieldList from '@/screens/admin/order/OrderAdminFieldList'
@@ -55,11 +55,13 @@ const OrderEdit: FC = () => {
 			<AdminNavigation />
 			<Heading title="Редактирование заявки" />
 			{isLoading ? (
-				<SkeletonLoader count={5} className={formStyles.form} />
+				<div className="mt-12">
+					<SkeletonLoader count={4} className="mb-12" height={92} />
+				</div>
 			) : (
 				<form onSubmit={handleSubmit(onSubmit)} className={formStyles.form}>
 					<OrderAdminFieldList {...dataFields} />
-					<Button>Обновить данные</Button>
+					<Button type="submit">Обновить данные</Button>
 				</form>
 			)}
 		</Meta>

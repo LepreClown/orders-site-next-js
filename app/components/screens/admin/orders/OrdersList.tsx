@@ -42,6 +42,7 @@ const OrdersList: FC = () => {
 		searchTerm,
 		ordersData,
 		quantityOrders,
+		createStatus,
 		deleteAsync,
 	} = useOrders()
 
@@ -96,7 +97,9 @@ const OrdersList: FC = () => {
 				<Modal toggle={toggle} title="заявки">
 					<form onSubmit={handleSubmit(onSubmit)} className={formStyles.formCreate}>
 						<OrdersAdminFieldList {...dataFields} />
-						<Button>Создать</Button>
+						<Button type="submit" disabled={createStatus === 'loading'}>
+							Создать
+						</Button>
 					</form>
 				</Modal>
 			)}

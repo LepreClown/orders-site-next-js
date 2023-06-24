@@ -27,7 +27,8 @@ const SystemList: FC = () => {
 		mode: 'onChange',
 	})
 
-	const { searchTerm, onSubmit, handleSearch, data, isLoading, deleteAsync } = useSystem()
+	const { searchTerm, onSubmit, handleSearch, data, isLoading, deleteAsync, createStatus } =
+		useSystem()
 	const { isShow, toggle } = useModal()
 
 	return (
@@ -60,7 +61,9 @@ const SystemList: FC = () => {
 								style={{ width: '31%' }}
 							/>
 						</div>
-						<Button>Создать</Button>
+						<Button type="submit" disabled={createStatus === 'loading'}>
+							Создать
+						</Button>
 					</form>
 				</Modal>
 			)}

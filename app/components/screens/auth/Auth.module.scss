@@ -1,8 +1,8 @@
 .wrapper {
-	@apply mt-32;
+	@apply mt-52;
 
 	> form {
-		@apply mx-auto w-1/2 air-block bg-opacity-80  p-7 text-center;
+		@apply mx-auto w-1/2   air-block bg-opacity-80  p-7 text-center;
 
 		.subHeading {
 			h2 {
@@ -13,6 +13,17 @@
 				}
 				&:active {
 					transform: translateY(-1px);
+				}
+			}
+		}
+		.eye {
+			@apply flex relative bottom-12 w-full justify-end items-center pr-2 select-none;
+			svg {
+				@apply text-2lg	 absolute fill-gray-950 dark:fill-gray-600 transition-colors cursor-pointer;
+			}
+			&:hover {
+				svg {
+					@apply fill-primary;
 				}
 			}
 		}

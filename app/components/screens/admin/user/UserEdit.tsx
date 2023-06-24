@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import React, { FC } from 'react'
 import { useForm } from 'react-hook-form'
 
 import UserFieldList from '@/screens/admin/user/UserFieldList'
@@ -35,16 +35,19 @@ const UserEdit: FC = () => {
 		roles,
 		isRoleLoading,
 	}
+	const isLoading2 = true
 	return (
 		<Meta title="Редактирование пользователя">
 			<AdminNavigation />
 			<Heading title="Редактирование пользователя" />
 			{isLoading ? (
-				<SkeletonLoader count={5} className={formStyles.form} />
+				<div className="mt-12">
+					<SkeletonLoader count={4} className="mb-6" height={92} width={400} />
+				</div>
 			) : (
 				<form onSubmit={handleSubmit(onSubmit)} className={formStyles.form}>
 					<UserFieldList {...dataFields} />
-					<Button>Обновить</Button>
+					<Button type="submit">Обновить</Button>
 				</form>
 			)}
 		</Meta>

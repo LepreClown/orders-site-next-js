@@ -70,7 +70,7 @@ export const useOrders = () => {
 		},
 	)
 
-	const { mutateAsync: createAsync } = useMutation(
+	const { mutateAsync: createAsync, status: createStatus } = useMutation(
 		'create order',
 		(data: IOrderCreate) =>
 			OrderService.create({
@@ -106,6 +106,7 @@ export const useOrders = () => {
 			handleSearch,
 			createAsync,
 			currentPage,
+			createStatus,
 			onSubmit,
 			quantityOrders,
 			onPageChange,
@@ -113,6 +114,6 @@ export const useOrders = () => {
 			ordersData,
 			...queryData,
 		}),
-		[handleSearch, searchTerm, deleteAsync, queryData, createAsync],
+		[handleSearch, createStatus, searchTerm, deleteAsync, queryData, createAsync],
 	)
 }

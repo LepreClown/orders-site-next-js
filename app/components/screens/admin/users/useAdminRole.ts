@@ -15,7 +15,7 @@ export const useAdminRole = () => {
 		select: ({ data }) =>
 			data?.roles?.map(
 				(role, index): IOptionForUser => ({
-					label: role,
+					label: role === 'admin' ? admin : role === 'user' ? user : advancedUser,
 					value: role,
 				}),
 			),

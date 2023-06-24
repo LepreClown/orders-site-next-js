@@ -186,8 +186,8 @@ const OrderAdminFieldList: FC<IOrderEditFields> = ({
 				{...register('modified_at', {
 					required: 'Время уже указана',
 				})}
+				type="text"
 				disabled={true}
-				type="time"
 				placeholder="Время изменения"
 				error={errors.modified_at}
 				style={{ width: '11%' }}

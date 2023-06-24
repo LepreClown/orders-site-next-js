@@ -19,58 +19,65 @@ const UserFiledList: FC<IUserFields> = ({ errors, register, control, roles, isRo
 				title="Информация о пользователе"
 				className="text-gray-800 dark:text-gray-300 text-opacity-80 text-[18px]"
 			/>
-			<Field
-				{...register('name', {
-					required: 'Имя не указано!',
-				})}
-				type="text"
-				placeholder="Имя"
-				error={errors.name}
-				style={{ width: '31%' }}
-			/>
-			<Field
-				{...register('surname', {
-					required: 'Фамилия не указана!',
-				})}
-				type="text"
-				placeholder="Фамилия"
-				error={errors.surname}
-				style={{ width: '31%' }}
-			/>
+			<div>
+				<Field
+					{...register('name', {
+						required: 'Имя не указано!',
+					})}
+					type="text"
+					placeholder="Имя"
+					error={errors.name}
+					style={{ width: '31%' }}
+				/>
+				<Field
+					{...register('surname', {
+						required: 'Фамилия не указана!',
+					})}
+					type="text"
+					placeholder="Фамилия"
+					error={errors.surname}
+					style={{ width: '31%' }}
+				/>
+			</div>
 			<SubHeading
 				title="Номер телефона"
 				className="text-gray-800 dark:text-gray-300 text-opacity-80 text-[18px]"
 			/>
-			<Field
-				{...register('telephone', {
-					required: 'Телефон не указан',
-				})}
-				type="number"
-				placeholder="Телефон"
-				error={errors.telephone}
-				style={{ width: '31%' }}
-			/>
+			<div>
+				<Field
+					{...register('telephone', {
+						required: 'Телефон не указан',
+					})}
+					type="number"
+					placeholder="Телефон"
+					error={errors.telephone}
+					style={{ width: '31%' }}
+				/>
+			</div>
+
 			<SubHeading
 				title="Роль"
 				className="text-gray-800 dark:text-gray-300 text-opacity-80 text-[18px]"
 			/>
-			<div style={{ width: '31%' }}>
-				<Controller
-					name="role"
-					control={control}
-					rules={{
-						required: 'Пожалуйста выберите роль!',
-					}}
-					render={({ field, fieldState: { error } }) => (
-						<DynamicSelect
-							error={error}
-							field={field}
-							placeholder="Роль"
-							options={roles || []}
-							isLoading={isRoleLoading}
-						/>
-					)}
-				/>
+			<div>
+				<div style={{ width: '21%' }}>
+					<Controller
+						name="role"
+						control={control}
+						rules={{
+							required: 'Пожалуйста выберите роль!',
+						}}
+						render={({ field, fieldState: { error } }) => (
+							<DynamicSelect
+								error={error}
+								field={field}
+								placeholder="Роль"
+								options={roles || []}
+								isLoading={isRoleLoading}
+							/>
+						)}
+					/>
+				</div>
 			</div>
 		</div>
 	)

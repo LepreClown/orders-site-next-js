@@ -35,7 +35,15 @@ const Home: FC = () => {
 		mode: 'onChange',
 	})
 
-	const { onSubmit, onPageChange, currentPage, ordersData, quantityOrders, isLoading } = useHome()
+	const {
+		onSubmit,
+		createStatus,
+		onPageChange,
+		currentPage,
+		ordersData,
+		quantityOrders,
+		isLoading,
+	} = useHome()
 
 	const { toggle, isShow } = useModal()
 
@@ -78,7 +86,9 @@ const Home: FC = () => {
 				<Modal toggle={toggle} title="заявки">
 					<form onSubmit={handleSubmit(onSubmit)} className={formStyles.formCreate}>
 						<HomeFieldList {...dataFields} />
-						<Button>Создать</Button>
+						<Button type="submit" disabled={createStatus === 'loading'}>
+							Создать
+						</Button>
 					</form>
 				</Modal>
 			)}
