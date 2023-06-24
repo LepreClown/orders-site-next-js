@@ -28,7 +28,6 @@ const Modal: FC<IModalProps> = ({ children, toggle, title }) => {
 
 	useEffect(() => {
 		document.body.classList.add('isHidden')
-
 		return () => {
 			document.body.classList.remove('isHidden')
 		}

@@ -21,10 +21,10 @@ export const useSystem = () => {
 
 	const queryData = useQuery(['systems list', debouncedSearch], () => SystemService.getAll(), {
 		select: ({ data }) =>
-			data.map((system) => ({
+			data.map((system, index) => ({
 				id: system.id,
 				editUrl: getAdminUrl(`system/edit/${system.id}`),
-				items: [String(system.id), system.system_name],
+				items: [String(index + 1), system.system_name],
 			})),
 		onError(error) {
 			toastError(error, 'Список систем')

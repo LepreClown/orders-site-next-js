@@ -21,10 +21,10 @@ export const useImportant = () => {
 
 	const queryData = useQuery(['important list', debouncedSearch], () => ImportantService.getAll(), {
 		select: ({ data }) =>
-			data.map((important) => ({
+			data.map((important, index) => ({
 				id: important.id,
 				editUrl: getAdminUrl(`important/edit/${important.id}`),
-				items: [String(important.id), important.important_name],
+				items: [String(index + 1), important.important_name],
 			})),
 		onError(error) {
 			toastError(error, 'Список срочностей')

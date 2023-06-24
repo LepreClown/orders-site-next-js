@@ -83,7 +83,7 @@ const OrdersList: FC = () => {
 			/>
 			<AdminTable
 				tableItems={ordersData || []}
-				headerItems={['Дата создания', 'Объект', 'Материал', 'Количество', 'Срочность']}
+				headerItems={['Дата создания', 'Создатель', 'Объект', 'Материал', 'Количество']}
 				isLoading={isLoading}
 				removeHandler={deleteAsync}
 			/>

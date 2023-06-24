@@ -10,12 +10,9 @@ export const BuildingService = {
 	async getAll(page: number, search_by_building_name?: string) {
 		const searchTerm = search_by_building_name ? { search_by_building_name } : {}
 		const pageCount = search_by_building_name ? 0 : page
-		return axios.get<IBuilding>(
-			getBuildingUrl(`?on_page=${10}&page=${pageCount ? pageCount : 0}`),
-			{
-				params: searchTerm,
-			},
-		)
+		return axios.get<IBuilding>(getBuildingUrl(`?on_page=${7}&page=${pageCount ? pageCount : 0}`), {
+			params: searchTerm,
+		})
 	},
 
 	async getBuildings() {

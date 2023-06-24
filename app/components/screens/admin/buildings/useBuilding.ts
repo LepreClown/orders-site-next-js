@@ -32,10 +32,10 @@ export const useBuilding = () => {
 	)
 
 	const buildingsData = queryData.isSuccess
-		? queryData.data.buildings.map((building) => ({
+		? queryData.data.buildings.map((building, index) => ({
 				id: building.id,
 				editUrl: getAdminUrl(`building/edit/${building.id}`),
-				items: [String(building.id), building.building_name],
+				items: [String(index + 1), building.building_name],
 		  }))
 		: []
 

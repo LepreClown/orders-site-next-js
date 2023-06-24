@@ -10,7 +10,7 @@ export const OrderService = {
 	async getAll(page: number, search_by_material?: string) {
 		const searchTerm = search_by_material ? { search_by_material } : {}
 		const pageCount = search_by_material ? 0 : page
-		return axios.get<IOrder>(getOrderUrl(`?on_page=${10}&page=${pageCount ? pageCount : 0}`), {
+		return axios.get<IOrder>(getOrderUrl(`?on_page=${7}&page=${pageCount ? pageCount : 0}`), {
 			params: searchTerm,
 		})
 	},
@@ -20,6 +20,10 @@ export const OrderService = {
 		return axios.get<IOrder>(getOrderUrl(`?on_page=${10}&page=${pageCount ? pageCount : 0}`), {
 			params: searchTerm,
 		})
+	},
+
+	async getOrders() {
+		return axios.get<IOrder>(getOrderUrl(``))
 	},
 	async getTest() {
 		return axios.get<IOrder[]>('https://628a7dd25da6ddfd5d6407fd.mockapi.io/items')

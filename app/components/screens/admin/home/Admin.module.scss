@@ -2,34 +2,18 @@
 	@apply flex items-stretch mt-10;
 
 	.block {
-		@apply air-block w-2/5;
+		@apply air-block w-2/5 h-44;
 	}
 
-	.countUsers {
+	.count {
 		@apply mr-28 flex items-center justify-center text-center;
 
 		.number {
-			@apply text-7xl mb-1 font-medium  text-gray-900 dark:text-gray-300;
+			@apply text-7xl mb-1 font-medium  text-gray-700 dark:text-gray-300;
 		}
 
 		.description {
 			@apply text-gray-600 dark:text-gray-300 dark:opacity-70 text-lg;
-		}
-	}
-
-	.popular {
-		@apply text-center p-5 items-center;
-
-		img {
-			@apply rounded-layout shadow-lg image-like-bg w-full;
-		}
-
-		h2 {
-			@apply mb-1;
-		}
-
-		h3 {
-			@apply opacity-50 font-medium mb-3;
 		}
 	}
 }

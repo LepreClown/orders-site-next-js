@@ -21,10 +21,10 @@ export const useStatus = () => {
 
 	const queryData = useQuery(['status list', debouncedSearch], () => StatusService.getAll(), {
 		select: ({ data }) =>
-			data.map((status) => ({
+			data.map((status, index) => ({
 				id: status.id,
 				editUrl: getAdminUrl(`status/edit/${status.id}`),
-				items: [String(status.id), status.status_name],
+				items: [String(index + 1), status.status_name],
 			})),
 		onError(error) {
 			toastError(error, 'Список статусов')

@@ -45,10 +45,10 @@ export const useOrders = () => {
 					editUrl: getAdminUrl(`order/edit/${order.id}`),
 					items: [
 						convertDate(order.created_at),
+						String(`${order.creator.name} ${order.creator.surname}`),
 						order.building.building_name,
 						order.material,
 						String(order.quantity),
-						order.important.important_name,
 					],
 				}),
 		  )
