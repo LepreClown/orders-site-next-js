@@ -9,6 +9,7 @@ const MaterialIcon: FC<{ name: TypeMaterialIconName }> = ({ name }) => {
 	const { isRenderClient } = useRenderClient()
 
 	const IconComponent = MaterialIcons[name]
+
 	if (isRenderClient) return <IconComponent /> || <MaterialIcons.MdDragIndicator />
 	else return null
 }

@@ -7,6 +7,11 @@ import { IUserState } from '@/store/user/user.interface'
 export interface IProfile
 	extends Pick<IUserItem, 'telephone' | 'password' | 'surname' | 'name' | 'role' | 'created_at'> {}
 
+export interface IProfilePassword {
+	old_password: string
+	new_password: string
+}
+
 export interface IProfileField {
 	formState: FormState<IProfile>
 	register: UseFormRegister<IProfile>

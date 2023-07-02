@@ -30,6 +30,42 @@ a {
 :root {
 	--primary-color: #a6ce47;
 }
+.redux-toastr .top-right {
+	min-width: 400px;
+	width: 380px;
+	> div:first-child {
+		color: #a6ce47;
+	}
+}
+.close-toastr {
+	> span {
+		@apply text-white;
+	}
+}
+
+.rrt-holder {
+	@apply flex items-center h-full;
+}
+.toastr-icon {
+	@apply h-full;
+}
+
+//.rrt-middle-container {
+//	@apply text-gray-950 dark:text-white;
+//}
+//.rrt-text {
+//	@apply text-gray-950 dark:text-white;
+//}
+//
+//.rrt-holder {
+//	@apply flex items-center h-full;
+//}
+//.toastr-icon {
+//	@apply h-full;
+//	path {
+//		@apply fill-gray-950 dark:fill-white;
+//	}
+//}
 input:focus {
 	box-shadow: none !important;
 }

@@ -54,6 +54,8 @@ const OrdersList: FC = () => {
 	const { data: users, isLoading: isUsersLoading } = useAdminUsers()
 	const { data: statuses, isLoading: isStatusLoading } = useAdminStatus()
 
+	console.log(users)
+
 	const dataFields: IOrdersFields = {
 		errors,
 		register,

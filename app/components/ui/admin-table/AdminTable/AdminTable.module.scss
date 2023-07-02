@@ -33,3 +33,17 @@
 		@apply text-2xl text-gray-950 dark:text-white text-opacity-60;
 	}
 }
+
+.sort {
+	> svg {
+		@apply cursor-pointer transition-colors;
+
+		&:hover {
+			@apply fill-gray-950;
+		}
+
+		&:active {
+			transform: translateY(-1px);
+		}
+	}
+}

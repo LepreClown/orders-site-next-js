@@ -26,6 +26,9 @@ export const UserService = {
 	async updateUser(userId: number, data: any) {
 		return axios.put<string>(getUsersUrl(`/update/${userId}`), data)
 	},
+	async updatePassword(userId: number, data: any) {
+		return axios.patch<string>(getUsersUrl(`/update-password/${userId}`), data)
+	},
 	async create(data: any) {
 		return axios.post<string>(getUsersUrl('/create'), data)
 	},

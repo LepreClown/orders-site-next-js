@@ -190,7 +190,7 @@ const OrderAdminFieldList: FC<IOrderEditFields> = ({
 				disabled={true}
 				placeholder="Время изменения"
 				error={errors.modified_at}
-				style={{ width: '11%' }}
+				style={{ width: '12%' }}
 			/>
 		</div>
 	)

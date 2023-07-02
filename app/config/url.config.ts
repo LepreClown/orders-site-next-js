@@ -5,5 +5,6 @@ export const getImportantUrl = (slug: string) => `/important/${slug}`
 export const getStatusUrl = (slug: string) => `/status/${slug}`
 export const getRoleUrl = (slug: string) => `/role/${slug}`
 
+export const getProfile = (id: string) => `/profile`
 export const getAdminUrl = (url: string) => `/admin/${url}`
 export const getAdminHomeUrl = () => getAdminUrl('').slice(0, -1)
