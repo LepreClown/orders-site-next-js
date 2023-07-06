@@ -1,8 +1,10 @@
 import axios from 'api/interceptors'
 import axios2 from 'axios'
+import Cookies from 'js-cookie'
 
 import { IAuthResponse } from '@/store/user/user.interface'
 
+import { getContentType } from '../../api/api.helpers'
 import { API_URL, getAuthUrl } from '../../config/api.config'
 
 import { removeTokensStorage, saveToStorage, saveTokensStorage } from './auth.helper'
@@ -33,5 +35,22 @@ export const AuthService = {
 	async logout() {
 		removeTokensStorage()
 		localStorage.removeItem('user')
+	},
+
+	async getNewTokens() {
+		const refreshToken = Cookies.get('refreshToken')
+		const response = await axios.post<IAuthResponse>(
+			`${API_URL}${getAuthUrl('/refresh')}`,
+			{
+				scheme: 'Bearer',
+				credentials: refreshToken,
+			},
+			{
+				headers: getContentType(),
+			},
+		)
+		const token = response.data.access_token
+		if (token) saveTokensStorage(response.data)
+		return response
 	},
 }

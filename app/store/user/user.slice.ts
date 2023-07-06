@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 import { getStoreLocal } from '@/utils/local-storage'
 
-import { login, logout } from '@/store/user/user.actions'
+import { checkAuth, login, logout } from '@/store/user/user.actions'
 
 const initialState: any = {
 	user: getStoreLocal('user'),
@@ -31,6 +31,10 @@ export const userSlice = createSlice({
 		builder.addCase(logout.fulfilled, (state) => {
 			state.status = false
 			state.user = null
+		})
+		/*CheckAuth*/
+		builder.addCase(checkAuth.fulfilled, (state, action) => {
+			state.user = action.payload
 		})
 	},
 })
