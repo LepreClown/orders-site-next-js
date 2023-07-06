@@ -3,16 +3,14 @@ import { useEffect } from 'react'
 
 import { useAuth } from '@/hooks/useAuth'
 
-export const useAuthRedirect = () => {
+export const useRedirect = () => {
 	const { user } = useAuth()
 
 	const { query, push } = useRouter()
 
-	const redirect = query.redirect ? String(query.redirect) : '/home'
-
 	useEffect(() => {
-		if (user) {
-			push(redirect)
+		if (!user) {
+			push('/')
 		}
-	}, [user, redirect, push])
+	}, [])
 }

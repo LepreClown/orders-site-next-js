@@ -1,8 +1,8 @@
 .wrapper {
-	@apply mt-52;
+	@apply pt-52 h-screen;
 
 	> form {
-		@apply mx-auto w-1/2   air-block bg-opacity-80  p-7 text-center;
+		@apply mx-auto w-1/2  air-block bg-opacity-80  p-7 text-center;
 
 		.subHeading {
 			h2 {

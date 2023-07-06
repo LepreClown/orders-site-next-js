@@ -19,6 +19,7 @@ import OrderTable from '@/ui/order/OrderTable'
 import Pagination from '@/ui/pagination/Pagination'
 
 import { useModal } from '@/hooks/useModal'
+import { useRedirect } from '@/hooks/useRedirect'
 
 import Meta from '@/utils/meta/Meta'
 
@@ -26,6 +27,7 @@ const DynamicSelect = dynamic(() => import('@/ui/select/Select'), {
 	ssr: false,
 })
 const Home: FC = () => {
+	useRedirect()
 	const {
 		handleSubmit,
 		register,

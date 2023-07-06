@@ -1,11 +1,9 @@
-import Home from '@/screens/home/Home'
+import { NextPage } from 'next'
 
-import { NextPageAuth } from '@/shared/types/auth.types'
+import Auth from '@/screens/auth/Auth'
 
-const HomePage: NextPageAuth = () => {
-	return <Home />
+const AuthPage: NextPage = () => {
+	return <Auth />
 }
 
-HomePage.isOnlyUser = 'user'
-
-export default HomePage
+export default AuthPage
