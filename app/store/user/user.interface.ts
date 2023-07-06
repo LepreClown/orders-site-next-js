@@ -8,9 +8,13 @@ export interface IUserState {
 export interface ITokens {
 	access_token: string
 	refresh_token: string
-	type_token: string
+	token_type: string
 }
 
+export interface IAccessToken {
+	access_token: string
+	token_type: string
+}
 export interface IInitialState {
 	user: IUserState | null
 	status: boolean

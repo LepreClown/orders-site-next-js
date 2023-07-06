@@ -7,7 +7,12 @@ import { IAuthResponse } from '@/store/user/user.interface'
 import { getContentType } from '../../api/api.helpers'
 import { API_URL, getAuthUrl } from '../../config/api.config'
 
-import { removeTokensStorage, saveToStorage, saveTokensStorage } from './auth.helper'
+import {
+	removeTokensStorage,
+	saveAccessToken,
+	saveToStorage,
+	saveTokensStorage,
+} from './auth.helper'
 
 export const AuthService = {
 	async login(telephone: string, password: string) {
@@ -36,13 +41,14 @@ export const AuthService = {
 		removeTokensStorage()
 		localStorage.removeItem('user')
 	},
-
+	// refresh долго
+	// 	access быстро
 	async getNewTokens() {
 		const refreshToken = Cookies.get('refreshToken')
-		const response = await axios.post<IAuthResponse>(
+		const response = await axios2.post<IAuthResponse>(
 			`${API_URL}${getAuthUrl('/refresh')}`,
 			{
-				scheme: 'Bearer',
+				scheme: 'bearer',
 				credentials: refreshToken,
 			},
 			{
@@ -50,7 +56,8 @@ export const AuthService = {
 			},
 		)
 		const token = response.data.access_token
-		if (token) saveTokensStorage(response.data)
+		if (token) saveAccessToken(response.data)
+
 		return response
 	},
 }

@@ -6,6 +6,7 @@ import { checkAuth, login, logout } from '@/store/user/user.actions'
 
 const initialState: any = {
 	user: getStoreLocal('user'),
+	token: {},
 	status: false,
 }
 
@@ -34,7 +35,7 @@ export const userSlice = createSlice({
 		})
 		/*CheckAuth*/
 		builder.addCase(checkAuth.fulfilled, (state, action) => {
-			state.user = action.payload
+			state.token = action.payload
 		})
 	},
 })
