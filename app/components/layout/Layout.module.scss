@@ -4,14 +4,14 @@ $bar-width: 18%;
 	@apply relative;
 
 	> div:first-child {
-		@apply fixed top-0 bottom-0 z-40;
+		@apply fixed top-0 bottom-0 z-10;
 		width: $bar-width;
 		min-width: 350px;
 		@media (max-width: 1200px) {
 			min-width: 29%;
 		}
 		@media (max-width: 1050px) {
-			width: 100%;
+			@apply w-full h-1;
 		}
 	}
 

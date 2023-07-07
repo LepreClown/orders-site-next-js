@@ -4,14 +4,10 @@
 	@media (max-width: 1420px) {
 		@apply grid-cols-1;
 	}
-	@media (max-width: 1050px) {
-		@apply grid-cols-1;
-	}
 }
 
 .item {
 	@apply flex relative  transition-all shadow-lg rounded-2xl overflow-hidden w-full;
-
 	flex: 0 0 auto;
 
 	&:hover {
@@ -36,6 +32,9 @@
 		}
 		.building {
 			@apply flex font-semibold text-2lg mb-4 text-primary dark:text-primary;
+			@media (max-width: 630px) {
+				@apply text-lg;
+			}
 		}
 
 		.params {
@@ -46,10 +45,13 @@
 			div:last-child {
 				@apply flex-col flex font-semibold;
 			}
+			@media (max-width: 630px) {
+				@apply text-[14px];
+			}
 		}
 
 		.footer {
-			@apply flex justify-between;
+			@apply flex justify-between text-[16px];
 			> div:first-child {
 				@apply text-gray-600 dark:text-gray-600;
 			}
@@ -59,6 +61,19 @@
 				> span:last-child {
 					@apply text-primary;
 				}
+				@media (max-width: 630px) {
+					@apply pr-0;
+				}
+			}
+			@media (max-width: 630px) {
+				@apply text-[14px];
+			}
+			@media (max-width: 500px) {
+				@apply text-[12px];
+			}
+
+			@media (max-width: 350px) {
+				@apply flex flex-col;
 			}
 		}
 	}
