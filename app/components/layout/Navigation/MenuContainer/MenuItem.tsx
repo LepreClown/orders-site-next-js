@@ -15,7 +15,7 @@ const MenuItem: FC<{ item: IMenuItem }> = ({ item }) => {
 	return (
 		<li
 			className={cn({
-				[styles.active]: asPath === item.link || (asPath.includes(item.link) && item.link !== '/'),
+				[styles.active]: asPath === item.link || asPath.includes(item.link),
 			})}>
 			<Link href={item.link}>
 				<MaterialIcon name={item.icon} />

@@ -5,3 +5,10 @@
 		@apply absolute bottom-4;
 	}
 }
+
+.logo {
+	@apply flex justify-center px-layout mb-10  items-center;
+	@media (max-width: 1050px) {
+		display: none;
+	}
+}

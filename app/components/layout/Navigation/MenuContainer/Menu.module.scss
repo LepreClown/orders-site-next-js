@@ -1,6 +1,8 @@
 .menu {
 	@apply mb-14 animate-fade;
-
+	@media (max-width: 1050px) {
+		display: none;
+	}
 	.heading {
 		@apply text-gray-950 dark:text-gray-300  uppercase text-sm font-semibold pl-layout;
 	}
@@ -33,6 +35,78 @@
 
 				> a > svg {
 					@apply fill-primary dark:fill-primary;
+				}
+			}
+		}
+	}
+}
+
+.hamburger {
+	@apply animate-fade absolute top-10 right-0 z-40;
+	margin-right: 44px;
+	display: none;
+
+	@media (max-width: 1050px) {
+		display: inline;
+	}
+
+	button {
+		@apply bg-transparent border-none outline-none cursor-pointer;
+
+		svg {
+			@apply text-3xl;
+			path {
+				@apply transition-colors;
+			}
+		}
+	}
+
+	button:hover {
+		> svg {
+			> path {
+				@apply text-primary;
+			}
+		}
+	}
+
+	.menuHamburger {
+		@apply absolute bg-white right-0 rounded-2xl shadow-lg shadow-gray-700;
+		width: 220px;
+		display: none;
+
+		&.show {
+			@apply block;
+		}
+
+		.ulHamburger {
+			> li {
+				@apply px-4;
+				> a {
+					@apply flex items-center text-gray-600 dark:text-gray-600 px-3  cursor-pointer;
+
+					> span {
+						@apply ml-3 text-lg hover:text-gray-950 dark:hover:text-white py-2;
+					}
+
+					> svg {
+						@apply text-2lg;
+					}
+
+					> span,
+					> svg {
+						@apply transition-colors;
+					}
+				}
+
+				&.active {
+					@apply border-r-primary dark:border-r-primary;
+					> a > span {
+						@apply text-gray-950 dark:text-white font-semibold;
+					}
+
+					> a > svg {
+						@apply fill-primary dark:fill-primary;
+					}
 				}
 			}
 		}

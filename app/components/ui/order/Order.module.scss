@@ -1,13 +1,17 @@
 .gallery {
-	@apply grid grid-cols-2 gap-4;
+	@apply grid grid-cols-2 gap-y-4 gap-x-12;
 
 	@media (max-width: 1420px) {
+		@apply grid-cols-1;
+	}
+	@media (max-width: 1050px) {
 		@apply grid-cols-1;
 	}
 }
 
 .item {
-	@apply relative transition-all flex shadow-lg rounded-2xl overflow-hidden;
+	@apply flex relative  transition-all shadow-lg rounded-2xl overflow-hidden w-full;
+
 	flex: 0 0 auto;
 
 	&:hover {
@@ -16,8 +20,7 @@
 	}
 
 	&.horizontal {
-		@apply h-full;
-		width: 95%;
+		@apply h-full w-full;
 	}
 
 	&.withText {

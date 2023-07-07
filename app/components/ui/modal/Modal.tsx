@@ -22,7 +22,7 @@ const Modal: FC<IModalProps> = ({ children, toggle, title }) => {
 
 		document.body.addEventListener('click', handlerClickOutSide, true)
 		return () => {
-			document.body.removeEventListener('click', handlerClickOutSide)
+			document.body.removeEventListener('click', handlerClickOutSide, true)
 		}
 	}, [])
 

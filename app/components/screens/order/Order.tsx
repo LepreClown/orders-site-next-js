@@ -14,18 +14,22 @@ import Meta from '@/utils/meta/Meta'
 const Order: FC = () => {
 	const {
 		register,
+		control,
 		formState: { errors },
 		setValue,
+		handleSubmit,
 	} = useForm<IOrderEditInput>({
 		mode: 'onChange',
 	})
 
 	const { isLoading, order } = useOrder(setValue)
+
 	const dataFields: IOrderFields = {
 		order,
 		register,
 		errors,
 	}
+
 	return (
 		<Meta title="Заявка">
 			<Heading title="Заявка" />

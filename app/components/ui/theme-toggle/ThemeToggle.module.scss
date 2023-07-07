@@ -1,5 +1,8 @@
 .toggle {
 	@apply px-layout flex gap-3.5;
+	@media (max-width: 1050px) {
+		display: none;
+	}
 
 	.light {
 		path {

@@ -4,24 +4,30 @@ $bar-width: 18%;
 	@apply relative;
 
 	> div:first-child {
-		@apply fixed top-0 bottom-0;
+		@apply fixed top-0 bottom-0 z-40;
 		width: $bar-width;
 		min-width: 350px;
 		@media (max-width: 1200px) {
 			min-width: 29%;
 		}
 		@media (max-width: 1050px) {
-			display: none;
+			width: 100%;
 		}
 	}
 
 	> div:first-child {
 		@apply left-0 border-r border-r-gray-300 dark:border-r-gray-600;
+		@media (max-width: 1050px) {
+			@apply border-none;
+		}
 	}
 
 	> .center {
 		@apply min-h-screen p-layout;
 		margin-left: 350px;
+		@media (max-width: 1200px) {
+			margin-left: 29%;
+		}
 		@media (max-width: 1050px) {
 			margin-left: 0;
 		}

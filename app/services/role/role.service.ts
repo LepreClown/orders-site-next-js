@@ -2,10 +2,10 @@ import axios from 'api/interceptors'
 
 import { IRoles } from '@/shared/types/role.types'
 
-import { getRoleUrl } from '../../config/url.config'
+import { getRolesUrl } from '../../config/api.config'
 
 export const RoleService = {
 	async getRoles() {
-		return axios.get<IRoles>(getRoleUrl(''))
+		return axios.get<IRoles>(getRolesUrl(''))
 	},
 }
