@@ -42,19 +42,25 @@
 }
 
 .hamburger {
-	@apply animate-fade absolute top-10 right-0 z-40;
+	@apply animate-fade relative left-0 px-layout z-40;
 	margin-right: 44px;
 	display: none;
 
 	@media (max-width: 1050px) {
 		display: block;
 	}
+	@media (max-width: 500px) {
+		@apply px-6;
+	}
+	@media (max-width: 350px) {
+		@apply px-4;
+	}
 
 	button {
 		@apply bg-transparent border-none outline-none cursor-pointer;
 
 		svg {
-			@apply text-3xl;
+			@apply text-4xl;
 			path {
 				@apply transition-colors;
 			}
@@ -70,9 +76,10 @@
 	}
 
 	.menuHamburger {
-		@apply absolute bg-white right-0 rounded-2xl shadow-lg shadow-gray-700;
+		@apply absolute bg-white dark:bg-gray-900 shadow-lg dark:shadow-gray-800 shadow-gray-300 top-10 rounded-b-xl;
 		width: 220px;
 		display: none;
+		box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.6);
 
 		&.show {
 			@apply block;

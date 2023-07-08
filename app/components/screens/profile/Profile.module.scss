@@ -6,6 +6,10 @@
 		> div {
 			@apply flex gap-10;
 			width: 100%;
+			@media (max-width: 350px) {
+				@apply gap-2;
+				min-width: 300px;
+			}
 		}
 	}
 
@@ -16,4 +20,13 @@
 	> button {
 		@apply mt-5;
 	}
+}
+.heading {
+	@apply flex justify-between;
+	@media (max-width: 500px) {
+		@apply flex flex-col;
+	}
+}
+.button {
+	@apply relative right-0 top-0;
 }

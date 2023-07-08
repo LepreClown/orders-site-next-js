@@ -1,5 +1,5 @@
 $bar-width: 18%;
-
+$shadow: 0 10px 10px 0 rgb(0 0 0 / 15%), 0 6px 6px 0 rgb(0 0 0 / 15%), 0 3px 3px 0 rgb(0 0 0 / 15%);
 .layout {
 	@apply relative;
 
@@ -11,7 +11,7 @@ $bar-width: 18%;
 			min-width: 29%;
 		}
 		@media (max-width: 1050px) {
-			@apply w-full h-1;
+			@apply w-full h-12 bg-white dark:bg-gray-900 shadow-lg   dark:shadow-gray-800 shadow-gray-300;
 		}
 	}
 
@@ -30,6 +30,13 @@ $bar-width: 18%;
 		}
 		@media (max-width: 1050px) {
 			margin-left: 0;
+			@apply pt-16;
+		}
+		@media (max-width: 500px) {
+			@apply px-6;
+		}
+		@media (max-width: 350px) {
+			@apply px-4;
 		}
 	}
 }

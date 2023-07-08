@@ -1,8 +1,15 @@
 .navigation {
 	@apply py-layout h-full;
 
+	@media (max-width: 1050px) {
+		@apply flex items-center h-full py-0;
+	}
+
 	> div:last-child {
 		@apply absolute bottom-4;
+		@media (max-width: 1050px) {
+			@apply flex items-center absolute right-0;
+		}
 	}
 }
 
@@ -10,5 +17,11 @@
 	@apply flex justify-center px-layout mb-10  items-center;
 	@media (max-width: 1050px) {
 		display: none;
+	}
+	.text {
+		@apply tracking-[0.5em] text-5xl text-primary;
+	}
+	.text2 {
+		@apply text-primary text-5xl;
 	}
 }

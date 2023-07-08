@@ -77,11 +77,11 @@ const Home: FC = () => {
 			title="Заявки"
 			description="Создай заявку и будь уверен, что ее выполнят в кротчайшие сроки">
 			<Heading title="Ваши заявки" className="mb-6 text-3xl" />
-			<button
+			<Button
 				onClick={handleClick}
 				className="btn-primary text-gray-950 dark:text-white font-semibold px-10 py-2 mb-8 ">
 				Создать заявку
-			</button>
+			</Button>
 			<OrderTable orders={ordersData || []} isLoading={isLoading} />
 			<Pagination
 				items={ordersData ? ordersData.length : 0}

@@ -7,7 +7,7 @@ import styles from './Pagination.module.scss'
 
 const Pagination: FC<IPaginationProps> = ({ quantity, currentPage, onPageChange }) => {
 	const pageCount = Math.ceil(quantity / 10)
-
+	window.scroll(0, 0)
 	if (pageCount === 1 || pageCount === 0) return null
 
 	return (

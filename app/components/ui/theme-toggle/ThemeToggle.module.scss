@@ -1,9 +1,11 @@
 .toggle {
-	@apply px-layout flex gap-3.5;
-	@media (max-width: 1050px) {
-		display: none;
+	@apply px-layout flex gap-3 h-[26px];
+	@media (max-width: 500px) {
+		@apply px-6;
 	}
-
+	@media (max-width: 350px) {
+		@apply px-4;
+	}
 	.light {
 		path {
 			@apply transition-colors duration-100 fill-primary dark:fill-black;

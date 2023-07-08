@@ -1,3 +1,9 @@
 .button {
 	@apply btn-primary py-2 px-10 font-semibold text-gray-950 dark:text-white;
+	@media (max-width: 500px) {
+		@apply text-[14px]  px-6;
+	}
+	@media (max-width: 350px) {
+		@apply text-[12px]  px-4;
+	}
 }

@@ -46,9 +46,9 @@ const Profile: FC = () => {
 
 	return (
 		<Meta title="Профиль">
-			<div className="flex justify-between">
+			<div className={styles.heading}>
 				<Heading title="Профиль" />
-				<div className="relative right-0 top-0">
+				<div className={styles.button}>
 					<ProfileModalButton title="пароль" toggle={toggle} />
 				</div>
 			</div>

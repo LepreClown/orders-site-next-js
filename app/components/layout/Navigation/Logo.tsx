@@ -9,8 +9,8 @@ const Logo: FC = () => {
 	return (
 		<Link href={'/'}>
 			<div className={styles.logo}>
-				<Heading title="PRIM" className="tracking-[0.5em] text-primary text-5xl" />
-				<Heading title="E" className="text-primary text-5xl" />
+				<Heading title="PRIM" className={styles.text} />
+				<Heading title="E" className={styles.text2} />
 			</div>
 		</Link>
 	)

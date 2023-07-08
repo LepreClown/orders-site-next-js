@@ -1,0 +1,18 @@
+.heading {
+	@apply text-gray-950 opacity-100 dark:text-white font-semibold;
+	@media (max-width: 500px) {
+		@apply text-2xl mb-3;
+	}
+	@media (max-width: 350px) {
+		@apply text-xl;
+	}
+}
+.subHeading {
+	@apply text-gray-600 dark:text-white text-xl mb-5 font-semibold;
+	@media (max-width: 500px) {
+		@apply text-[16px];
+	}
+	@media (max-width: 350px) {
+		@apply text-[14px];
+	}
+}
