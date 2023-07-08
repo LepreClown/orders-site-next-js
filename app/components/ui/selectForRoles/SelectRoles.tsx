@@ -5,8 +5,7 @@ import makeAnimated from 'react-select/animated'
 import { IOptionForRoles, ISelectForRoles } from '@/ui/selectForRoles/selectRoles.interface'
 
 import formStyles from '../form-elements/form.module.scss'
-
-import styles from './Select.module.scss'
+import styles from '../select/Select.module.scss'
 
 const animatedComponents = makeAnimated()
 

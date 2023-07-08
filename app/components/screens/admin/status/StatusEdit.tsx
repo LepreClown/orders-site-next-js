@@ -48,7 +48,6 @@ const StatusEdit: FC = () => {
 							type="text"
 							placeholder="Название статуса"
 							error={errors.status_name}
-							style={{ width: '49%' }}
 						/>
 					</div>
 					<Button type="submit">Обновить</Button>

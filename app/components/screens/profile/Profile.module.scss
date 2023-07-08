@@ -6,9 +6,11 @@
 		> div {
 			@apply flex gap-10;
 			width: 100%;
+			@media (max-width: 500px) {
+				@apply flex-col gap-y-0;
+			}
 			@media (max-width: 350px) {
-				@apply gap-2;
-				min-width: 300px;
+				@apply flex-col gap-y-0;
 			}
 		}
 	}
@@ -29,4 +31,7 @@
 }
 .button {
 	@apply relative right-0 top-0;
+	@media (max-width: 500px) {
+		@apply mt-4;
+	}
 }

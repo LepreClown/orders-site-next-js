@@ -26,7 +26,6 @@ const ProfileFieldList: FC<IProfileField> = ({ user, register, formState }) => {
 						disabled={user?.role === 'user'}
 						placeholder="Имя"
 						error={formState.errors.name}
-						style={{ width: '35%' }}
 					/>
 					<Field
 						{...register('surname', {
@@ -36,7 +35,6 @@ const ProfileFieldList: FC<IProfileField> = ({ user, register, formState }) => {
 						disabled={user?.role === 'user'}
 						placeholder="Фамилия"
 						error={formState.errors.surname}
-						style={{ width: '35%' }}
 					/>
 				</div>
 				<SubHeading
@@ -56,7 +54,6 @@ const ProfileFieldList: FC<IProfileField> = ({ user, register, formState }) => {
 						placeholder="Номер телефона"
 						type="number"
 						error={formState.errors.telephone}
-						style={{ width: '35%' }}
 					/>
 				</div>
 				<SubHeading
@@ -72,7 +69,6 @@ const ProfileFieldList: FC<IProfileField> = ({ user, register, formState }) => {
 						disabled={true}
 						placeholder="Роль"
 						error={formState.errors.role}
-						style={{ width: '20%' }}
 					/>
 				</div>
 			</div>

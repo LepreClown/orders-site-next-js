@@ -1,9 +1,55 @@
 .wrapper {
 	@apply pt-52 h-screen;
 
-	> form {
-		@apply mx-auto w-1/2  air-block bg-opacity-80  p-7 text-center;
+	@media (max-width: 1420px) {
+		@apply px-80;
+	}
+	@media (max-width: 1200px) {
+		@apply px-60;
+	}
+	@media (max-width: 1050px) {
+		@apply px-52;
+	}
+	@media (max-width: 950px) {
+		@apply px-40;
+	}
+	@media (max-width: 800px) {
+		@apply px-32;
+	}
+	@media (max-width: 700px) {
+		@apply px-16;
+	}
+	@media (max-width: 550px) {
+		@apply px-6;
+	}
+	@media (max-width: 450px) {
+		@apply px-6;
+	}
+	@media (max-width: 350px) {
+		@apply px-4;
+	}
 
+	.heading {
+		@apply mb-6 text-gray-950 dark:text-white dark:text-opacity-80;
+		@media (max-width: 500px) {
+			@apply mb-10;
+		}
+		@media (max-width: 350px) {
+			@apply mb-10;
+		}
+	}
+
+	> form {
+		@apply mx-auto w-full air-block bg-opacity-80  p-7 text-center;
+		@media (min-width: 1421px) {
+			@apply w-1/3;
+		}
+		@media (min-width: 2000px) {
+			@apply w-1/4;
+		}
+		@media (min-width: 3000px) {
+			@apply w-1/6;
+		}
 		.subHeading {
 			h2 {
 				@apply text-xs text-gray-500 dark:text-gray-500 underline cursor-pointer transition-colors;

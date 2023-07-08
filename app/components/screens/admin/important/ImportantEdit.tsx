@@ -48,7 +48,6 @@ const ImportantEdit: FC = () => {
 							type="text"
 							placeholder="Название срочности"
 							error={errors.important_name}
-							style={{ width: '49%' }}
 						/>
 					</div>
 					<Button type="submit">Обновить</Button>

@@ -48,7 +48,6 @@ const BuildingEdit: FC = () => {
 							type="text"
 							placeholder="Название объекта"
 							error={errors.building_name}
-							style={{ width: '49%' }}
 						/>
 					</div>
 					<Button type="submit">Обновить</Button>

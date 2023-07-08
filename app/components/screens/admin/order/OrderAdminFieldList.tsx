@@ -40,7 +40,6 @@ const OrderAdminFieldList: FC<IOrderEditFields> = ({
 					disabled={true}
 					placeholder="Имя"
 					error={errors.creator?.name}
-					style={{ width: '21%' }}
 				/>
 				<Field
 					{...register('creator.surname', {
@@ -50,7 +49,6 @@ const OrderAdminFieldList: FC<IOrderEditFields> = ({
 					disabled={true}
 					placeholder="Фамилия"
 					error={errors.creator?.surname}
-					style={{ width: '21%' }}
 				/>
 
 				<Field
@@ -60,7 +58,6 @@ const OrderAdminFieldList: FC<IOrderEditFields> = ({
 					type="number"
 					placeholder="Телефон"
 					error={errors.creator?.telephone}
-					style={{ width: '21%' }}
 				/>
 				<Field
 					{...register('creator.role', {
@@ -70,7 +67,6 @@ const OrderAdminFieldList: FC<IOrderEditFields> = ({
 					placeholder="Роль"
 					error={errors.creator?.role}
 					disabled={true}
-					style={{ width: '21%' }}
 				/>
 			</div>
 			<SubHeading
@@ -85,7 +81,6 @@ const OrderAdminFieldList: FC<IOrderEditFields> = ({
 					type="text"
 					placeholder="Материал"
 					error={errors.material}
-					style={{ width: '21%' }}
 				/>
 				<Field
 					{...register('quantity', {
@@ -94,7 +89,6 @@ const OrderAdminFieldList: FC<IOrderEditFields> = ({
 					type="number"
 					placeholder="Количество"
 					error={errors.quantity}
-					style={{ width: '21%' }}
 				/>
 			</div>
 			<SubHeading
@@ -102,85 +96,81 @@ const OrderAdminFieldList: FC<IOrderEditFields> = ({
 				className="text-gray-800 dark:text-gray-300 text-opacity-80 text-[18px]"
 			/>
 			<div>
-				<div style={{ width: '21%' }}>
-					<Controller
-						name="building.id"
-						control={control}
-						rules={{
-							required: 'Пожалуйста выберите объект!',
-						}}
-						render={({ field, fieldState: { error } }) => (
-							<DynamicSelect
-								error={error}
-								field={field}
-								placeholder="Объекты"
-								options={building || []}
-								isLoading={isBuildingsLoading}
-							/>
-						)}
-					/>
-				</div>
+				<Controller
+					name="building.id"
+					control={control}
+					rules={{
+						required: 'Пожалуйста выберите объект!',
+					}}
+					render={({ field, fieldState: { error } }) => (
+						<DynamicSelect
+							error={error}
+							field={field}
+							placeholder="Объекты"
+							options={building || []}
+							isLoading={isBuildingsLoading}
+						/>
+					)}
+				/>
+			</div>
 
-				<div style={{ width: '21%' }}>
-					<Controller
-						name="system.id"
-						control={control}
-						rules={{
-							required: 'Пожалуйста выберите система!',
-						}}
-						render={({ field, fieldState: { error } }) => (
-							<DynamicSelect
-								error={error}
-								field={field}
-								placeholder="Система"
-								options={systems || []}
-								isLoading={isSystemsLoading}
-							/>
-						)}
-					/>
-				</div>
+			<div>
+				<Controller
+					name="system.id"
+					control={control}
+					rules={{
+						required: 'Пожалуйста выберите система!',
+					}}
+					render={({ field, fieldState: { error } }) => (
+						<DynamicSelect
+							error={error}
+							field={field}
+							placeholder="Система"
+							options={systems || []}
+							isLoading={isSystemsLoading}
+						/>
+					)}
+				/>
 			</div>
 			<SubHeading
 				title="Информация о статусе"
 				className="text-gray-800 dark:text-gray-300 text-opacity-80 text-[18px]"
 			/>
 			<div>
-				<div style={{ width: '21%' }}>
-					<Controller
-						name="important.id"
-						control={control}
-						rules={{
-							required: 'Пожалуйста выберите срочность заявки!',
-						}}
-						render={({ field, fieldState: { error } }) => (
-							<DynamicSelect
-								error={error}
-								field={field}
-								placeholder="Срочность"
-								options={importants || []}
-								isLoading={isImportantsLoading}
-							/>
-						)}
-					/>
-				</div>
-				<div style={{ width: '21%' }}>
-					<Controller
-						name="status.id"
-						control={control}
-						rules={{
-							required: 'Пожалуйста выберите статус!',
-						}}
-						render={({ field, fieldState: { error } }) => (
-							<DynamicSelect
-								error={error}
-								field={field}
-								placeholder="Статус"
-								options={statuses || []}
-								isLoading={isStatusLoading}
-							/>
-						)}
-					/>
-				</div>
+				<Controller
+					name="important.id"
+					control={control}
+					rules={{
+						required: 'Пожалуйста выберите срочность заявки!',
+					}}
+					render={({ field, fieldState: { error } }) => (
+						<DynamicSelect
+							error={error}
+							field={field}
+							placeholder="Срочность"
+							options={importants || []}
+							isLoading={isImportantsLoading}
+						/>
+					)}
+				/>
+			</div>
+			<div>
+				<Controller
+					name="status.id"
+					control={control}
+					rules={{
+						required: 'Пожалуйста выберите статус!',
+					}}
+					render={({ field, fieldState: { error } }) => (
+						<DynamicSelect
+							error={error}
+							field={field}
+							placeholder="Статус"
+							options={statuses || []}
+							isLoading={isStatusLoading}
+						/>
+					)}
+				/>
 			</div>
 			<Field
 				{...register('modified_at', {

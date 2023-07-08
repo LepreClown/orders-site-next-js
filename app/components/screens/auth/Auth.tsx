@@ -47,10 +47,7 @@ const Auth: FC = () => {
 		<Meta title="Авторизация">
 			<section className={styles.wrapper}>
 				<form onSubmit={handleSubmit(onSubmit)}>
-					<Heading
-						title="Добро пожаловать!"
-						className="mb-6 text-950 dark:text-white dark:text-opacity-80"
-					/>
+					<Heading title="Добро пожаловать!" className={styles.heading} />
 					<AuthFields
 						type={type}
 						register={registerInput}

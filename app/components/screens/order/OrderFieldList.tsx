@@ -30,7 +30,6 @@ const OrderFieldList: FC<IOrderFields> = ({ register, errors, order }) => {
 					disabled={true}
 					placeholder="Имя"
 					error={errors.creator?.name}
-					style={{ width: '31%' }}
 				/>
 				<Field
 					{...register('creator.surname', {
@@ -40,7 +39,6 @@ const OrderFieldList: FC<IOrderFields> = ({ register, errors, order }) => {
 					disabled={true}
 					placeholder="Фамилия"
 					error={errors.creator?.surname}
-					style={{ width: '31%' }}
 				/>
 				<Field
 					{...register('creator.telephone', {
@@ -50,7 +48,6 @@ const OrderFieldList: FC<IOrderFields> = ({ register, errors, order }) => {
 					disabled={true}
 					placeholder="Телефон"
 					error={errors.creator?.telephone}
-					style={{ width: '31%' }}
 				/>
 			</div>
 			<SubHeading
@@ -66,7 +63,6 @@ const OrderFieldList: FC<IOrderFields> = ({ register, errors, order }) => {
 					disabled={true}
 					placeholder="Материал"
 					error={errors.material}
-					style={{ width: '31%' }}
 				/>
 				<Field
 					{...register('quantity', {
@@ -76,7 +72,6 @@ const OrderFieldList: FC<IOrderFields> = ({ register, errors, order }) => {
 					disabled={true}
 					placeholder="Количество"
 					error={errors.quantity}
-					style={{ width: '31%' }}
 				/>
 			</div>
 			<SubHeading
@@ -92,7 +87,6 @@ const OrderFieldList: FC<IOrderFields> = ({ register, errors, order }) => {
 					disabled={true}
 					placeholder="Объект"
 					error={errors.building?.building_name}
-					style={{ width: '31%' }}
 				/>
 				<Field
 					{...register('system.system_name', {
@@ -102,7 +96,6 @@ const OrderFieldList: FC<IOrderFields> = ({ register, errors, order }) => {
 					disabled={true}
 					placeholder="Cистема"
 					error={errors.system?.system_name}
-					style={{ width: '31%' }}
 				/>
 			</div>
 			<SubHeading
@@ -118,7 +111,6 @@ const OrderFieldList: FC<IOrderFields> = ({ register, errors, order }) => {
 					disabled={true}
 					placeholder="Важность"
 					error={errors.important?.important_name}
-					style={{ width: '31%' }}
 				/>
 
 				<Field
@@ -129,7 +121,6 @@ const OrderFieldList: FC<IOrderFields> = ({ register, errors, order }) => {
 					placeholder="Статус"
 					error={errors.status?.status_name}
 					disabled={true}
-					style={{ width: '31%' }}
 				/>
 			</div>
 		</div>

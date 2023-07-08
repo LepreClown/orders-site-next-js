@@ -6,6 +6,21 @@
 		> div {
 			@apply flex gap-10;
 			width: 100%;
+			@media (min-width: 900px) {
+				@apply flex-wrap gap-y-0;
+			}
+			@media (max-width: 900px) {
+				@apply flex-wrap gap-y-0;
+			}
+			@media (max-width: 630px) {
+				@apply flex-wrap gap-y-0;
+			}
+			@media (max-width: 500px) {
+				@apply flex-col gap-y-0;
+			}
+			@media (max-width: 350px) {
+				@apply flex-col gap-y-0;
+			}
 		}
 	}
 }
@@ -18,19 +33,5 @@
 		> div {
 			width: 28%;
 		}
-	}
-}
-
-.formTest {
-	@apply mt-12;
-	.fieldsTest {
-		@apply flex items-center flex-wrap justify-between;
-		> div {
-			width: 48%;
-		}
-	}
-
-	> button {
-		@apply mt-10;
 	}
 }

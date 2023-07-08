@@ -48,7 +48,6 @@ const SystemEdit: FC = () => {
 							type="text"
 							placeholder="Название системы"
 							error={errors.system_name}
-							style={{ width: '49%' }}
 						/>
 					</div>
 					<Button type="submit">Обновить</Button>
