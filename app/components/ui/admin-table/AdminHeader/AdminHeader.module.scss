@@ -1,7 +1,19 @@
 .header {
 	@apply flex items-start justify-between mt-8;
+	@media (max-width: 650px) {
+		@apply flex-col gap-y-4;
+	}
 
 	> button {
 		@apply h-12;
+		@media (max-width: 700px) {
+			@apply px-8;
+		}
+		@media (max-width: 650px) {
+			@apply px-12;
+		}
+		@media (max-width: 350px) {
+			@apply px-4;
+		}
 	}
 }
