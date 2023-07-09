@@ -28,7 +28,6 @@
 	@media (max-width: 350px) {
 		@apply px-4;
 	}
-
 	.heading {
 		@apply mb-6 text-gray-950 dark:text-white dark:text-opacity-80;
 		@media (max-width: 500px) {
@@ -50,6 +49,7 @@
 		@media (min-width: 3000px) {
 			@apply w-1/6;
 		}
+
 		.subHeading {
 			h2 {
 				@apply text-xs text-gray-500 dark:text-gray-500 underline cursor-pointer transition-colors;

@@ -74,7 +74,6 @@ const BuildingList: FC = () => {
 								type="text"
 								placeholder="Название объкта"
 								error={errors.building_name}
-								style={{ width: '31%' }}
 							/>
 						</div>
 						<Button type="submit" disabled={createStatus === 'loading'}>

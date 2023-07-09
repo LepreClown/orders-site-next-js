@@ -59,7 +59,6 @@ const ImportantList: FC = () => {
 								type="text"
 								placeholder="Название срочности"
 								error={errors.important_name}
-								style={{ width: '31%' }}
 							/>
 						</div>
 						<Button type="submit" disabled={createStatus === 'loading'}>

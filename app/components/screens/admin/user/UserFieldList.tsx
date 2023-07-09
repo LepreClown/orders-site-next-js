@@ -55,24 +55,22 @@ const UserFiledList: FC<IUserFields> = ({ errors, register, control, roles, isRo
 				title="Роль"
 				className="text-gray-800 dark:text-gray-300 text-opacity-80 text-[18px]"
 			/>
-			<div>
-				<Controller
-					name="role"
-					control={control}
-					rules={{
-						required: 'Пожалуйста выберите роль!',
-					}}
-					render={({ field, fieldState: { error } }) => (
-						<DynamicSelect
-							error={error}
-							field={field}
-							placeholder="Роль"
-							options={roles || []}
-							isLoading={isRoleLoading}
-						/>
-					)}
-				/>
-			</div>
+			<Controller
+				name="role"
+				control={control}
+				rules={{
+					required: 'Пожалуйста выберите роль!',
+				}}
+				render={({ field, fieldState: { error } }) => (
+					<DynamicSelect
+						error={error}
+						field={field}
+						placeholder="Роль"
+						options={roles || []}
+						isLoading={isRoleLoading}
+					/>
+				)}
+			/>
 		</div>
 	)
 }

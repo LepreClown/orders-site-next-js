@@ -1,7 +1,8 @@
 import { FC } from 'react'
 
 import { IAuthFields } from '@/components/shared/user/authFields.interface'
-import Field from '@/components/ui/form-elements/Field'
+
+import FieldAuth from '@/ui/form-elements-auth/FieldAuth'
 
 import { validEmail } from '@/shared/regex'
 
@@ -13,7 +14,7 @@ const AuthFields: FC<IAuthFields> = ({
 }) => {
 	return (
 		<>
-			<Field
+			<FieldAuth
 				{...register('telephone', {
 					required: 'Номер телефона является обязательным полем!',
 					pattern: {
@@ -25,7 +26,7 @@ const AuthFields: FC<IAuthFields> = ({
 				placeholder="Номер телефона"
 				error={formState.errors.telephone}
 			/>
-			<Field
+			<FieldAuth
 				{...register(
 					'password',
 					isPasswordRequired

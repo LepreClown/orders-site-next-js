@@ -56,7 +56,6 @@ const UserList: FC = () => {
 								type="text"
 								placeholder="Название статуса"
 								error={errors.status_name}
-								style={{ width: '31%' }}
 							/>
 						</div>
 						<Button type="submit" disabled={createStatus === 'loading'}>

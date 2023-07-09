@@ -84,7 +84,6 @@ const UserList: FC = () => {
 								type="number"
 								placeholder="Телефон"
 								error={errors.telephone}
-								style={{ width: '31%' }}
 							/>
 							<Field
 								{...register('name', {
@@ -93,7 +92,6 @@ const UserList: FC = () => {
 								type="text"
 								placeholder="Имя"
 								error={errors.name}
-								style={{ width: '31%' }}
 							/>
 							<Field
 								{...register('password', {
@@ -102,7 +100,6 @@ const UserList: FC = () => {
 								type="password"
 								placeholder="Пароль"
 								error={errors.password}
-								style={{ width: '31%' }}
 							/>
 
 							<Field
@@ -112,27 +109,24 @@ const UserList: FC = () => {
 								type="text"
 								placeholder="Фамилия"
 								error={errors.surname}
-								style={{ width: '31%' }}
 							/>
 
-							<div style={{ width: '31%' }}>
-								<Controller
-									name="role"
-									control={control}
-									rules={{
-										required: 'Пожалуйста выберите роль!',
-									}}
-									render={({ field, fieldState: { error } }) => (
-										<DynamicSelect
-											error={error}
-											field={field}
-											placeholder="Роль"
-											options={roles || []}
-											isLoading={isRoleLoading}
-										/>
-									)}
-								/>
-							</div>
+							<Controller
+								name="role"
+								control={control}
+								rules={{
+									required: 'Пожалуйста выберите роль!',
+								}}
+								render={({ field, fieldState: { error } }) => (
+									<DynamicSelect
+										error={error}
+										field={field}
+										placeholder="Роль"
+										options={roles || []}
+										isLoading={isRoleLoading}
+									/>
+								)}
+							/>
 						</div>
 						<Button type="submit" disabled={createStatus === 'loading'}>
 							Создать

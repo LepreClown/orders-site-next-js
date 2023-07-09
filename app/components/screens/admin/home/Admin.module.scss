@@ -1,12 +1,23 @@
 .statistics {
-	@apply flex items-stretch mt-10;
-
+	@apply flex justify-between w-full items-stretch mt-10;
+	@media (max-width: 750px) {
+		@apply flex-col;
+	}
 	.block {
-		@apply air-block w-2/5 h-44;
+		@apply air-block w-full h-44;
 	}
 
 	.count {
 		@apply mr-28 flex items-center justify-center text-center;
+		@media (max-width: 1350px) {
+			@apply mr-10;
+		}
+		@media (max-width: 750px) {
+			@apply mb-4;
+		}
+		&:last-child {
+			@apply mr-0;
+		}
 
 		.number {
 			@apply text-7xl mb-1 font-medium  text-gray-700 dark:text-gray-300;

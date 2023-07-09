@@ -58,7 +58,6 @@ const SystemList: FC = () => {
 								type="text"
 								placeholder="Название системы"
 								error={errors.system_name}
-								style={{ width: '31%' }}
 							/>
 						</div>
 						<Button type="submit" disabled={createStatus === 'loading'}>

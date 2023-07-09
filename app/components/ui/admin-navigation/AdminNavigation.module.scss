@@ -1,8 +1,17 @@
 .nav {
 	@apply air-block w-4/5 mx-auto mb-10;
+	@media (max-width: 1600px) {
+		@apply w-full;
+	}
+	@media (max-width: 1350px) {
+		@apply overflow-x-scroll;
+	}
 
 	> ul {
 		@apply flex justify-evenly items-center;
+		@media (max-width: 1350px) {
+			@apply justify-start;
+		}
 		> li {
 			@apply inline-block;
 

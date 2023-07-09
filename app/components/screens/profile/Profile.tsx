@@ -73,7 +73,6 @@ const Profile: FC = () => {
 								type="text"
 								placeholder="Введите старый пароль"
 								error={formStatePassword.errors.old_password}
-								style={{ width: '31%' }}
 							/>
 							<Field
 								{...registerPassword('new_password', {
@@ -82,7 +81,6 @@ const Profile: FC = () => {
 								type="text"
 								placeholder="Введите новый пароль"
 								error={formStatePassword.errors.new_password}
-								style={{ width: '31%' }}
 							/>
 						</div>
 						<Button type="submit">Изменить пароль</Button>
