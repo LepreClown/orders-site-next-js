@@ -4,7 +4,7 @@
 		@apply w-full;
 	}
 	@media (max-width: 1350px) {
-		@apply overflow-x-scroll;
+		@apply overflow-x-auto;
 	}
 
 	> ul {
