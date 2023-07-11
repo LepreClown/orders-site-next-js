@@ -11,7 +11,7 @@ $shadow: 0 10px 10px 0 rgb(0 0 0 / 15%), 0 6px 6px 0 rgb(0 0 0 / 15%), 0 3px 3px
 			min-width: 29%;
 		}
 		@media (max-width: 1050px) {
-			@apply w-full h-12 bg-white dark:bg-gray-900 shadow-lg   dark:shadow-gray-800 shadow-gray-300;
+			@apply w-full h-14 bg-white dark:bg-gray-900 shadow-lg   dark:shadow-gray-800 shadow-gray-300;
 		}
 	}
 
