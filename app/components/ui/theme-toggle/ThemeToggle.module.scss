@@ -1,20 +1,71 @@
+$text-gray: #7b7e84;
+$text-black: #010001;
+$text-white: #a9b0bb;
+$text-black2: #1c1c1e;
+$text-white-white: #fff;
+
 .toggle {
-	@apply px-layout flex gap-3 h-[26px];
-	@media (max-width: 500px) {
-		@apply px-6;
-	}
-	@media (max-width: 350px) {
-		@apply px-4;
-	}
-	.light {
-		path {
-			@apply transition-colors duration-100 fill-primary dark:fill-black;
-		}
+	@apply flex gap-3 h-[44px] w-full;
+
+	@media (max-width: 1050px) {
+		@apply h-[40px];
 	}
 
-	.dark {
-		path {
-			@apply transition-colors duration-100 dark:fill-white fill-black;
+	.btnContainer {
+		@apply relative flex w-[240px] justify-between bg-gray-500 bg-opacity-30 dark:bg-gray-800 transition-all shadow-lg rounded-lg z-1;
+		@media (max-width: 350px) {
+			@apply w-[100px];
+		}
+		div {
+			@apply flex items-center justify-between transition-all z-20 select-none cursor-pointer gap-x-3 pr-3 m-1 rounded-lg w-[100px];
+			@media (max-width: 350px) {
+				@apply w-[40px] pr-0 pl-2;
+			}
+			> button {
+				> svg {
+					@apply w-[20px] h-[20px];
+
+					> path {
+						@apply fill-gray-600 dark:fill-white;
+					}
+				}
+			}
+			> span {
+				@apply text-gray-600 dark:text-white;
+				@media (max-width: 350px) {
+					@apply hidden;
+				}
+			}
+
+			&:first-child {
+				@apply pl-3;
+				> button {
+					> svg {
+						> path {
+							@apply fill-gray-950 dark:fill-gray-500;
+						}
+					}
+				}
+				> span {
+					@apply text-gray-950 dark:text-gray-500;
+				}
+			}
+		}
+		.bgActive {
+			@apply absolute w-[115px] dark:w-[110px] h-[32px] bg-white dark:bg-gray-900 top-[6px] left-0 z-10 ml-1.5 dark:ml-0 dark:mr-1.5 m-0;
+			@media (max-width: 1050px) {
+				@apply h-[28px];
+			}
+			@media (max-width: 350px) {
+				@apply w-[40px] dark:w-[40px] dark:ml-1.5;
+			}
+
+			&Dark {
+				transform: translateX(124px);
+				@media (max-width: 350px) {
+					transform: translateX(48px);
+				}
+			}
 		}
 	}
 }

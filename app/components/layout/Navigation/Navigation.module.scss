@@ -6,9 +6,15 @@
 	}
 
 	> div:last-child {
-		@apply absolute bottom-4;
+		@apply flex w-full justify-center absolute bottom-12;
 		@media (max-width: 1050px) {
-			@apply flex items-center absolute right-0;
+			@apply flex justify-end w-full px-layout absolute bottom-3;
+		}
+		@media (max-width: 500px) {
+			@apply px-6;
+		}
+		@media (max-width: 350px) {
+			@apply px-4;
 		}
 	}
 }
