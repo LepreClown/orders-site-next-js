@@ -9,6 +9,7 @@ import AuthFields from '@/components/shared/user/AuthFields'
 import Button from '@/ui/button/Button'
 import Heading from '@/ui/heading/Heading'
 import MaterialIcon from '@/ui/icons/MaterialIcon'
+import Loader from '@/ui/loader/Loader'
 
 import { useActions } from '@/hooks/useActions'
 import { useAuth } from '@/hooks/useAuth'
@@ -63,6 +64,11 @@ const Auth: FC = () => {
 						</Button>
 					</div>
 				</form>
+				{status && (
+					<div className={styles.loader}>
+						<Loader />
+					</div>
+				)}
 			</section>
 		</Meta>
 	)

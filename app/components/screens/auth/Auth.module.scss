@@ -1,5 +1,5 @@
 .wrapper {
-	@apply pt-52 h-screen;
+	@apply flex items-center relative h-screen;
 
 	@media (max-width: 1420px) {
 		@apply px-80;
@@ -84,5 +84,15 @@
 				}
 			}
 		}
+	}
+}
+
+.loader {
+	@apply absolute flex items-center justify-center w-full;
+	svg {
+		width: 100px;
+		height: 100px;
+		margin: 20px;
+		display: inline-block;
 	}
 }

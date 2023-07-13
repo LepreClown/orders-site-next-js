@@ -17,7 +17,7 @@ interface IAdminHeader {
 const AdminHeader: FC<IAdminHeader> = ({ searchTerm, handleSearch, toggle, title, quantity }) => {
 	return (
 		<div className={styles.header}>
-			<div className="flex flex-col gap-4">
+			<div className={styles.searchField}>
 				<SearchField searchTerm={searchTerm} handleSearch={handleSearch} />
 				{quantity !== 0 && <AdminQuantity quantity={quantity} />}
 			</div>
