@@ -27,20 +27,14 @@ const SystemList: FC = () => {
 		mode: 'onChange',
 	})
 
-	const { searchTerm, onSubmit, handleSearch, data, isLoading, deleteAsync, createStatus } =
-		useSystem()
+	const { onSubmit, data, isLoading, deleteAsync, createStatus } = useSystem()
 	const { isShow, toggle } = useModal()
 
 	return (
 		<Meta title="Системы">
 			<AdminNavigation />
 			<Heading title="Системы" />
-			<AdminHeader
-				toggle={toggle}
-				title="система"
-				searchTerm={searchTerm}
-				handleSearch={handleSearch}
-			/>
+			<AdminHeader toggle={toggle} title="система" />
 			<AdminTable
 				tableItems={data || []}
 				headerItems={['№', 'Название системы']}

@@ -27,8 +27,7 @@ const ImportantList: FC = () => {
 		mode: 'onChange',
 	})
 
-	const { searchTerm, createStatus, handleSearch, onSubmit, data, isLoading, deleteAsync } =
-		useImportant()
+	const { createStatus, onSubmit, data, isLoading, deleteAsync } = useImportant()
 
 	const { isShow, toggle } = useModal()
 
@@ -36,12 +35,7 @@ const ImportantList: FC = () => {
 		<Meta title="Срочности">
 			<AdminNavigation />
 			<Heading title="Срочности" />
-			<AdminHeader
-				title="срочность"
-				searchTerm={searchTerm}
-				handleSearch={handleSearch}
-				toggle={toggle}
-			/>
+			<AdminHeader title="срочность" toggle={toggle} />
 			<AdminTable
 				tableItems={data || []}
 				headerItems={['№', 'Название срочности']}

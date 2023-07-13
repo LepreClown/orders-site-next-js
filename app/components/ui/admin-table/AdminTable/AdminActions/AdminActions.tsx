@@ -12,13 +12,17 @@ interface IAdminActions {
 
 const AdminActions: FC<IAdminActions> = ({ editUrl, removeHandler }) => {
 	const { push } = useRouter()
-
+	const removeHandlerClick = () => {
+		if (confirm('Вы точно хотите удалить данный объект?')) {
+			removeHandler()
+		}
+	}
 	return (
 		<div className={styles.actions}>
 			<button onClick={() => push(editUrl)}>
 				<MaterialIcon name="MdEdit" />
 			</button>
-			<button onClick={removeHandler}>
+			<button onClick={removeHandlerClick}>
 				<MaterialIcon name="MdClose" />
 			</button>
 		</div>

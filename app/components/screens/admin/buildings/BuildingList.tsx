@@ -62,6 +62,7 @@ const BuildingList: FC = () => {
 				currentPage={currentPage}
 				quantity={quantityBuildings}
 				onPageChange={onPageChange}
+				isAdminPage
 			/>
 			{isShow && (
 				<Modal toggle={toggle} title="объекта">

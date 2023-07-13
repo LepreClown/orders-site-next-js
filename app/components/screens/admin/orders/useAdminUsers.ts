@@ -11,7 +11,7 @@ export const useAdminUsers = () => {
 		select: ({ data }) =>
 			data.users.map(
 				(user): IOption => ({
-					label: user.name,
+					label: `${user.name} ${user.surname}`,
 					value: user.id,
 				}),
 			),

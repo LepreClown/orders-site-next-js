@@ -72,6 +72,7 @@ const UserList: FC = () => {
 				currentPage={currentPage}
 				onPageChange={onPageChange}
 				quantity={quantityUsers}
+				isAdminPage
 			/>
 			{isShow && (
 				<Modal toggle={toggle} title="пользователя">

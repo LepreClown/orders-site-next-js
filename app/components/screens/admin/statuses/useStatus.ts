@@ -1,12 +1,10 @@
 import { useRouter } from 'next/router'
-import { ChangeEvent, useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import { SubmitHandler } from 'react-hook-form'
 import { useMutation, useQuery } from 'react-query'
 import { toastr } from 'react-redux-toastr'
 
 import { IStatusCreate } from '@/screens/admin/statuses/statuses.interface'
-
-import { useDebounce } from '@/hooks/useDebounce'
 
 import { StatusService } from '@/services/status/status.service'
 
@@ -15,11 +13,9 @@ import { toastError } from '@/utils/api/withToastrErrorRedux'
 import { getAdminUrl } from '../../../../config/url.config'
 
 export const useStatus = () => {
-	const [searchTerm, setSearchTerm] = useState('')
-	const debouncedSearch = useDebounce(searchTerm, 500)
 	const { push } = useRouter()
 
-	const queryData = useQuery(['status list', debouncedSearch], () => StatusService.getAll(), {
+	const queryData = useQuery(['status list'], () => StatusService.getAll(), {
 		select: ({ data }) =>
 			data.map((status, index) => ({
 				id: status.id,
@@ -30,10 +26,6 @@ export const useStatus = () => {
 			toastError(error, 'Список статусов')
 		},
 	})
-
-	const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
-		setSearchTerm(e.target.value)
-	}
 
 	const { mutateAsync: deleteAsync } = useMutation(
 		'delete status',
@@ -72,13 +64,11 @@ export const useStatus = () => {
 	return useMemo(
 		() => ({
 			deleteAsync,
-			handleSearch,
 			createAsync,
 			createStatus,
 			onSubmit,
-			searchTerm,
 			...queryData,
 		}),
-		[queryData, createStatus, searchTerm, deleteAsync, createAsync],
+		[queryData, createStatus, deleteAsync, createAsync],
 	)
 }

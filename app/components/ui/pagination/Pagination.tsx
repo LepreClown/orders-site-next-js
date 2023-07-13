@@ -5,8 +5,15 @@ import { IPaginationProps } from '@/ui/pagination/pagination.interface'
 
 import styles from './Pagination.module.scss'
 
-const Pagination: FC<IPaginationProps> = ({ quantity, currentPage, onPageChange }) => {
-	const pageCount = Math.ceil(quantity / 10)
+const Pagination: FC<IPaginationProps> = ({
+	quantity,
+	currentPage,
+	onPageChange,
+	isAdminPage = false,
+}) => {
+	const count = isAdminPage ? 7 : 10
+	const pageCount = Math.ceil(quantity / count)
+
 	window.scroll(0, 0)
 	if (pageCount === 1 || pageCount === 0) return null
 

@@ -92,6 +92,7 @@ const OrdersList: FC = () => {
 				currentPage={currentPage}
 				onPageChange={onPageChange}
 				quantity={quantityOrders}
+				isAdminPage
 			/>
 			{isShow && (
 				<Modal toggle={toggle} title="заявки">

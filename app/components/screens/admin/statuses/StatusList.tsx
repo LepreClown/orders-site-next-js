@@ -26,19 +26,13 @@ const UserList: FC = () => {
 		mode: 'onChange',
 	})
 	const { isShow, toggle } = useModal()
-	const { searchTerm, onSubmit, createStatus, handleSearch, data, isLoading, deleteAsync } =
-		useStatus()
+	const { onSubmit, createStatus, data, isLoading, deleteAsync } = useStatus()
 
 	return (
 		<Meta title="Статусы">
 			<AdminNavigation />
 			<Heading title="Статусы" />
-			<AdminHeader
-				toggle={toggle}
-				title="заявку"
-				searchTerm={searchTerm}
-				handleSearch={handleSearch}
-			/>
+			<AdminHeader toggle={toggle} title="заявку" />
 			<AdminTable
 				tableItems={data || []}
 				headerItems={['№', 'Название статуса']}

@@ -23,7 +23,14 @@ export const useOrderEdit = (setValue: UseFormSetValue<IOrderEditInput>) => {
 			setValue('building.id', data.building.id)
 			setValue('creator.name', data.creator.name)
 			setValue('creator.surname', data.creator.surname)
-			setValue('creator.role', data.creator.role)
+			setValue(
+				'creator.role',
+				data.creator.role === 'admin'
+					? 'Администратор'
+					: data.creator.role === 'user'
+					? 'Пользователь'
+					: 'Менеджер',
+			)
 			setValue('creator.telephone', data.creator.telephone)
 			setValue('system.id', data.system.id)
 			setValue('important.id', data.important.id)

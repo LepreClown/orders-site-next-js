@@ -5,7 +5,7 @@ import MaterialIcon from '../icons/MaterialIcon'
 import styles from './SearchField.module.scss'
 
 interface ISearchField {
-	searchTerm: string
+	searchTerm?: string
 	handleSearch: (event: ChangeEvent<HTMLInputElement>) => void
 }
 

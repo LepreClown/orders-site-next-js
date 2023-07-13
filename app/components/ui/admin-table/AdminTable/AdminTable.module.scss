@@ -3,11 +3,12 @@
 
 	> div {
 		@apply text-gray-950 opacity-90 dark:text-white dark:text-opacity-80 py-3;
-		width: 150px;
+		width: 220px;
 		white-space: nowrap;
-		// проблема в last-child fix it
+
 		&:last-child {
 			@apply text-right w-full justify-end;
+			min-width: 150px;
 		}
 	}
 }
@@ -17,11 +18,12 @@
 
 	> div {
 		@apply flex items-center gap-1 text-gray-950 text-opacity-80 dark:text-white dark:text-opacity-80  font-semibold py-3;
-		width: 150px;
+		width: 220px;
 		white-space: nowrap;
 
 		&:last-child {
 			@apply text-right w-full justify-end;
+			min-width: 150px;
 		}
 	}
 }

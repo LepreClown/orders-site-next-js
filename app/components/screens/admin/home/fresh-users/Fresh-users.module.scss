@@ -1,0 +1,16 @@
+.wrapper {
+	@apply flex justify-between w-full items-stretch mt-4;
+	@media (max-width: 750px) {
+		@apply flex-col;
+	}
+
+	.block {
+		@apply air-block w-full h-44;
+		> div {
+			@apply h-full;
+		}
+		.item {
+			@apply flex w-full justify-between px-10 items-center h-full  font-medium  text-gray-700 dark:text-gray-300;
+		}
+	}
+}

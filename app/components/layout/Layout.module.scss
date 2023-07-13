@@ -7,6 +7,9 @@ $shadow: 0 10px 10px 0 rgb(0 0 0 / 15%), 0 6px 6px 0 rgb(0 0 0 / 15%), 0 3px 3px
 		@apply fixed top-0 bottom-0 z-10;
 		width: $bar-width;
 		min-width: 350px;
+		@media (min-width: 2000px) {
+			width: 350px;
+		}
 		@media (max-width: 1200px) {
 			min-width: 29%;
 		}

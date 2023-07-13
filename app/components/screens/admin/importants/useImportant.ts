@@ -1,12 +1,10 @@
 import { useRouter } from 'next/router'
-import { ChangeEvent, useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import { SubmitHandler } from 'react-hook-form'
 import { useMutation, useQuery } from 'react-query'
 import { toastr } from 'react-redux-toastr'
 
 import { IImportantCreate } from '@/screens/admin/importants/importants.interface'
-
-import { useDebounce } from '@/hooks/useDebounce'
 
 import { ImportantService } from '@/services/important/important.service'
 
@@ -15,11 +13,9 @@ import { toastError } from '@/utils/api/withToastrErrorRedux'
 import { getAdminUrl } from '../../../../config/url.config'
 
 export const useImportant = () => {
-	const [searchTerm, setSearchTerm] = useState('')
-	const debouncedSearch = useDebounce(searchTerm, 500)
 	const { push } = useRouter()
 
-	const queryData = useQuery(['important list', debouncedSearch], () => ImportantService.getAll(), {
+	const queryData = useQuery(['important list'], () => ImportantService.getAll(), {
 		select: ({ data }) =>
 			data.map((important, index) => ({
 				id: important.id,
@@ -30,10 +26,6 @@ export const useImportant = () => {
 			toastError(error, 'Список срочностей')
 		},
 	})
-
-	const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
-		setSearchTerm(e.target.value)
-	}
 
 	const { mutateAsync: deleteAsync } = useMutation(
 		'delete important',
@@ -72,13 +64,11 @@ export const useImportant = () => {
 	return useMemo(
 		() => ({
 			deleteAsync,
-			handleSearch,
 			createAsync,
 			createStatus,
-			searchTerm,
 			onSubmit,
 			...queryData,
 		}),
-		[queryData, searchTerm, createStatus, deleteAsync, createAsync],
+		[queryData, createStatus, deleteAsync, createAsync],
 	)
 }
