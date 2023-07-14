@@ -1,9 +1,15 @@
 import { FC } from 'react'
 
+import styles from './Fresh-orders.module.scss'
+
 const FreshOrderItemHeader: FC = () => {
 	return (
-		<div className="flex w-full justify-between px-10 items-center h-full  font-medium  text-gray-700 dark:text-gray-300">
-			2
+		<div className={styles.header}>
+			<span className={styles.material}>Материал</span>
+			<span className={styles.quantity}>Количество</span>
+			<span className={styles.date}>Время создания</span>
+			<span className={styles.important}>Срочность</span>
+			<span>Статус</span>
 		</div>
 	)
 }

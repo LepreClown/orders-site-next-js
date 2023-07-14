@@ -13,19 +13,19 @@ const FreshOrders: FC = () => {
 
 	return (
 		<div className={styles.wrapper}>
-			<div className="h-full">
-				{isLoading ? (
-					<SkeletonLoader height={66} />
-				) : (
-					<div>
-						<FreshOrderItemHeader />
-						<div className="flex w-full justify-between px-10 items-center h-full  font-medium  text-gray-700 dark:text-gray-300">
-							{freshOrders?.map((order) => (
-								<FreshOrderItem order={order} key={order.id} />
-							))}
-						</div>
-					</div>
-				)}
+			<div className={styles.table}>
+				<FreshOrderItemHeader />
+				{isLoading
+					? [...new Array(4)].map((_, index) => (
+							<div key={index} className={styles.content}>
+								<SkeletonLoader count={1} height={20} />
+							</div>
+					  ))
+					: freshOrders?.map((order) => (
+							<div key={order.id} className={styles.content}>
+								<FreshOrderItem order={order} />
+							</div>
+					  ))}
 			</div>
 		</div>
 	)

@@ -1,16 +1,50 @@
 .wrapper {
 	@apply flex justify-between w-full items-stretch mt-4;
-	@media (max-width: 750px) {
-		@apply flex-col;
-	}
 
 	.block {
-		@apply air-block w-full h-44;
+		@apply air-block w-full h-40 overflow-x-auto;
 		> div {
 			@apply h-full;
 		}
 		.item {
 			@apply flex w-full justify-between px-10 items-center h-full  font-medium  text-gray-700 dark:text-gray-300;
+
+			a {
+				min-width: 250px;
+				@media (max-width: 700px) {
+					min-width: 200px;
+				}
+				@media (max-width: 350px) {
+					min-width: 180px;
+				}
+			}
+			@media (max-width: 700px) {
+				@apply px-2;
+			}
+			@media (max-width: 350px) {
+				@apply px-0;
+			}
+		}
+	}
+	.params {
+		@apply flex flex-col items-center justify-center;
+		.name {
+			@apply flex gap-2 text-[22px] font-semibold;
+			@media (max-width: 700px) {
+				@apply text-[18px];
+			}
+		}
+		.date {
+			@apply text-[16px] font-medium text-gray-600 text-opacity-70 dark:text-opacity-100;
+		}
+	}
+	.content {
+		@apply w-full;
+		@media (max-width: 700px) {
+			@apply px-2;
+		}
+		@media (max-width: 350px) {
+			@apply px-2;
 		}
 	}
 }

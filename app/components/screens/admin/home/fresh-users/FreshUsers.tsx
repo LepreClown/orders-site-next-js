@@ -11,15 +11,13 @@ const CountUsers: FC = () => {
 	const { data: freshUsers, isLoading } = useFreshUsers()
 	return (
 		<div className={styles.block}>
-			<div>
+			<div className={styles.item}>
 				{isLoading ? (
-					<SkeletonLoader height={66} />
-				) : (
-					<div className={styles.item}>
-						{freshUsers?.map((user) => (
-							<FreshUserItem user={user} key={user.id} />
-						))}
+					<div className={styles.content}>
+						<SkeletonLoader count={1} height={57} />
 					</div>
+				) : (
+					freshUsers?.map((user) => <FreshUserItem user={user} key={user.id} />)
 				)}
 			</div>
 		</div>

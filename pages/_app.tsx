@@ -10,7 +10,7 @@ import MainProviderForAuth from '../app/providers/MainProviderForAuth'
 type TypeAppProps = AppProps & TypeComponentAuthFields
 
 const MyApp = ({ Component, pageProps, ...appProps }: TypeAppProps) => {
-	if (['/'].includes(appProps.router.pathname)) {
+	if (['/auth'].includes(appProps.router.pathname)) {
 		return (
 			<MainProviderForAuth Component={Component}>
 				<Component {...pageProps} />

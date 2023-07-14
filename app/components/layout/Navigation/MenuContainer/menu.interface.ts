@@ -4,6 +4,7 @@ export interface IMenuItem {
 	icon: TypeMaterialIconName
 	title: string
 	link: string
+	secondLink: string
 }
 
 export interface IMenu {

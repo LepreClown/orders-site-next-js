@@ -10,7 +10,7 @@ export const useRedirect = () => {
 
 	useEffect(() => {
 		if (!user) {
-			push('/')
+			push('/auth')
 		}
 	}, [])
 }

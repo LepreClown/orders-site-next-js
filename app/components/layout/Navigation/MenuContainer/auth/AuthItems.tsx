@@ -17,7 +17,7 @@ const AuthItems: FC = () => {
 					<LogoutButton />
 				</>
 			) : (
-				<MenuItem item={{ icon: 'MdLogin', link: '/', title: 'Войти' }} />
+				<MenuItem item={{ icon: 'MdLogin', link: '/auth', title: 'Войти' }} />
 			)}
 
 			{user?.role === 'admin' && (

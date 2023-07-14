@@ -74,7 +74,7 @@ export const useHome = () => {
 			},
 			onSuccess({ data: id }) {
 				toastr.success('Заявка', 'Заявка успешно создана')
-				push('/home')
+				push('/')
 			},
 		},
 	)
