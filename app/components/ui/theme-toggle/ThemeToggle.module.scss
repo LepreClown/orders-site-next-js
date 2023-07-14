@@ -1,11 +1,5 @@
-$text-gray: #7b7e84;
-$text-black: #010001;
-$text-white: #a9b0bb;
-$text-black2: #1c1c1e;
-$text-white-white: #fff;
-
 .toggle {
-	@apply flex gap-3 h-[44px] w-full;
+	@apply flex gap-10 h-[44px] w-full;
 
 	@media (max-width: 1050px) {
 		@apply h-[40px];
@@ -52,7 +46,7 @@ $text-white-white: #fff;
 			}
 		}
 		.bgActive {
-			@apply absolute w-[115px] dark:w-[110px] h-[32px] bg-white dark:bg-gray-900 top-[6px] left-0 z-10 ml-1.5 dark:ml-0 dark:mr-1.5 m-0;
+			@apply absolute w-[115px] dark:w-[110px] h-[32px] bg-white dark:bg-gray-900 top-[6px] left-1.5 z-10 dark:mr-1.5 m-0;
 			@media (max-width: 1050px) {
 				@apply h-[28px];
 			}
@@ -61,9 +55,9 @@ $text-white-white: #fff;
 			}
 
 			&Dark {
-				transform: translateX(124px);
+				transform: translateX(118px);
 				@media (max-width: 350px) {
-					transform: translateX(48px);
+					transform: translateX(42px);
 				}
 			}
 		}
