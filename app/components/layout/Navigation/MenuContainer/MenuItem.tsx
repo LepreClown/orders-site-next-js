@@ -11,14 +11,14 @@ import styles from './Menu.module.scss'
 
 const MenuItem: FC<{ item: IMenuItem }> = ({ item }) => {
 	const { asPath } = useRouter()
-
+	const secondLink = 'home/order/'
 	return (
 		<li
 			className={cn({
 				[styles.active]:
 					asPath === item.link ||
 					(asPath.includes(item.link) && item.link !== '/') ||
-					asPath.includes(item.secondLink),
+					asPath.includes(secondLink),
 			})}>
 			<Link href={item.link}>
 				<MaterialIcon name={item.icon} />
