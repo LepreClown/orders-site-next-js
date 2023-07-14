@@ -20,7 +20,14 @@ export const useProfile = (setValue: UseFormSetValue<IProfile>) => {
 			setValue('telephone', data.telephone)
 			setValue('name', data.name)
 			setValue('surname', data.surname)
-			setValue('role', data.role)
+			setValue(
+				'role',
+				data.role === 'admin'
+					? 'Администратор'
+					: data.role === 'user'
+					? 'Пользователь'
+					: 'Менеджер',
+			)
 			setValue('password', data.password)
 			setValue('created_at', data.created_at)
 		},

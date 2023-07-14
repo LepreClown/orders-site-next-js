@@ -1,47 +1,24 @@
 import React, { FC } from 'react'
-import { useForm } from 'react-hook-form'
 
-import { IOrderEditInput } from '@/screens/admin/order/order-edit-interface'
-import OrderFieldList, { IOrderFields } from '@/screens/order/OrderFieldList'
-import { useOrder } from '@/screens/order/useOrder'
+import OrderUser from '@/screens/order/OrderUser'
+import OrderAdvanced from '@/screens/order/orderAdvanced/OrderAdvanced'
 
-import formStyles from '@/ui/form-elements/adminForm.module.scss'
 import Heading from '@/ui/heading/Heading'
-import SkeletonLoader from '@/ui/skeleton-loader/SkeletonLoader'
+
+import { useAuth } from '@/hooks/useAuth'
+import { useRedirect } from '@/hooks/useRedirect'
 
 import Meta from '@/utils/meta/Meta'
 
 const Order: FC = () => {
-	const {
-		register,
-		control,
-		formState: { errors },
-		setValue,
-		handleSubmit,
-	} = useForm<IOrderEditInput>({
-		mode: 'onChange',
-	})
-
-	const { isLoading, order } = useOrder(setValue)
-
-	const dataFields: IOrderFields = {
-		order,
-		register,
-		errors,
-	}
+	useRedirect()
+	const { user } = useAuth()
 
 	return (
 		<Meta title="Заявка">
 			<Heading title="Заявка" />
-			{isLoading ? (
-				<div className="mt-12">
-					<SkeletonLoader count={4} className="mb-12" height={90} />
-				</div>
-			) : (
-				<form className={formStyles.form}>
-					<OrderFieldList {...dataFields} />
-				</form>
-			)}
+
+			{user.role === 'admin' || user.role === 'advanced_user' ? <OrderAdvanced /> : <OrderUser />}
 		</Meta>
 	)
 }
