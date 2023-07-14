@@ -64,7 +64,7 @@ const Auth: FC = () => {
 						</Button>
 					</div>
 				</form>
-				{true && (
+				{status && (
 					<div className={styles.loader}>
 						<Loader />
 					</div>
