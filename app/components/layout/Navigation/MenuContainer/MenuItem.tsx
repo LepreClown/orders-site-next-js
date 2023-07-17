@@ -18,7 +18,7 @@ const MenuItem: FC<{ item: IMenuItem }> = ({ item }) => {
 				[styles.active]:
 					asPath === item.link ||
 					(asPath.includes(item.link) && item.link !== '/') ||
-					asPath.includes(secondLink),
+					(asPath.includes(secondLink) && item.link !== '/profile' && item.link !== '/admin'),
 			})}>
 			<Link href={item.link}>
 				<MaterialIcon name={item.icon} />
