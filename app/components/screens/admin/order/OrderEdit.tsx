@@ -7,7 +7,7 @@ import { useAdminBuilding } from '@/screens/admin/order/useAdminBuilding'
 import { useAdminImportant } from '@/screens/admin/order/useAdminImportant'
 import { useAdminSystem } from '@/screens/admin/order/useAdminSystem'
 import { useOrderEdit } from '@/screens/admin/order/useOrderEdit'
-import { useAdminStatus } from '@/screens/admin/orders/useAdminStatus'
+import { useAdminStatus } from '@/screens/admin/order/useAdminStatus'
 
 import formStyles from '@/components/ui/form-elements/adminForm.module.scss'
 

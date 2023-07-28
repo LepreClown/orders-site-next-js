@@ -19,7 +19,7 @@ export const BuildingService = {
 	},
 
 	async getBuildings() {
-		return axios.get<IBuilding>(getBuildingsUrl(``))
+		return axios.get<IBuilding>(getBuildingsUrl(`?on_page=999&page=0`))
 	},
 	async create(data: any) {
 		return axios.post<string>(getBuildingsUrl('create'), data)

@@ -19,6 +19,7 @@ import { getAdminUrl } from '../../../../config/url.config'
 
 export const useOrders = () => {
 	const [searchTerm, setSearchTerm] = useState('')
+//	TODO:для order_by_field добавить useState, возможно сделать хук.
 	const [currentPage, setCurrentPage] = useState(1)
 	const debouncedSearch = useDebounce(searchTerm, 500)
 	const { push } = useRouter()

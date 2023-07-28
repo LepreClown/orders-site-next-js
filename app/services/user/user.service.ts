@@ -18,7 +18,10 @@ export const UserService = {
 		})
 	},
 	async getAll() {
-		return axios.get<IUser>(getUsersUrl(``))
+		return axios.get<IUser>(getUsersUrl(`?on_page=999&page=0`))
+	},
+	async getFreshUsers () {
+		return axios.get<IUser>(getUsersUrl(`/?on_page=4&page=0&order_by_field=-created_at`))
 	},
 	async getUser(userId: number) {
 		return axios.get<IUserItem>(getUsersUrl(`/${userId}`))

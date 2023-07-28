@@ -81,6 +81,7 @@ const OrdersList: FC = () => {
 				searchTerm={searchTerm}
 				handleSearch={handleSearch}
 			/>
+			{/* TODO: в headersItems передавать данные из useQuery */}
 			<AdminTable
 				tableItems={ordersData || []}
 				headerItems={['Дата создания', 'Создатель', 'Объект', 'Материал', 'Количество']}

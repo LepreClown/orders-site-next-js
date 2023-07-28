@@ -25,8 +25,8 @@ export const OrderService = {
 	async getOrders() {
 		return axios.get<IOrder>(getOrdersUrl(``))
 	},
-	async getTest() {
-		return axios.get<IOrder[]>('https://628a7dd25da6ddfd5d6407fd.mockapi.io/items')
+	async getFreshOrders () {
+		return axios.get<IOrder>(getOrdersUrl(`?on_page=4&page=0&order_by_field=-created_at`))
 	},
 
 	/*ADMIN */
