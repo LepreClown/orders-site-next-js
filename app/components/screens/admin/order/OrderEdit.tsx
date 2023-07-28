@@ -5,9 +5,9 @@ import OrderAdminFieldList from '@/screens/admin/order/OrderAdminFieldList'
 import { IOrderEditFields, IOrderEditInput } from '@/screens/admin/order/order-edit-interface'
 import { useAdminBuilding } from '@/screens/admin/order/useAdminBuilding'
 import { useAdminImportant } from '@/screens/admin/order/useAdminImportant'
+import { useAdminStatus } from '@/screens/admin/order/useAdminStatus'
 import { useAdminSystem } from '@/screens/admin/order/useAdminSystem'
 import { useOrderEdit } from '@/screens/admin/order/useOrderEdit'
-import { useAdminStatus } from '@/screens/admin/order/useAdminStatus'
 
 import formStyles from '@/components/ui/form-elements/adminForm.module.scss'
 
@@ -61,7 +61,9 @@ const OrderEdit: FC = () => {
 			) : (
 				<form onSubmit={handleSubmit(onSubmit)} className={formStyles.form}>
 					<OrderAdminFieldList {...dataFields} />
-					<Button type="submit">Обновить данные</Button>
+					<Button aria-label="update data" type="submit">
+						Обновить данные
+					</Button>
 				</form>
 			)}
 		</Meta>

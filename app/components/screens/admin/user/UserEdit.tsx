@@ -47,7 +47,9 @@ const UserEdit: FC = () => {
 			) : (
 				<form onSubmit={handleSubmit(onSubmit)} className={formStyles.form}>
 					<UserFieldList {...dataFields} />
-					<Button type="submit">Обновить</Button>
+					<Button aria-label="update" type="submit">
+						Обновить
+					</Button>
 				</form>
 			)}
 		</Meta>

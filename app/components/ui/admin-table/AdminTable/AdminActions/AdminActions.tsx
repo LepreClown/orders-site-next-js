@@ -19,10 +19,10 @@ const AdminActions: FC<IAdminActions> = ({ editUrl, removeHandler }) => {
 	}
 	return (
 		<div className={styles.actions}>
-			<button onClick={() => push(editUrl)}>
+			<button aria-label="edit " onClick={() => push(editUrl)}>
 				<MaterialIcon name="MdEdit" />
 			</button>
-			<button onClick={removeHandlerClick}>
+			<button aria-label="close" onClick={removeHandlerClick}>
 				<MaterialIcon name="MdClose" />
 			</button>
 		</div>

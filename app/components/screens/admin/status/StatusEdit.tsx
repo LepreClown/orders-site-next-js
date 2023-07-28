@@ -50,7 +50,9 @@ const StatusEdit: FC = () => {
 							error={errors.status_name}
 						/>
 					</div>
-					<Button type="submit">Обновить</Button>
+					<Button aria-label="update" type="submit">
+						Обновить
+					</Button>
 				</form>
 			)}
 		</Meta>

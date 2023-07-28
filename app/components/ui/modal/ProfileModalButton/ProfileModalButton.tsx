@@ -7,9 +7,10 @@ const ProfileModalButton: FC<{
 	title?: string
 }> = ({ title, toggle }) => {
 	return (
-		<Button className="text-gray-950 dark:text-white" onClick={toggle}>{`Редактировать ${
-			title ? title : ''
-		}`}</Button>
+		<Button
+			className="text-gray-950 dark:text-white"
+			aria-label="edit"
+			onClick={toggle}>{`Редактировать ${title ? title : ''}`}</Button>
 	)
 }
 

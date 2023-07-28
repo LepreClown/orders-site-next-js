@@ -82,7 +82,7 @@ const BuildingList: FC = () => {
 								error={errors.building_name}
 							/>
 						</div>
-						<Button type="submit" disabled={createStatus === 'loading'}>
+						<Button type="submit" aria-label="create" disabled={createStatus === 'loading'}>
 							Создать
 						</Button>
 					</form>

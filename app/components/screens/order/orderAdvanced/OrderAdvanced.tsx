@@ -52,7 +52,9 @@ const Order: FC = () => {
 	) : (
 		<form className={formStyles.form} onSubmit={handleSubmit(onSubmit)}>
 			<OrderAdminFieldList {...dataFields} />
-			<Button type="submit">Обновить заявку</Button>
+			<Button aria-label="update order" type="submit">
+				Обновить заявку
+			</Button>
 		</form>
 	)
 }

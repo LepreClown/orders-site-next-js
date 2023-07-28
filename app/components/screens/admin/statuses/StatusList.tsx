@@ -57,7 +57,7 @@ const UserList: FC = () => {
 								error={errors.status_name}
 							/>
 						</div>
-						<Button type="submit" disabled={createStatus === 'loading'}>
+						<Button aria-label="create" type="submit" disabled={createStatus === 'loading'}>
 							Создать
 						</Button>
 					</form>

@@ -107,7 +107,7 @@ const OrdersList: FC = () => {
 				<Modal toggle={toggle} title="заявки">
 					<form onSubmit={handleSubmit(onSubmit)} className={formStyles.formCreate}>
 						<OrdersAdminFieldList {...dataFields} />
-						<Button type="submit" disabled={createStatus === 'loading'}>
+						<Button aria-label="create" type="submit" disabled={createStatus === 'loading'}>
 							Создать
 						</Button>
 					</form>

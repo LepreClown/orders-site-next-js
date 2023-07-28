@@ -23,9 +23,9 @@ const AdminTableHeader: FC<{
 	return (
 		<div className={cn(styles.itemHeader)}>
 			{headerItems.map((value) => (
-				<div key={value.name}>
+				<div key={value.name} onClick={() => handleClick(value.orderBy)}>
 					<div>{value.name}</div>
-					<div className={styles.sort} onClick={() => handleClick(value.orderBy)}>
+					<div className={styles.sort}>
 						{value.name !== '№' && <MaterialIconTi name="TiArrowUnsorted" />}
 					</div>
 				</div>

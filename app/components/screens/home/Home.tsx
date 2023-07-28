@@ -79,6 +79,7 @@ const Home: FC = () => {
 			<Heading title="Ваши заявки" className="mb-6 text-3xl" />
 			<Button
 				onClick={handleClick}
+				aria-label="create"
 				className="btn-primary text-gray-950 dark:text-white font-semibold px-10 py-2 mb-8 ">
 				Создать заявку
 			</Button>
@@ -93,7 +94,7 @@ const Home: FC = () => {
 				<Modal toggle={toggle} title="заявки">
 					<form onSubmit={handleSubmit(onSubmit)} className={formStyles.formCreate}>
 						<HomeFieldList {...dataFields} />
-						<Button type="submit" disabled={createStatus === 'loading'}>
+						<Button aria-label="create" type="submit" disabled={createStatus === 'loading'}>
 							Создать
 						</Button>
 					</form>

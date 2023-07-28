@@ -59,7 +59,7 @@ const Auth: FC = () => {
 						<MaterialIcon name="MdRemoveRedEye" />
 					</span>
 					<div className={styles.buttons}>
-						<Button type="submit" disabled={status}>
+						<Button aria-label="log in" type="submit" disabled={status}>
 							Войти
 						</Button>
 					</div>

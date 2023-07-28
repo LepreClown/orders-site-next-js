@@ -17,10 +17,13 @@
 	@apply grid grid-flow-col gap-x-4 select-none transition-colors bg-primary bg-opacity-100 dark:bg-opacity-60 shadow-lg mt-4 px-5 rounded-lg overflow-x-auto;
 
 	> div {
-		@apply flex items-center gap-1 text-gray-950 text-opacity-80 dark:text-white dark:text-opacity-80  font-semibold py-3;
+		@apply flex items-center transition-all gap-1 text-gray-950 text-opacity-80 dark:text-white dark:text-opacity-80  font-semibold py-3 cursor-pointer;
 		width: 220px;
 		white-space: nowrap;
 
+		&:active {
+			transform: translateY(-2px);
+		}
 		&:last-child {
 			@apply text-right w-full justify-end;
 			min-width: 150px;
@@ -29,17 +32,6 @@
 }
 .sort {
 	@apply select-none;
-	> svg {
-		@apply cursor-pointer transition-colors;
-
-		&:hover {
-			@apply fill-gray-950;
-		}
-
-		&:active {
-			transform: translateY(-1px);
-		}
-	}
 }
 
 .notFound {

@@ -83,7 +83,9 @@ const Profile: FC = () => {
 								error={formStatePassword.errors.new_password}
 							/>
 						</div>
-						<Button type="submit">Изменить пароль</Button>
+						<Button aria-label="change password" type="submit">
+							Изменить пароль
+						</Button>
 					</form>
 				</Modal>
 			)}

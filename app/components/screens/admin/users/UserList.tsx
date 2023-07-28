@@ -138,7 +138,7 @@ const UserList: FC = () => {
 								)}
 							/>
 						</div>
-						<Button type="submit" disabled={createStatus === 'loading'}>
+						<Button aria-label="create" type="submit" disabled={createStatus === 'loading'}>
 							Создать
 						</Button>
 					</form>

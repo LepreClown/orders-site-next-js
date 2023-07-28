@@ -11,7 +11,7 @@ const ThemeToggle: FC = () => {
 		<div className={styles.toggle}>
 			<div className={styles.btnContainer}>
 				<div onClick={() => setTheme('light')}>
-					<button>
+					<button aria-label="svg-light">
 						<svg
 							width="26"
 							height="26"
@@ -27,7 +27,7 @@ const ThemeToggle: FC = () => {
 					<span>Светлая</span>
 				</div>
 				<div onClick={() => setTheme('dark')} className={styles.dark}>
-					<button>
+					<button aria-label="svg-dark">
 						<svg
 							width="26"
 							height="26"
