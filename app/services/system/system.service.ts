@@ -7,7 +7,7 @@ import { ISystem } from '@/shared/types/system.types'
 import { getSystemsUrl } from '../../config/api.config'
 
 export const SystemService = {
-	async getAll(orderBy: string) {
+	async getAll(orderBy?: string) {
 		const orderByField = orderBy ? orderBy : '-system_name'
 		return axios.get<ISystem[]>(getSystemsUrl(`?order_by_field=${orderByField}`))
 	},
