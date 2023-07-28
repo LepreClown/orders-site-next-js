@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { SubmitHandler } from 'react-hook-form'
 import { useMutation, useQuery } from 'react-query'
 import { toastr } from 'react-redux-toastr'
@@ -14,8 +14,9 @@ import { getAdminUrl } from '../../../../config/url.config'
 
 export const useImportant = () => {
 	const { push } = useRouter()
+	const [orderBy, setOrderBy] = useState('important_name')
 
-	const queryData = useQuery(['important list'], () => ImportantService.getAll(), {
+	const queryData = useQuery(['important list', orderBy], () => ImportantService.getAll(orderBy), {
 		select: ({ data }) =>
 			data.map((important, index) => ({
 				id: important.id,
@@ -26,6 +27,9 @@ export const useImportant = () => {
 			toastError(error, 'Список срочностей')
 		},
 	})
+	const handleImportantOrderBy = (orderBy: string) => {
+		setOrderBy(orderBy)
+	}
 
 	const { mutateAsync: deleteAsync } = useMutation(
 		'delete important',
@@ -66,9 +70,10 @@ export const useImportant = () => {
 			deleteAsync,
 			createAsync,
 			createStatus,
+			handleImportantOrderBy,
 			onSubmit,
 			...queryData,
 		}),
-		[queryData, createStatus, deleteAsync, createAsync],
+		[queryData, handleImportantOrderBy, createStatus, deleteAsync, createAsync],
 	)
 }

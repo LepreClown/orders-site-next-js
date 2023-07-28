@@ -35,11 +35,15 @@ const BuildingList: FC = () => {
 		quantityBuildings,
 		currentPage,
 		onPageChange,
+		handleBuildingOrderBy,
 		createStatus,
 		isLoading,
 		deleteAsync,
 	} = useBuilding()
-
+	const headerItems = [
+		{ name: '№', orderBy: '' },
+		{ name: 'Название объекта', orderBy: 'building_name' },
+	]
 	return (
 		<Meta title="Объекты">
 			<AdminNavigation />
@@ -52,8 +56,9 @@ const BuildingList: FC = () => {
 				quantity={quantityBuildings}
 			/>
 			<AdminTable
+				handleOrderByField={handleBuildingOrderBy}
 				tableItems={buildingsData || []}
-				headerItems={['№', 'Название объекта']}
+				headerItems={headerItems}
 				isLoading={isLoading}
 				removeHandler={deleteAsync}
 			/>

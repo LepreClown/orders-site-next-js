@@ -44,6 +44,7 @@ const OrdersList: FC = () => {
 		quantityOrders,
 		createStatus,
 		deleteAsync,
+		handleOrderByField,
 	} = useOrders()
 
 	const { isShow, toggle } = useModal()
@@ -69,6 +70,13 @@ const OrdersList: FC = () => {
 		isSystemsLoading,
 		isStatusLoading,
 	}
+	const headerItems = [
+		{ name: 'Дата создания', orderBy: 'created_at' },
+		{ name: 'Создатель', orderBy: 'creator__surname' },
+		{ name: 'Объект', orderBy: 'building__building_name' },
+		{ name: 'Материал', orderBy: 'material' },
+		{ name: 'Количество', orderBy: 'quantity' },
+	]
 
 	return (
 		<Meta title="Заявки">
@@ -81,12 +89,12 @@ const OrdersList: FC = () => {
 				searchTerm={searchTerm}
 				handleSearch={handleSearch}
 			/>
-			{/* TODO: в headersItems передавать данные из useQuery */}
 			<AdminTable
 				tableItems={ordersData || []}
-				headerItems={['Дата создания', 'Создатель', 'Объект', 'Материал', 'Количество']}
+				headerItems={headerItems}
 				isLoading={isLoading}
 				removeHandler={deleteAsync}
+				handleOrderByField={handleOrderByField}
 			/>
 			<Pagination
 				items={ordersData ? ordersData.length : 0}

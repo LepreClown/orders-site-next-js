@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { SubmitHandler } from 'react-hook-form'
 import { useMutation, useQuery } from 'react-query'
 import { toastr } from 'react-redux-toastr'
@@ -14,8 +14,9 @@ import { getAdminUrl } from '../../../../config/url.config'
 
 export const useSystem = () => {
 	const { push } = useRouter()
+	const [orderBy, setOrderBy] = useState('system_name')
 
-	const queryData = useQuery(['systems list'], () => SystemService.getAll(), {
+	const queryData = useQuery(['systems list', orderBy], () => SystemService.getAll(orderBy), {
 		select: ({ data }) =>
 			data.map((system, index) => ({
 				id: system.id,
@@ -26,7 +27,9 @@ export const useSystem = () => {
 			toastError(error, 'Список систем')
 		},
 	})
-
+	const handleSystemOrderBy = (orderBy: string) => {
+		setOrderBy(orderBy)
+	}
 	const { mutateAsync: deleteAsync } = useMutation(
 		'delete system',
 		(id: number) => SystemService.delete(id),
@@ -65,8 +68,9 @@ export const useSystem = () => {
 			deleteAsync,
 			createStatus,
 			onSubmit,
+			handleSystemOrderBy,
 			...queryData,
 		}),
-		[queryData, createStatus, deleteAsync, createAsync],
+		[queryData, handleSystemOrderBy, createStatus, deleteAsync, createAsync],
 	)
 }

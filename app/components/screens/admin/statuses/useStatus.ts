@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { SubmitHandler } from 'react-hook-form'
 import { useMutation, useQuery } from 'react-query'
 import { toastr } from 'react-redux-toastr'
@@ -13,9 +13,11 @@ import { toastError } from '@/utils/api/withToastrErrorRedux'
 import { getAdminUrl } from '../../../../config/url.config'
 
 export const useStatus = () => {
+	const [orderBy, setOrderBy] = useState<string>('status_name')
+
 	const { push } = useRouter()
 
-	const queryData = useQuery(['status list'], () => StatusService.getAll(), {
+	const queryData = useQuery(['status list', orderBy], () => StatusService.getAll(orderBy), {
 		select: ({ data }) =>
 			data.map((status, index) => ({
 				id: status.id,
@@ -26,6 +28,10 @@ export const useStatus = () => {
 			toastError(error, 'Список статусов')
 		},
 	})
+
+	const handleStatusByField = (orderBy: string) => {
+		setOrderBy(orderBy)
+	}
 
 	const { mutateAsync: deleteAsync } = useMutation(
 		'delete status',
@@ -66,9 +72,10 @@ export const useStatus = () => {
 			deleteAsync,
 			createAsync,
 			createStatus,
+			handleStatusByField,
 			onSubmit,
 			...queryData,
 		}),
-		[queryData, createStatus, deleteAsync, createAsync],
+		[queryData, handleStatusByField, createStatus, deleteAsync, createAsync],
 	)
 }

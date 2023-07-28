@@ -19,14 +19,15 @@ import { getAdminUrl } from '../../../../config/url.config'
 
 export const useOrders = () => {
 	const [searchTerm, setSearchTerm] = useState('')
-//	TODO:для order_by_field добавить useState, возможно сделать хук.
+	const [orderBy, setOrderBy] = useState<string>('-created_at')
+
 	const [currentPage, setCurrentPage] = useState(1)
 	const debouncedSearch = useDebounce(searchTerm, 500)
 	const { push } = useRouter()
 
 	const queryData = useQuery(
-		['order list', debouncedSearch, currentPage],
-		() => OrderService.getAll(currentPage - 1, debouncedSearch),
+		['order list', debouncedSearch, currentPage, orderBy],
+		() => OrderService.getAll(currentPage - 1, orderBy, debouncedSearch),
 		{
 			select: ({ data }) => data,
 			onError(error) {
@@ -34,6 +35,10 @@ export const useOrders = () => {
 			},
 		},
 	)
+
+	const handleOrderByField = (orderBy: string) => {
+		setOrderBy(orderBy)
+	}
 
 	const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
 		setSearchTerm(e.target.value)
@@ -107,6 +112,7 @@ export const useOrders = () => {
 			handleSearch,
 			createAsync,
 			currentPage,
+			handleOrderByField,
 			createStatus,
 			onSubmit,
 			quantityOrders,
@@ -115,6 +121,14 @@ export const useOrders = () => {
 			ordersData,
 			...queryData,
 		}),
-		[handleSearch, createStatus, searchTerm, deleteAsync, queryData, createAsync],
+		[
+			handleSearch,
+			handleOrderByField,
+			createStatus,
+			searchTerm,
+			deleteAsync,
+			queryData,
+			createAsync,
+		],
 	)
 }

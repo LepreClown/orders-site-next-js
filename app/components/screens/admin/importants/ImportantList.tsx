@@ -27,9 +27,15 @@ const ImportantList: FC = () => {
 		mode: 'onChange',
 	})
 
-	const { createStatus, onSubmit, data, isLoading, deleteAsync } = useImportant()
+	const { createStatus, handleImportantOrderBy, onSubmit, data, isLoading, deleteAsync } =
+		useImportant()
 
 	const { isShow, toggle } = useModal()
+
+	const headerItems = [
+		{ name: '№', orderBy: '' },
+		{ name: 'Название срочности', orderBy: 'important_name' },
+	]
 
 	return (
 		<Meta title="Срочности">
@@ -37,8 +43,9 @@ const ImportantList: FC = () => {
 			<Heading title="Срочности" />
 			<AdminHeader title="срочность" toggle={toggle} />
 			<AdminTable
+				handleOrderByField={handleImportantOrderBy}
 				tableItems={data || []}
-				headerItems={['№', 'Название срочности']}
+				headerItems={headerItems}
 				isLoading={isLoading}
 				removeHandler={deleteAsync}
 			/>

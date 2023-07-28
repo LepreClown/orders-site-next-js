@@ -18,12 +18,13 @@ import { getAdminUrl } from '../../../../config/url.config'
 export const useUsers = () => {
 	const [searchTerm, setSearchTerm] = useState('')
 	const [currentPage, setCurrentPage] = useState(1)
+	const [orderBy, setOrderBy] = useState<string>('-created_at')
 	const debouncedSearch = useDebounce(searchTerm, 500)
 	const { push } = useRouter()
 
 	const queryData = useQuery(
-		['user list', debouncedSearch, currentPage],
-		() => UserService.getUsers(currentPage - 1, debouncedSearch),
+		['user list', debouncedSearch, currentPage, orderBy],
+		() => UserService.getUsers(currentPage - 1, orderBy, debouncedSearch),
 		{
 			select: ({ data }) => data,
 
@@ -32,6 +33,9 @@ export const useUsers = () => {
 			},
 		},
 	)
+	const handleUserByField = (orderBy: string) => {
+		setOrderBy(orderBy)
+	}
 
 	const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
 		setSearchTerm(e.target.value)
@@ -100,6 +104,7 @@ export const useUsers = () => {
 			deleteAsync,
 			onPageChange,
 			dataUsers,
+			handleUserByField,
 			quantityUsers,
 			createStatus,
 			currentPage,
@@ -107,6 +112,14 @@ export const useUsers = () => {
 			createAsync,
 			...queryData,
 		}),
-		[handleSearch, searchTerm, createStatus, deleteAsync, queryData, createAsync],
+		[
+			handleSearch,
+			handleUserByField,
+			searchTerm,
+			createStatus,
+			deleteAsync,
+			queryData,
+			createAsync,
+		],
 	)
 }

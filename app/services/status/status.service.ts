@@ -7,8 +7,9 @@ import { IStatus } from '@/shared/types/status.types'
 import { getStatusesUrl } from '../../config/api.config'
 
 export const StatusService = {
-	async getAll() {
-		return axios.get<IStatus[]>(getStatusesUrl(''))
+	async getAll(orderBy: string) {
+		const orderByField = orderBy ? orderBy : '-status_name'
+		return axios.get<IStatus[]>(getStatusesUrl(`?order_by_field=${orderByField}`))
 	},
 
 	async create(data: any) {

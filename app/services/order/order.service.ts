@@ -7,12 +7,19 @@ import { IOrder } from '@/shared/types/orders.types'
 import { getOrdersUrl } from '../../config/api.config'
 
 export const OrderService = {
-	async getAll(page: number, search_by_material?: string) {
+	async getAll(page: number, orderBy: string, search_by_material?: string) {
 		const searchTerm = search_by_material ? { search_by_material } : {}
 		const pageCount = search_by_material ? 0 : page
-		return axios.get<IOrder>(getOrdersUrl(`?on_page=${7}&page=${pageCount ? pageCount : 0}`), {
-			params: searchTerm,
-		})
+		const orderByField = orderBy ? orderBy : '-created_at'
+
+		return axios.get<IOrder>(
+			getOrdersUrl(
+				`?on_page=${7}&page=${pageCount ? pageCount : 0}&order_by_field=${orderByField}`,
+			),
+			{
+				params: searchTerm,
+			},
+		)
 	},
 	async getAllHome(page: number, search_by_material?: string) {
 		const searchTerm = search_by_material ? { search_by_material } : {}
@@ -25,7 +32,7 @@ export const OrderService = {
 	async getOrders() {
 		return axios.get<IOrder>(getOrdersUrl(``))
 	},
-	async getFreshOrders () {
+	async getFreshOrders() {
 		return axios.get<IOrder>(getOrdersUrl(`?on_page=4&page=0&order_by_field=-created_at`))
 	},
 

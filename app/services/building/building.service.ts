@@ -7,11 +7,15 @@ import { IBuilding } from '@/shared/types/building.types'
 import { getBuildingsUrl } from '../../config/api.config'
 
 export const BuildingService = {
-	async getAll(page: number, search_by_building_name?: string) {
+	async getAll(page: number, orderBy: string, search_by_building_name?: string) {
 		const searchTerm = search_by_building_name ? { search_by_building_name } : {}
 		const pageCount = search_by_building_name ? 0 : page
+		const orderByField = orderBy ? orderBy : '-building_name'
+
 		return axios.get<IBuilding>(
-			getBuildingsUrl(`?on_page=${7}&page=${pageCount ? pageCount : 0}`),
+			getBuildingsUrl(
+				`?on_page=${7}&page=${pageCount ? pageCount : 0}&order_by_field=${orderByField}`,
+			),
 			{
 				params: searchTerm,
 			},

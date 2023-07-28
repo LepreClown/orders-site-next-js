@@ -19,10 +19,11 @@ export const useBuilding = () => {
 	const [currentPage, setCurrentPage] = useState(1)
 	const debouncedSearch = useDebounce(searchTerm, 500)
 	const { push } = useRouter()
+	const [orderBy, setOrderBy] = useState('building_name')
 
 	const queryData = useQuery(
-		['building list', debouncedSearch, currentPage],
-		() => BuildingService.getAll(currentPage - 1, debouncedSearch),
+		['building list', orderBy, debouncedSearch, currentPage],
+		() => BuildingService.getAll(currentPage - 1, orderBy, debouncedSearch),
 		{
 			select: ({ data }) => data,
 			onError(error) {
@@ -30,7 +31,9 @@ export const useBuilding = () => {
 			},
 		},
 	)
-
+	const handleBuildingOrderBy = (orderBy: string) => {
+		setOrderBy(orderBy)
+	}
 	const buildingsData = queryData.isSuccess
 		? queryData.data.buildings.map((building, index) => ({
 				id: building.id,
@@ -87,6 +90,7 @@ export const useBuilding = () => {
 			deleteAsync,
 			handleSearch,
 			createAsync,
+			handleBuildingOrderBy,
 			onSubmit,
 			createStatus,
 			buildingsData,
@@ -96,6 +100,15 @@ export const useBuilding = () => {
 			onPageChange,
 			...queryData,
 		}),
-		[queryData, searchTerm, createStatus, buildingsData, deleteAsync, createAsync, handleSearch],
+		[
+			queryData,
+			handleBuildingOrderBy,
+			searchTerm,
+			createStatus,
+			buildingsData,
+			deleteAsync,
+			createAsync,
+			handleSearch,
+		],
 	)
 }

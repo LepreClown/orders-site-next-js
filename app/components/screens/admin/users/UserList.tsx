@@ -44,8 +44,16 @@ const UserList: FC = () => {
 		dataUsers,
 		isLoading,
 		deleteAsync,
+		handleUserByField,
 		searchTerm,
 	} = useUsers()
+	const headerItems = [
+		{ name: 'Номер телефона', orderBy: 'telephone' },
+		{ name: 'Имя', orderBy: 'name' },
+		{ name: 'Фамилия', orderBy: 'surname' },
+		{ name: 'Роль', orderBy: 'role' },
+		{ name: 'Дата создания', orderBy: 'created_at' },
+	]
 
 	const { data: roles, isLoading: isRoleLoading } = useAdminRole()
 	const { isShow, toggle } = useModal()
@@ -63,9 +71,10 @@ const UserList: FC = () => {
 			/>
 			<AdminTable
 				tableItems={dataUsers || []}
-				headerItems={['Номер телефона', 'Имя', 'Фамилия', 'Роль', 'Дата создания']}
+				headerItems={headerItems}
 				isLoading={isLoading}
 				removeHandler={deleteAsync}
+				handleOrderByField={handleUserByField}
 			/>
 			<Pagination
 				items={dataUsers ? dataUsers.length : 0}

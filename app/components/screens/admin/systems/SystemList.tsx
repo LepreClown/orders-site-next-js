@@ -21,14 +21,18 @@ const SystemList: FC = () => {
 	const {
 		handleSubmit,
 		register,
-
 		formState: { errors },
 	} = useForm<ISystemEditInput>({
 		mode: 'onChange',
 	})
 
-	const { onSubmit, data, isLoading, deleteAsync, createStatus } = useSystem()
+	const { onSubmit, handleSystemOrderBy, data, isLoading, deleteAsync, createStatus } = useSystem()
 	const { isShow, toggle } = useModal()
+
+	const headerItems = [
+		{ name: '№', orderBy: '' },
+		{ name: 'Название системы', orderBy: 'system_name' },
+	]
 
 	return (
 		<Meta title="Системы">
@@ -36,8 +40,9 @@ const SystemList: FC = () => {
 			<Heading title="Системы" />
 			<AdminHeader toggle={toggle} title="система" />
 			<AdminTable
+				handleOrderByField={handleSystemOrderBy}
 				tableItems={data || []}
-				headerItems={['№', 'Название системы']}
+				headerItems={headerItems}
 				isLoading={isLoading}
 				removeHandler={deleteAsync}
 			/>

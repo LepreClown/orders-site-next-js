@@ -26,16 +26,21 @@ const UserList: FC = () => {
 		mode: 'onChange',
 	})
 	const { isShow, toggle } = useModal()
-	const { onSubmit, createStatus, data, isLoading, deleteAsync } = useStatus()
+	const { onSubmit, handleStatusByField, createStatus, data, isLoading, deleteAsync } = useStatus()
 
+	const headerItems = [
+		{ name: '№', orderBy: '' },
+		{ name: 'Название статуса', orderBy: 'status_name' },
+	]
 	return (
 		<Meta title="Статусы">
 			<AdminNavigation />
 			<Heading title="Статусы" />
 			<AdminHeader toggle={toggle} title="заявку" />
 			<AdminTable
+				handleOrderByField={handleStatusByField}
 				tableItems={data || []}
-				headerItems={['№', 'Название статуса']}
+				headerItems={headerItems}
 				isLoading={isLoading}
 				removeHandler={deleteAsync}
 			/>

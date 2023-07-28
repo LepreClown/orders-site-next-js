@@ -9,18 +9,23 @@ export const UserService = {
 		return axios.get<IUserItem>(getUsersUrl(`/${userId}`))
 	},
 
-	async getUsers(page: number, search_by_surname: string) {
+	async getUsers(page: number, orderBy: string, search_by_surname: string) {
 		const searchTerm = search_by_surname ? { search_by_surname } : {}
 		const pageCount = search_by_surname ? 0 : page
-		//TODO: чекнуть вот это условие ${search_by_surname ? 0 : page}
-		return axios.get<IUser>(getUsersUrl(`/?on_page=${7}&page=${pageCount ? pageCount : 0}`), {
-			params: searchTerm,
-		})
+		const orderByField = orderBy ? orderBy : '-created_at'
+		return axios.get<IUser>(
+			getUsersUrl(
+				`/?on_page=${7}&page=${pageCount ? pageCount : 0}&order_by_field=${orderByField}`,
+			),
+			{
+				params: searchTerm,
+			},
+		)
 	},
 	async getAll() {
 		return axios.get<IUser>(getUsersUrl(`?on_page=999&page=0`))
 	},
-	async getFreshUsers () {
+	async getFreshUsers() {
 		return axios.get<IUser>(getUsersUrl(`/?on_page=4&page=0&order_by_field=-created_at`))
 	},
 	async getUser(userId: number) {

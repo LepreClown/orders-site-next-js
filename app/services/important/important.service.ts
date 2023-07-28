@@ -7,8 +7,9 @@ import { IImportant } from '@/shared/types/important.types'
 import { getImportantsUrl } from '../../config/api.config'
 
 export const ImportantService = {
-	async getAll() {
-		return axios.get<IImportant[]>(getImportantsUrl(''))
+	async getAll(orderBy: string) {
+		const orderByField = orderBy ? orderBy : '-important_name'
+		return axios.get<IImportant[]>(getImportantsUrl(`?order_by_field=${orderByField}`))
 	},
 
 	async create(data: any) {
