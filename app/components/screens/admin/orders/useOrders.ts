@@ -88,6 +88,7 @@ export const useOrders = () => {
 				creator_id: data.creator_id,
 				status_id: data.status_id,
 				expected_time: Date.now(),
+				description: data.description,
 			}),
 		{
 			onError(error) {

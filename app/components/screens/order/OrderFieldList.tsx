@@ -1,6 +1,8 @@
 import { AxiosResponse } from 'axios'
+import dynamic from 'next/dynamic'
 import React, { FC } from 'react'
-import { FieldErrors, UseFormRegister } from 'react-hook-form'
+import { Control, Controller, FieldErrors, UseFormRegister } from 'react-hook-form'
+import { stripHtml } from 'string-strip-html'
 
 import { IOrderEditInput } from '@/screens/admin/order/order-edit-interface'
 
@@ -11,10 +13,15 @@ import SubHeading from '@/ui/heading/SubHeading'
 export interface IOrderFields {
 	register: UseFormRegister<IOrderEditInput>
 	errors: FieldErrors<IOrderEditInput>
+	control: Control<IOrderEditInput, any>
 	order: AxiosResponse<IOrderEditInput, any> | undefined
 }
 
-const OrderFieldList: FC<IOrderFields> = ({ register, errors, order }) => {
+const DynamicTextEditor = dynamic(() => import('@/ui/form-elements/TextEditor'), {
+	ssr: false,
+})
+
+const OrderFieldList: FC<IOrderFields> = ({ register, control, errors, order }) => {
 	return (
 		<div className={formStyles.form}>
 			<div className={formStyles.fields}>
@@ -124,6 +131,30 @@ const OrderFieldList: FC<IOrderFields> = ({ register, errors, order }) => {
 						disabled={true}
 					/>
 				</div>
+				<SubHeading
+					title="Примечание"
+					className="text-gray-800 dark:text-gray-300 text-opacity-80 text-[18px]"
+				/>
+
+				<Controller
+					name="description"
+					control={control}
+					defaultValue=""
+					render={({ field: { value, onChange }, fieldState: { error } }) => (
+						<DynamicTextEditor
+							placeholder="Описание"
+							onChange={onChange}
+							error={error}
+							value={value}
+						/>
+					)}
+					rules={{
+						validate: {
+							required: (v) =>
+								(v && stripHtml(v).result.length > 0) || 'Описание является обязательным полем!',
+						},
+					}}
+				/>
 			</div>
 		</div>
 	)

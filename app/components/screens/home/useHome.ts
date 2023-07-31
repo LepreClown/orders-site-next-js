@@ -49,6 +49,7 @@ export const useHome = () => {
 					creator: order.creator,
 					status: order.status,
 					created_at: convertDate(order.created_at),
+					description: order.description,
 				}),
 		  )
 		: []
@@ -67,6 +68,7 @@ export const useHome = () => {
 				creator_id: user.id,
 				status_id: data.status_id,
 				expected_time: String(Date.now()),
+				description: data.description,
 			}),
 		{
 			onError(error) {

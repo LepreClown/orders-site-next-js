@@ -21,8 +21,8 @@ export const useOrderEdit = (setValue: UseFormSetValue<IOrderEditInput>) => {
 	const { isLoading } = useQuery(['order', orderId], () => OrderService.getById(orderId), {
 		onSuccess: ({ data }) => {
 			setValue('building.id', data.building.id)
-			setValue('creator.name', data.creator.name)
 			setValue('creator.surname', data.creator.surname)
+			setValue('creator.name', data.creator.name)
 			setValue(
 				'creator.role',
 				data.creator.role === 'admin'
@@ -40,6 +40,7 @@ export const useOrderEdit = (setValue: UseFormSetValue<IOrderEditInput>) => {
 			setValue('status.id', data.status.id)
 			setValue('expected_time', data.created_at)
 			setValue('modified_at', convertDateTimeZone(data.modified_at))
+			setValue('description', data.description)
 		},
 		onError: (error) => {
 			toastError(error, 'Ошибка при получение завки')
@@ -60,6 +61,7 @@ export const useOrderEdit = (setValue: UseFormSetValue<IOrderEditInput>) => {
 				status_id: data.status.id,
 				expected_time: String(Date.now()),
 				modified_at: convertDate(data.modified_at),
+				description: data.description,
 			}),
 		{
 			onSuccess: () => {

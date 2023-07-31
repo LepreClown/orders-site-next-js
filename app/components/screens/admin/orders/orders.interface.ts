@@ -10,6 +10,7 @@ export interface IOrderCreate {
 	quantity: number
 	creator_id: number
 	status_id: number
+	description: string
 	expected_time: string
 }
 

@@ -42,6 +42,7 @@ export const useAdvancedOrderEdit = (setValue: UseFormSetValue<IOrderEditInputAd
 				setValue('status.id', data.status.id)
 				setValue('expected_time', data.created_at)
 				setValue('modified_at', convertDateTimeZone(data.modified_at))
+				setValue('description', data.description)
 			},
 			onError: (error) => {
 				toastError(error, 'Ошибка при получение завки')
@@ -63,6 +64,7 @@ export const useAdvancedOrderEdit = (setValue: UseFormSetValue<IOrderEditInputAd
 				status_id: data.status.id,
 				expected_time: String(Date.now()),
 				modified_at: convertDate(data.modified_at),
+				description: data.description,
 			}),
 		{
 			onSuccess: () => {

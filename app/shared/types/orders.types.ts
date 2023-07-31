@@ -16,6 +16,7 @@ export interface IOrderElement {
 	created_at: string
 	expected_time: string
 	modified_at: string
+	description: string
 }
 export interface IOrder {
 	quantity_orders: number

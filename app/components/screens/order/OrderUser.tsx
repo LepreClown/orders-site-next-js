@@ -23,6 +23,7 @@ const OrderUser: FC = () => {
 		order,
 		register,
 		errors,
+		control,
 	}
 	return isLoading ? (
 		<div className="mt-12">

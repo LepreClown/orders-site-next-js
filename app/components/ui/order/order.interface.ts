@@ -14,6 +14,7 @@ export interface IOrderItem {
 	creator: ICreator
 	status: IStatus
 	created_at: string
+	description: string
 	expected_at?: string
 	modified_at?: string
 	editUrl: string

@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic'
 import React, { FC } from 'react'
 import { Control, Controller, FieldErrors, UseFormRegister } from 'react-hook-form'
+import { stripHtml } from 'string-strip-html'
 
 import { IOrderEditInput } from '@/screens/admin/order/order-edit-interface'
 
@@ -23,6 +24,9 @@ export interface IOrderFields {
 	isStatusLoading: boolean
 }
 const DynamicSelect = dynamic(() => import('@/ui/select/Select'), {
+	ssr: false,
+})
+const DynamicTextEditor = dynamic(() => import('@/ui/form-elements/TextEditor'), {
 	ssr: false,
 })
 
@@ -143,6 +147,29 @@ const OrderFieldList: FC<IOrderFields> = ({
 							isLoading={isSystemsLoading}
 						/>
 					)}
+				/>
+				<SubHeading
+					title="Примечание"
+					className="text-gray-800 dark:text-gray-300 text-opacity-80 text-[18px]"
+				/>
+				<Controller
+					name="description"
+					control={control}
+					defaultValue=""
+					render={({ field: { value, onChange }, fieldState: { error } }) => (
+						<DynamicTextEditor
+							placeholder="Описание"
+							onChange={onChange}
+							error={error}
+							value={value}
+						/>
+					)}
+					rules={{
+						validate: {
+							required: (v) =>
+								(v && stripHtml(v).result.length > 0) || 'Описание является обязательным полем!',
+						},
+					}}
 				/>
 				<SubHeading
 					title="Информация о статусе"

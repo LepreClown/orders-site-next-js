@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic'
 import { FC } from 'react'
 import { Controller } from 'react-hook-form'
+import { stripHtml } from 'string-strip-html'
 
 import { IOrderEditFields } from '@/screens/admin/order/order-edit-interface'
 
@@ -9,6 +10,9 @@ import formStyles from '@/ui/form-elements/adminForm.module.scss'
 import SubHeading from '@/ui/heading/SubHeading'
 
 const DynamicSelect = dynamic(() => import('@/ui/select/Select'), {
+	ssr: false,
+})
+const DynamicTextEditor = dynamic(() => import('@/ui/form-elements/TextEditor'), {
 	ssr: false,
 })
 
@@ -128,6 +132,29 @@ const OrderAdminFieldList: FC<IOrderEditFields> = ({
 						isLoading={isSystemsLoading}
 					/>
 				)}
+			/>
+			<SubHeading
+				title="Примечание"
+				className="text-gray-800 dark:text-gray-300 text-opacity-80 text-[18px]"
+			/>
+			<Controller
+				name="description"
+				control={control}
+				defaultValue=""
+				render={({ field: { value, onChange }, fieldState: { error } }) => (
+					<DynamicTextEditor
+						placeholder="Описание"
+						onChange={onChange}
+						error={error}
+						value={value}
+					/>
+				)}
+				rules={{
+					validate: {
+						required: (v) =>
+							(v && stripHtml(v).result.length > 0) || 'Описание является обязательным полем!',
+					},
+				}}
 			/>
 			<SubHeading
 				title="Информация о статусе"
