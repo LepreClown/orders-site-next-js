@@ -51,6 +51,7 @@ const BuildingList: FC = () => {
 			<AdminHeader
 				toggle={toggle}
 				title="объект"
+				inputSearch="названию"
 				searchTerm={searchTerm}
 				handleSearch={handleSearch}
 				quantity={quantityBuildings}

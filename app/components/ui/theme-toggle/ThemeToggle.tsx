@@ -1,11 +1,20 @@
 import cn from 'classnames'
 import { useTheme } from 'next-themes'
-import React, { FC } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 
 import styles from './ThemeToggle.module.scss'
 
 const ThemeToggle: FC = () => {
+	const [mounted, setMounted] = useState(false)
 	const { theme, setTheme } = useTheme()
+
+	useEffect(() => {
+		setMounted(true)
+	}, [])
+
+	if (!mounted) {
+		return null
+	}
 
 	return (
 		<div className={styles.toggle}>

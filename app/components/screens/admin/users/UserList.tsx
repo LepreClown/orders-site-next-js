@@ -63,6 +63,7 @@ const UserList: FC = () => {
 			<AdminNavigation />
 			<Heading title="Пользователи" />
 			<AdminHeader
+				inputSearch="фамилии"
 				quantity={quantityUsers}
 				toggle={toggle}
 				title="пользователя"

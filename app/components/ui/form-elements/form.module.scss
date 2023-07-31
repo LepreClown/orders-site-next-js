@@ -3,7 +3,7 @@
 }
 
 .common {
-	@apply relative w-1/3 min-w-[200px] border-b border-gray-950 dark:border-gray-600 transition-colors focus-within:border-primary;
+	@apply relative w-1/3 min-w-[200px] border-b  border-gray-950 dark:border-gray-600 transition-colors dark:focus-within:border-primary focus-within:border-primary;
 	@media (min-width: 900px) {
 		max-width: 450px;
 	}
@@ -62,7 +62,7 @@
 
 	.wrapper {
 		.toolbar {
-			@apply mt-4 outline-border-none rounded-t-lg mb-0 bg-gray-500 dark:bg-gray-600 bg-opacity-40 p-3;
+			@apply mt-4 outline-border-none rounded-t-lg rounded-b-none mb-0 bg-gray-500 dark:bg-gray-600 bg-opacity-40 p-3;
 
 			> div {
 				@apply m-0;
@@ -74,7 +74,7 @@
 		}
 
 		.editor {
-			@apply h-auto border rounded-b-lg border-gray-300 dark:border-gray-700 px-4 text-gray-700 dark:text-gray-500 overflow-y-hidden cursor-text;
+			@apply transition-colors h-auto border focus-within:border-primary dark:focus-within:border-primary border-t-0 rounded-b-lg rounded-t-none border-gray-300 dark:border-gray-700 px-4 text-gray-700 dark:text-gray-500 overflow-y-hidden cursor-text;
 			min-height: 128px;
 		}
 	}

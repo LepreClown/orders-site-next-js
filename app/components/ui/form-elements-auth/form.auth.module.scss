@@ -3,13 +3,13 @@
 }
 
 .common {
-	@apply relative border-b border-gray-600 transition-colors focus-within:border-primary;
+	@apply relative border-b border-gray-600 transition-colors focus-within:border-primary dark:focus-within:border-primary;
 
 	> label {
 		@apply block;
 
 		> span {
-			@apply text-xs uppercase text-gray-600 block;
+			@apply text-xs uppercase text-gray-900 dark:text-gray-600 block;
 		}
 	}
 }
@@ -18,7 +18,7 @@
 	@apply text-left mb-8;
 
 	input {
-		@apply outline-border-none focus:ring-0 bg-transparent text-gray-500 w-full m-0 px-0;
+		@apply outline-border-none focus:ring-0 bg-transparent text-gray-700 dark:text-gray-500 w-full m-0 px-0;
 	}
 }
 

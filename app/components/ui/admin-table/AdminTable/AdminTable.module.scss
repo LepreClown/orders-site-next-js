@@ -14,7 +14,7 @@
 }
 
 .itemHeader {
-	@apply grid grid-flow-col gap-x-4 select-none transition-colors bg-primary bg-opacity-100 dark:bg-opacity-60 shadow-lg mt-4 px-5 rounded-lg overflow-x-auto;
+	@apply grid grid-flow-col gap-x-4 select-none bg-primary bg-opacity-100 dark:bg-opacity-60 shadow-lg mt-4 px-5 rounded-lg overflow-x-auto;
 
 	> div {
 		@apply flex items-center transition-all gap-1 text-gray-950 text-opacity-80 dark:text-white dark:text-opacity-80  font-semibold py-3 cursor-pointer;

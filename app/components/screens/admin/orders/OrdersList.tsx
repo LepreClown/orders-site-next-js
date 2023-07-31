@@ -83,6 +83,7 @@ const OrdersList: FC = () => {
 			<AdminNavigation />
 			<Heading title="Заявки" />
 			<AdminHeader
+				inputSearch="материалу"
 				quantity={quantityOrders}
 				toggle={toggle}
 				title="заявку"
