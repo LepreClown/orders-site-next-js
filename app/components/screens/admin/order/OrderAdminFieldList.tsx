@@ -58,6 +58,7 @@ const OrderAdminFieldList: FC<IOrderEditFields> = ({
 					type="number"
 					placeholder="Телефон"
 					error={errors.creator?.telephone}
+					disabled={true}
 				/>
 				<Field
 					{...register('creator.role', {

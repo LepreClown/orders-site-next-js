@@ -70,6 +70,7 @@ const OrderFieldList: FC<IOrderFields> = ({
 						{...register('creator.telephone', {
 							required: 'Телефон не указан',
 						})}
+						disabled={true}
 						type="number"
 						placeholder="Телефон"
 						error={errors.creator?.telephone}
