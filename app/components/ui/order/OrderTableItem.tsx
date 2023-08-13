@@ -19,22 +19,22 @@ const OrderTableItem: FC<IOrderItemProps> = ({ order, variant }) => {
 				<div className={styles.content}>
 					<div className={styles.building}>
 						<span>{order.building.building_name}</span>
-						{/*<span>{order.system.system_name}</span>*/}
-						{/*<span>{order.material}</span>*/}
 					</div>
 
 					<div className={styles.params}>
 						<div>
-							<span>Материал:</span>
-							<span>Количество:</span>
-							<span>Система:</span>
-							<span> Важность:</span>
-						</div>
-						<div>
-							<span>{order.material}</span>
-							<span>{order.quantity}</span>
-							<span>{order.system.system_name}</span>
-							<span>{order.important.important_name}</span>
+							<div>
+								Материал: <span>{order.material}</span>
+							</div>
+							<div className={styles.material}>
+								Количество: <span>{order.quantity}</span>
+							</div>
+							<div>
+								Система: <span>{order.system.system_name}</span>{' '}
+							</div>
+							<div>
+								Важность: <span>{order.important.important_name}</span>
+							</div>
 						</div>
 					</div>
 					<div className={styles.footer}>

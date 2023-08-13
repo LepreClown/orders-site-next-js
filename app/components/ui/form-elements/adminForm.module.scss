@@ -6,6 +6,7 @@
 		> div {
 			@apply flex gap-10;
 			width: 100%;
+
 			@media (min-width: 900px) {
 				@apply flex-wrap gap-y-0;
 			}

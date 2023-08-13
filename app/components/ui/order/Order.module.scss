@@ -27,6 +27,7 @@
 
 	.content {
 		@apply relative z-2 m-3 w-full;
+
 		div {
 			@apply mb-2;
 		}
@@ -39,19 +40,24 @@
 
 		.params {
 			@apply flex text-[16px] text-gray-900 dark:text-gray-300 gap-6;
-			div:first-child {
-				@apply flex-col flex font-semibold;
+
+			> div {
+				@apply flex flex-col font-semibold w-full;
+
+				.material {
+					@apply w-full whitespace-nowrap text-ellipsis overflow-x-hidden;
+					max-width: 90%;
+				}
 			}
-			div:last-child {
-				@apply flex-col flex font-semibold;
-			}
+
 			@media (max-width: 630px) {
 				@apply text-[14px];
 			}
 		}
 
 		.footer {
-			@apply flex justify-between text-[16px];
+			@apply flex justify-between  text-[16px] w-full;
+
 			> div:first-child {
 				@apply text-gray-600 dark:text-gray-600;
 			}

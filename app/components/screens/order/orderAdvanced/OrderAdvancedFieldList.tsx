@@ -60,6 +60,7 @@ const OrderFieldList: FC<IOrderFields> = ({
 						placeholder="Имя"
 						error={errors.creator?.name}
 					/>
+
 					<Field
 						{...register('creator.surname', {
 							required: 'Фимилия не указана',

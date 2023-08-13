@@ -2,9 +2,8 @@
 	@apply grid grid-flow-col gap-x-4 bg-gray-500 bg-opacity-20 dark:bg-gray-700 dark:bg-opacity-20 mt-4 px-5 rounded-lg transition-colors hover:bg-gray-600 hover:bg-opacity-30 dark:hover:bg-opacity-50 overflow-x-auto;
 
 	> div {
-		@apply text-gray-950 opacity-90 dark:text-white dark:text-opacity-80 py-3;
+		@apply text-gray-950 opacity-90 dark:text-white dark:text-opacity-80 py-3 whitespace-normal;
 		width: 220px;
-		white-space: nowrap;
 
 		&:last-child {
 			@apply text-right w-full justify-end;
