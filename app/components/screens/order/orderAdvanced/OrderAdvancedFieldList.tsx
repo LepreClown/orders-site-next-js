@@ -1,28 +1,15 @@
 import dynamic from 'next/dynamic'
 import React, { FC } from 'react'
-import { Control, Controller, FieldErrors, UseFormRegister } from 'react-hook-form'
+import { Controller } from 'react-hook-form'
 import { stripHtml } from 'string-strip-html'
 
-import { IOrderEditInput } from '@/screens/admin/order/order-edit-interface'
+import { IOrderEditFieldsAdvanced } from '@/screens/order/orderAdvanced/order-advanced-edit-interface'
 
 import Field from '@/ui/form-elements/Field'
+import FieldMaterial from '@/ui/form-elements/FieldMaterial'
 import formStyles from '@/ui/form-elements/adminForm.module.scss'
 import SubHeading from '@/ui/heading/SubHeading'
-import { IOption } from '@/ui/select/select.interface'
 
-export interface IOrderFields {
-	errors: FieldErrors<IOrderEditInput>
-	register: UseFormRegister<IOrderEditInput>
-	control: Control<IOrderEditInput, any>
-	importants: IOption[] | undefined
-	building: IOption[] | undefined
-	systems: IOption[] | undefined
-	statuses: IOption[] | undefined
-	isImportantsLoading: boolean
-	isBuildingsLoading: boolean
-	isSystemsLoading: boolean
-	isStatusLoading: boolean
-}
 const DynamicSelect = dynamic(() => import('@/ui/select/Select'), {
 	ssr: false,
 })
@@ -30,8 +17,11 @@ const DynamicTextEditor = dynamic(() => import('@/ui/form-elements/TextEditor'),
 	ssr: false,
 })
 
-const OrderFieldList: FC<IOrderFields> = ({
+const OrderFieldList: FC<IOrderEditFieldsAdvanced> = ({
 	errors,
+	fields,
+	addNewField,
+	removeField,
 	register,
 	control,
 	importants,
@@ -94,27 +84,17 @@ const OrderFieldList: FC<IOrderFields> = ({
 					title="Информация о заявки"
 					className="text-gray-800 dark:text-gray-300 text-opacity-80 text-[18px]"
 				/>
-				<div>
-					<Field
-						{...register('material', {
-							required: 'Материал не указан',
-						})}
-						type="text"
-						placeholder="Материал"
-						error={errors.material}
-					/>
-					<Field
-						{...register('quantity', {
-							required: 'Количество не указано',
-						})}
-						type="number"
-						placeholder="Количество"
-						error={errors.quantity}
-					/>
-				</div>
+				<FieldMaterial
+					errors={errors}
+					register={register}
+					control={control}
+					removeField={removeField}
+					addNewField={addNewField}
+					fields={fields}
+				/>
 				<SubHeading
 					title="Информация о объекте"
-					className="text-gray-800 dark:text-gray-300 text-opacity-80 text-[18px]"
+					className="text-gray-800 dark:text-gray-300 text-opacity-80 text-[18px] "
 				/>
 				<Controller
 					name="building.id"

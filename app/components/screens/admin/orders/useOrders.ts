@@ -53,8 +53,8 @@ export const useOrders = () => {
 						convertDate(order.created_at),
 						String(`${order.creator.name} ${order.creator.surname}`),
 						order.building.building_name,
-						order.material,
-						String(order.quantity),
+						order.materials[0]?.material,
+						String(order.materials[0]?.quantity),
 					],
 				}),
 		  )

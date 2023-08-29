@@ -35,17 +35,23 @@ const Home: FC = () => {
 		formState: { errors },
 	} = useForm<IOrderCreate>({
 		mode: 'onChange',
+		defaultValues: {
+			materials: [{ material: '', quantity: null }],
+		},
 	})
 
 	const {
 		onSubmit,
 		createStatus,
 		onPageChange,
+		fields,
+		addNewField,
+		removeField,
 		currentPage,
 		ordersData,
 		quantityOrders,
 		isLoading,
-	} = useHome()
+	} = useHome(control)
 
 	const { toggle, isShow } = useModal()
 
@@ -58,6 +64,9 @@ const Home: FC = () => {
 		errors,
 		register,
 		control,
+		fields,
+		removeField,
+		addNewField,
 		importants,
 		building,
 		systems,

@@ -7,21 +7,35 @@ import { stripHtml } from 'string-strip-html'
 import { IOrderEditInput } from '@/screens/admin/order/order-edit-interface'
 
 import Field from '@/ui/form-elements/Field'
+import FieldMaterial from '@/ui/form-elements/FieldMaterial'
 import formStyles from '@/ui/form-elements/adminForm.module.scss'
 import SubHeading from '@/ui/heading/SubHeading'
+
+import { IMaterials } from '@/shared/types/orders.types'
 
 export interface IOrderFields {
 	register: UseFormRegister<IOrderEditInput>
 	errors: FieldErrors<IOrderEditInput>
 	control: Control<IOrderEditInput, any>
 	order: AxiosResponse<IOrderEditInput, any> | undefined
+	addNewField: () => void
+	removeField: (index: number) => void
+	fields: IMaterials[]
 }
 
 const DynamicTextEditor = dynamic(() => import('@/ui/form-elements/TextEditor'), {
 	ssr: false,
 })
 
-const OrderFieldList: FC<IOrderFields> = ({ register, control, errors, order }) => {
+const OrderFieldList: FC<IOrderFields> = ({
+	register,
+	fields,
+	removeField,
+	addNewField,
+	control,
+	errors,
+	order,
+}) => {
 	return (
 		<div className={formStyles.form}>
 			<div className={formStyles.fields}>
@@ -62,26 +76,14 @@ const OrderFieldList: FC<IOrderFields> = ({ register, control, errors, order }) 
 					title="Информация о заявки"
 					className="text-gray-800  dark:text-gray-300 text-opacity-80 text-[18px]"
 				/>
-				<div>
-					<Field
-						{...register('material', {
-							required: 'Материал не указан',
-						})}
-						type="text"
-						disabled={true}
-						placeholder="Материал"
-						error={errors.material}
-					/>
-					<Field
-						{...register('quantity', {
-							required: 'Количество не указано',
-						})}
-						type="number"
-						disabled={true}
-						placeholder="Количество"
-						error={errors.quantity}
-					/>
-				</div>
+				<FieldMaterial
+					errors={errors}
+					register={register}
+					control={control}
+					removeField={removeField}
+					addNewField={addNewField}
+					fields={fields}
+				/>
 				<SubHeading
 					title="Информация о объекте"
 					className="text-gray-800 dark:text-gray-300  text-opacity-80  text-[18px]"

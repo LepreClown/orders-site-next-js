@@ -4,6 +4,8 @@ import { IOrderCreate } from '@/screens/admin/orders/orders.interface'
 
 import { IOption } from '@/ui/select/select.interface'
 
+import { IMaterials } from '@/shared/types/orders.types'
+
 export interface IOrderHomeCreate {
 	building_id: number
 	system_id: number
@@ -19,6 +21,9 @@ export interface IOrderHomeFields {
 	errors: FieldErrors<IOrderCreate>
 	register: UseFormRegister<IOrderCreate>
 	control: Control<IOrderCreate, any>
+	removeField: (index: number) => void
+	addNewField: () => void
+	fields: IMaterials[]
 	importants: IOption[] | undefined
 	building: IOption[] | undefined
 	systems: IOption[] | undefined

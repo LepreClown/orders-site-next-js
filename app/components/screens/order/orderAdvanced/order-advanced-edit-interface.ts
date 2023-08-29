@@ -2,7 +2,7 @@ import { Control, FieldErrors, UseFormRegister } from 'react-hook-form'
 
 import { IOption } from '@/ui/select/select.interface'
 
-import { IOrderElement } from '@/shared/types/orders.types'
+import { IMaterials, IOrderElement } from '@/shared/types/orders.types'
 
 export interface IOrderEditInputAdvanced extends IOrderElement {}
 
@@ -19,6 +19,9 @@ export interface IOrderEditFieldsAdvanced {
 	errors: FieldErrors<IOrderEditInputAdvanced>
 	register: UseFormRegister<IOrderEditInputAdvanced>
 	control: Control<IOrderEditInputAdvanced, any>
+	fields: IMaterials[]
+	addNewField: () => void
+	removeField: (index: number) => void
 	importants: IOption[] | undefined
 	building: IOption[] | undefined
 	systems: IOption[] | undefined

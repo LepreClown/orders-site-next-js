@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { SubmitHandler, UseFormSetValue } from 'react-hook-form'
+import { Control, SubmitHandler, UseFormSetValue, useFieldArray } from 'react-hook-form'
 import { useMutation, useQuery } from 'react-query'
 import { toastr } from 'react-redux-toastr'
 
@@ -12,7 +12,10 @@ import { toastError } from '@/utils/api/withToastrErrorRedux'
 import { convertDate } from '@/utils/date/convertDate'
 import { convertDateTimeZone } from '@/utils/date/convertDateTimeZone'
 
-export const useAdvancedOrderEdit = (setValue: UseFormSetValue<IOrderEditInputAdvanced>) => {
+export const useAdvancedOrderEdit = (
+	setValue: UseFormSetValue<IOrderEditInputAdvanced>,
+	control: Control<IOrderEditInputAdvanced, any>,
+) => {
 	const { push, query } = useRouter()
 
 	const orderId = Number(query.id)
@@ -36,8 +39,7 @@ export const useAdvancedOrderEdit = (setValue: UseFormSetValue<IOrderEditInputAd
 				setValue('creator.telephone', data.creator.telephone)
 				setValue('system.id', data.system.id)
 				setValue('important.id', data.important.id)
-				setValue('material', data.material)
-				setValue('quantity', data.quantity)
+				setValue('materials', data.materials)
 				setValue('creator.id', data.creator.id)
 				setValue('status.id', data.status.id)
 				setValue('expected_time', data.created_at)
@@ -58,8 +60,10 @@ export const useAdvancedOrderEdit = (setValue: UseFormSetValue<IOrderEditInputAd
 				building_id: data.building.id,
 				system_id: data.system.id,
 				important_id: data.important.id,
-				material: data.material,
-				quantity: Number(data.quantity),
+				materials: data.materials.map((material) => ({
+					material: material.material,
+					quantity: material.quantity,
+				})),
 				creator_id: data.creator.id,
 				status_id: data.status.id,
 				expected_time: String(Date.now()),
@@ -77,8 +81,20 @@ export const useAdvancedOrderEdit = (setValue: UseFormSetValue<IOrderEditInputAd
 		},
 	)
 
+	const { fields, append, remove } = useFieldArray({
+		control,
+		name: 'materials',
+	})
+
+	const addNewField = () => {
+		append({ material: '', quantity: null })
+	}
+	const removeField = (index: number) => {
+		remove(index)
+	}
+
 	const onSubmit: SubmitHandler<IOrderEditInputAdvanced> = async (data) => {
 		await mutateAsync(data)
 	}
-	return { onSubmit, isLoading }
+	return { onSubmit, isLoading, addNewField, removeField, fields }
 }

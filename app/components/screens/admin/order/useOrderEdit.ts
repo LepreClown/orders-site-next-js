@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { SubmitHandler, UseFormSetValue } from 'react-hook-form'
+import { SubmitHandler, useFieldArray, useForm } from 'react-hook-form'
 import { useMutation, useQuery } from 'react-query'
 import { toastr } from 'react-redux-toastr'
 
@@ -8,17 +8,27 @@ import { IOrderEditInput } from '@/screens/admin/order/order-edit-interface'
 import { OrderService } from '@/services/order/order.service'
 
 import { toastError } from '@/utils/api/withToastrErrorRedux'
-import { convertDate } from '@/utils/date/convertDate'
 import { convertDateTimeZone } from '@/utils/date/convertDateTimeZone'
 
 import { getAdminUrl } from '../../../../config/url.config'
 
-export const useOrderEdit = (setValue: UseFormSetValue<IOrderEditInput>) => {
+export const useOrderEdit = () => {
+	const {
+		handleSubmit,
+		register,
+		formState: { errors },
+		control,
+		setValue,
+		getValues,
+	} = useForm<IOrderEditInput>({
+		mode: 'onChange',
+	})
+
 	const { push, query } = useRouter()
 
 	const orderId = Number(query.id)
 
-	const { isLoading } = useQuery(['order', orderId], () => OrderService.getById(orderId), {
+	const { isLoading, data } = useQuery(['order', orderId], () => OrderService.getById(orderId), {
 		onSuccess: ({ data }) => {
 			setValue('building.id', data.building.id)
 			setValue('creator.surname', data.creator.surname)
@@ -34,8 +44,7 @@ export const useOrderEdit = (setValue: UseFormSetValue<IOrderEditInput>) => {
 			setValue('creator.telephone', data.creator.telephone)
 			setValue('system.id', data.system.id)
 			setValue('important.id', data.important.id)
-			setValue('material', data.material)
-			setValue('quantity', data.quantity)
+			setValue('materials', data.materials)
 			setValue('creator.id', data.creator.id)
 			setValue('status.id', data.status.id)
 			setValue('expected_time', data.created_at)
@@ -55,12 +64,13 @@ export const useOrderEdit = (setValue: UseFormSetValue<IOrderEditInput>) => {
 				building_id: data.building.id,
 				system_id: data.system.id,
 				important_id: data.important.id,
-				material: data.material,
-				quantity: Number(data.quantity),
+				materials: data.materials.map((material) => ({
+					material: material.material,
+					quantity: material.quantity,
+				})),
 				creator_id: data.creator.id,
 				status_id: data.status.id,
-				expected_time: String(Date.now()),
-				modified_at: convertDate(data.modified_at),
+				expected_time: '2023-08-28T13:15:16.240Z',
 				description: data.description,
 			}),
 		{
@@ -73,9 +83,30 @@ export const useOrderEdit = (setValue: UseFormSetValue<IOrderEditInput>) => {
 			},
 		},
 	)
-
 	const onSubmit: SubmitHandler<IOrderEditInput> = async (data) => {
 		await mutateAsync(data)
 	}
-	return { onSubmit, isLoading }
+	const { fields, append, remove } = useFieldArray({
+		control,
+		name: 'materials',
+	})
+
+	const addNewField = () => {
+		append({ material: '', quantity: null })
+	}
+	const removeField = (index: number) => {
+		remove(index)
+	}
+
+	return {
+		onSubmit,
+		isLoading,
+		fields,
+		removeField,
+		addNewField,
+		handleSubmit,
+		register,
+		formState: { errors },
+		control,
+	}
 }

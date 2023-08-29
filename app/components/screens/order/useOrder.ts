@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { UseFormSetValue } from 'react-hook-form'
+import { Control, UseFormSetValue, useFieldArray } from 'react-hook-form'
 import { useQuery } from 'react-query'
 
 import { IOrderEditInput } from '@/screens/admin/order/order-edit-interface'
@@ -9,7 +9,10 @@ import { OrderService } from '@/services/order/order.service'
 import { toastError } from '@/utils/api/withToastrErrorRedux'
 import { getKeys } from '@/utils/object/getKeys'
 
-export const useOrder = (setValue: UseFormSetValue<IOrderEditInput>) => {
+export const useOrder = (
+	setValue: UseFormSetValue<IOrderEditInput>,
+	control: Control<IOrderEditInput, any>,
+) => {
 	const { query } = useRouter()
 
 	const orderId = Number(query.id)
@@ -29,6 +32,16 @@ export const useOrder = (setValue: UseFormSetValue<IOrderEditInput>) => {
 			enabled: !!query.id,
 		},
 	)
+	const { fields, append, remove } = useFieldArray({
+		control,
+		name: 'materials',
+	})
 
-	return { isLoading, order, orderId }
+	const addNewField = () => {
+		append({ material: '', quantity: null })
+	}
+	const removeField = (index: number) => {
+		remove(index)
+	}
+	return { isLoading, order, orderId, addNewField, fields, removeField }
 }

@@ -9,14 +9,17 @@ export interface IOrderElement {
 	building: IBuildingItem
 	system: ISystem
 	important: IImportant
-	material: string
-	quantity: number
+	materials: IMaterials[]
 	status: IStatus
 	creator: ICreator
 	created_at: string
 	expected_time: string
 	modified_at: string
 	description: string
+}
+export interface IMaterials {
+	material: string
+	quantity: number | null
 }
 export interface IOrder {
 	quantity_orders: number

@@ -2,7 +2,7 @@ import { Control, FieldErrors, UseFormRegister } from 'react-hook-form'
 
 import { IOption } from '@/ui/select/select.interface'
 
-import { IOrderElement } from '@/shared/types/orders.types'
+import { IMaterials, IOrderElement } from '@/shared/types/orders.types'
 
 // export interface IOrderEditInput
 // 	extends Omit<IOrder, 'createdAt' | 'important' | 'system' | 'building'> {
@@ -30,6 +30,9 @@ export interface IOrderEditFields {
 	building: IOption[] | undefined
 	systems: IOption[] | undefined
 	statuses: IOption[] | undefined
+	fields: IMaterials[]
+	addNewField: () => void
+	removeField: (index: number) => void
 	isImportantsLoading: boolean
 	isBuildingsLoading: boolean
 	isSystemsLoading: boolean

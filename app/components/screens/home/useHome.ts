@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import { ChangeEvent, useMemo, useState } from 'react'
-import { SubmitHandler } from 'react-hook-form'
+import { Control, SubmitHandler, useFieldArray } from 'react-hook-form'
 import { useMutation, useQuery } from 'react-query'
 import { toastr } from 'react-redux-toastr'
 
@@ -18,7 +18,7 @@ import { convertDate } from '@/utils/date/convertDate'
 
 import { getOrderUrl } from '../../../config/url.config'
 
-export const useHome = () => {
+export const useHome = (control: Control<IOrderCreate, any>) => {
 	const [searchTerm, setSearchTerm] = useState('')
 	const [currentPage, setCurrentPage] = useState(1)
 	const debouncedSearch = useDebounce(searchTerm, 500)
@@ -44,8 +44,8 @@ export const useHome = () => {
 					building: order.building,
 					system: order.system,
 					important: order.important,
-					material: order.material,
-					quantity: order.quantity,
+					material: order.materials[0]?.material,
+					quantity: Number(order.materials[0]?.quantity),
 					creator: order.creator,
 					status: order.status,
 					created_at: convertDate(order.created_at),
@@ -63,8 +63,10 @@ export const useHome = () => {
 				building_id: data.building_id,
 				system_id: data.system_id,
 				important_id: data.important_id,
-				material: data.material,
-				quantity: Number(data.quantity),
+				materials: data.materials.map((material) => ({
+					material: material.material,
+					quantity: material.quantity,
+				})),
 				creator_id: user.id,
 				status_id: data.status_id,
 				expected_time: String(Date.now()),
@@ -80,7 +82,17 @@ export const useHome = () => {
 			},
 		},
 	)
+	const { fields, append, remove } = useFieldArray({
+		control,
+		name: 'materials',
+	})
 
+	const addNewField = () => {
+		append({ material: '', quantity: null })
+	}
+	const removeField = (index: number) => {
+		remove(index)
+	}
 	const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
 		setSearchTerm(e.target.value)
 	}
@@ -96,6 +108,9 @@ export const useHome = () => {
 		() => ({
 			handleSearch,
 			onPageChange,
+			fields,
+			removeField,
+			addNewField,
 			currentPage,
 			searchTerm,
 			ordersData,
@@ -104,6 +119,6 @@ export const useHome = () => {
 			quantityOrders,
 			onSubmit,
 		}),
-		[handleSearch, createStatus, ordersData, isLoading, searchTerm],
+		[handleSearch, removeField, addNewField, createStatus, ordersData, isLoading, searchTerm],
 	)
 }

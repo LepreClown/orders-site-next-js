@@ -2,12 +2,13 @@ import { Control, FieldErrors, UseFormRegister } from 'react-hook-form'
 
 import { IOption } from '@/ui/select/select.interface'
 
+import { IMaterials } from '@/shared/types/orders.types'
+
 export interface IOrderCreate {
 	building_id: number
 	system_id: number
 	important_id: number
-	material: string
-	quantity: number
+	materials: IMaterials[]
 	creator_id: number
 	status_id: number
 	description: string

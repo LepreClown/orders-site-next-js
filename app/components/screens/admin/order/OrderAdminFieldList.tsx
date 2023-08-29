@@ -6,6 +6,7 @@ import { stripHtml } from 'string-strip-html'
 import { IOrderEditFields } from '@/screens/admin/order/order-edit-interface'
 
 import Field from '@/ui/form-elements/Field'
+import FieldMaterial from '@/ui/form-elements/FieldMaterial'
 import formStyles from '@/ui/form-elements/adminForm.module.scss'
 import SubHeading from '@/ui/heading/SubHeading'
 
@@ -21,7 +22,10 @@ const OrderAdminFieldList: FC<IOrderEditFields> = ({
 	register,
 	control,
 	importants,
+	addNewField,
+	removeField,
 	building,
+	fields,
 	systems,
 	statuses,
 	isImportantsLoading,
@@ -74,30 +78,22 @@ const OrderAdminFieldList: FC<IOrderEditFields> = ({
 					disabled={true}
 				/>
 			</div>
+
 			<SubHeading
 				title="Информация о заявки"
 				className="text-gray-800 dark:text-gray-300 text-opacity-80 text-[18px]"
 			/>
-			<div>
-				<Field
-					{...register('material', {
-						required: 'Материал не указан',
-					})}
-					type="text"
-					placeholder="Материал"
-					error={errors.material}
-				/>
-				<Field
-					{...register('quantity', {
-						required: 'Количество не указано',
-					})}
-					type="number"
-					placeholder="Количество"
-					error={errors.quantity}
-				/>
-			</div>
+			<FieldMaterial
+				errors={errors}
+				register={register}
+				control={control}
+				removeField={removeField}
+				addNewField={addNewField}
+				fields={fields}
+			/>
+
 			<SubHeading
-				title="Информация о объекте"
+				title="Информация об объекте"
 				className="text-gray-800 dark:text-gray-300 text-opacity-80 text-[18px]"
 			/>
 			<Controller
@@ -121,7 +117,7 @@ const OrderAdminFieldList: FC<IOrderEditFields> = ({
 				name="system.id"
 				control={control}
 				rules={{
-					required: 'Пожалуйста выберите система!',
+					required: 'Пожалуйста выберите систему!',
 				}}
 				render={({ field, fieldState: { error } }) => (
 					<DynamicSelect

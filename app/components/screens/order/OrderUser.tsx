@@ -13,14 +13,16 @@ const OrderUser: FC = () => {
 		control,
 		formState: { errors },
 		setValue,
-		handleSubmit,
 	} = useForm<IOrderEditInput>({
 		mode: 'onChange',
 	})
-	const { isLoading, order } = useOrder(setValue)
+	const { isLoading, order, fields, addNewField, removeField } = useOrder(setValue, control)
 
 	const dataFields: IOrderFields = {
 		order,
+		fields,
+		addNewField,
+		removeField,
 		register,
 		errors,
 		control,

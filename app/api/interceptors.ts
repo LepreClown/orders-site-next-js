@@ -27,9 +27,11 @@ instance.interceptors.response.use(
 	(config) => config,
 	async (error) => {
 		const originalRequest = error.config
-
+		// TODO : check
 		if (
-			(error.response.status === 401 ||
+			(error.response.status === 403 ||
+				error.message === 'Request failed with status code 403' ||
+				error.response.data.detail === 'Access token is expired' ||
 				errorCatch(error) === 'jwt expired' ||
 				errorCatch(error) === 'jwt must be provided') &&
 			error.config &&
@@ -41,9 +43,10 @@ instance.interceptors.response.use(
 
 				return instance.request(originalRequest)
 			} catch (e) {
-				if (errorCatch(e) === 'jwt expired') removeTokensStorage()
+				removeTokensStorage()
 			}
 		}
+
 		throw error
 	},
 )

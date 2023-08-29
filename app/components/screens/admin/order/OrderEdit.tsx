@@ -1,8 +1,7 @@
 import React, { FC } from 'react'
-import { useForm } from 'react-hook-form'
 
 import OrderAdminFieldList from '@/screens/admin/order/OrderAdminFieldList'
-import { IOrderEditFields, IOrderEditInput } from '@/screens/admin/order/order-edit-interface'
+import { IOrderEditFields } from '@/screens/admin/order/order-edit-interface'
 import { useAdminBuilding } from '@/screens/admin/order/useAdminBuilding'
 import { useAdminImportant } from '@/screens/admin/order/useAdminImportant'
 import { useAdminStatus } from '@/screens/admin/order/useAdminStatus'
@@ -20,29 +19,31 @@ import Meta from '@/utils/meta/Meta'
 
 const OrderEdit: FC = () => {
 	const {
+		isLoading,
+		onSubmit,
+		removeField,
+		addNewField,
 		handleSubmit,
-		register,
-		formState: { errors },
+		fields,
 		control,
-		setValue,
-		getValues,
-	} = useForm<IOrderEditInput>({
-		mode: 'onChange',
-	})
-
-	const { isLoading, onSubmit } = useOrderEdit(setValue)
+		formState,
+		register,
+	} = useOrderEdit()
 	const { data: importants, isLoading: isImportantsLoading } = useAdminImportant()
 	const { data: building, isLoading: isBuildingsLoading } = useAdminBuilding()
 	const { data: systems, isLoading: isSystemsLoading } = useAdminSystem()
 	const { data: statuses, isLoading: isStatusLoading } = useAdminStatus()
 
 	const dataFields: IOrderEditFields = {
-		errors,
+		errors: formState.errors,
 		register,
 		control,
 		importants,
 		building,
 		systems,
+		removeField,
+		addNewField,
+		fields,
 		statuses,
 		isImportantsLoading,
 		isBuildingsLoading,

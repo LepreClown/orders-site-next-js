@@ -26,7 +26,10 @@ const Order: FC = () => {
 	} = useForm<IOrderEditInputAdvanced>({
 		mode: 'onChange',
 	})
-	const { isLoading, onSubmit } = useAdvancedOrderEdit(setValue)
+	const { isLoading, onSubmit, fields, addNewField, removeField } = useAdvancedOrderEdit(
+		setValue,
+		control,
+	)
 	const { data: importants, isLoading: isImportantsLoading } = useAdvancedImportant()
 	const { data: building, isLoading: isBuildingsLoading } = useAdvancedBuilding()
 	const { data: systems, isLoading: isSystemsLoading } = useAdvancedSystem()
@@ -37,6 +40,9 @@ const Order: FC = () => {
 		register,
 		control,
 		importants,
+		fields,
+		addNewField,
+		removeField,
 		building,
 		systems,
 		statuses,
