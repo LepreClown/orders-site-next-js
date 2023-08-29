@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { Control, Controller, FieldErrors, UseFormRegister } from 'react-hook-form'
 
-import { IOrderEditFields } from '@/screens/admin/order/order-edit-interface'
+import { IOrderEditFields, IOrderEditInput } from '@/screens/admin/order/order-edit-interface'
 import { IOrderCreate } from '@/screens/admin/orders/orders.interface'
 import { IOrderEditInputAdvanced } from '@/screens/order/orderAdvanced/order-advanced-edit-interface'
 
@@ -13,9 +13,11 @@ import { IMaterials } from '@/shared/types/orders.types'
 import styles from './field-material.module.scss'
 
 interface IFieldMaterial {
-	errors: FieldErrors<IOrderEditInputAdvanced | IOrderCreate | IOrderEditFields>
-	register: UseFormRegister<IOrderEditInputAdvanced | IOrderCreate | IOrderEditFields>
-	control: Control<IOrderEditInputAdvanced | IOrderCreate | IOrderEditFields, any>
+	errors: FieldErrors<IOrderEditInputAdvanced | IOrderEditInput | IOrderCreate | IOrderEditFields>
+	register: UseFormRegister<
+		IOrderEditInputAdvanced | IOrderEditInput | IOrderCreate | IOrderEditFields
+	>
+	control: Control<IOrderEditInputAdvanced | IOrderEditInput | IOrderCreate | IOrderEditFields, any>
 	removeField: (index: number) => void
 	addNewField: () => void
 	fields: IMaterials[]
