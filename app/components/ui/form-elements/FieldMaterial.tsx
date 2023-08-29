@@ -1,6 +1,10 @@
 import React, { FC } from 'react'
 import { Control, Controller, FieldErrors, UseFormRegister } from 'react-hook-form'
 
+import { IOrderEditFields, IOrderEditInput } from '@/screens/admin/order/order-edit-interface'
+import { IOrderCreate } from '@/screens/admin/orders/orders.interface'
+import { IOrderEditInputAdvanced } from '@/screens/order/orderAdvanced/order-advanced-edit-interface'
+
 import Field from '@/ui/form-elements/Field'
 import MaterialIcon from '@/ui/icons/MaterialIcon'
 
@@ -9,7 +13,7 @@ import { IMaterials } from '@/shared/types/orders.types'
 import styles from './field-material.module.scss'
 
 interface IFieldMaterial {
-	errors: FieldErrors<any>
+	errors: FieldErrors<IOrderEditInputAdvanced | IOrderEditInput | IOrderCreate | IOrderEditFields>
 	register: UseFormRegister<any>
 	control: Control<any, any>
 	removeField: (index: number) => void
