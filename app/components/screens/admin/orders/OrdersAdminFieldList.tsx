@@ -1,11 +1,11 @@
 import dynamic from 'next/dynamic'
-import { FC } from 'react'
+import React, { FC } from 'react'
 import { Controller } from 'react-hook-form'
 import { stripHtml } from 'string-strip-html'
 
 import { IOrdersFields } from '@/screens/admin/orders/orders.interface'
 
-import Field from '@/ui/form-elements/Field'
+import FieldMaterial from '@/ui/form-elements/FieldMaterial'
 import formStyles from '@/ui/form-elements/adminForm.module.scss'
 
 const DynamicSelect = dynamic(() => import('@/ui/select/Select'), {
@@ -20,6 +20,9 @@ const OrderAdminFieldsList: FC<IOrdersFields> = ({
 	control,
 	users,
 	systems,
+	fields,
+	removeField,
+	addNewField,
 	building,
 	statuses,
 	importants,
@@ -32,21 +35,13 @@ const OrderAdminFieldsList: FC<IOrdersFields> = ({
 	return (
 		<>
 			<div className={formStyles.fieldsCreate}>
-				<Field
-					{...register('material', {
-						required: 'Материал не указан',
-					})}
-					type="text"
-					placeholder="Материал"
-					error={errors.material}
-				/>
-				<Field
-					{...register('quantity', {
-						required: 'Количество не указано',
-					})}
-					type="number"
-					placeholder="Количество"
-					error={errors.quantity}
+				<FieldMaterial
+					control={control}
+					register={register}
+					errors={errors}
+					fields={fields}
+					removeField={removeField}
+					addNewField={addNewField}
 				/>
 				<Controller
 					name="creator_id"

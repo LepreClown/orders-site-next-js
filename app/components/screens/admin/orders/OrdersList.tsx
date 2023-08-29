@@ -31,6 +31,9 @@ const OrdersList: FC = () => {
 		formState: { errors },
 	} = useForm<IOrderCreate>({
 		mode: 'onChange',
+		defaultValues: {
+			materials: [{ material: '', quantity: null }],
+		},
 	})
 
 	const {
@@ -39,13 +42,16 @@ const OrdersList: FC = () => {
 		onPageChange,
 		handleSearch,
 		isLoading,
+		fields,
+		addNewField,
+		removeField,
 		searchTerm,
 		ordersData,
 		quantityOrders,
 		createStatus,
 		deleteAsync,
 		handleOrderByField,
-	} = useOrders()
+	} = useOrders(control)
 
 	const { isShow, toggle } = useModal()
 
@@ -60,6 +66,9 @@ const OrdersList: FC = () => {
 		register,
 		control,
 		importants,
+		fields,
+		addNewField,
+		removeField,
 		users,
 		isUsersLoading,
 		building,

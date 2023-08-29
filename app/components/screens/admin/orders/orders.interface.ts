@@ -19,6 +19,9 @@ export interface IOrdersFields {
 	errors: FieldErrors<IOrderCreate>
 	register: UseFormRegister<IOrderCreate>
 	control: Control<IOrderCreate, any>
+	addNewField: () => void
+	removeField: (index: number) => void
+	fields: IMaterials[]
 	importants: IOption[] | undefined
 	building: IOption[] | undefined
 	users: IOption[] | undefined

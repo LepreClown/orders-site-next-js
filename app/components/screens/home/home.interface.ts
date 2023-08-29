@@ -10,7 +10,7 @@ export interface IOrderHomeCreate {
 	building_id: number
 	system_id: number
 	important_id: number
-	material: string
+	materials: IMaterials[]
 	quantity: number
 	creator_id: number
 	status_id: number

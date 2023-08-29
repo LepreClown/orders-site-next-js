@@ -19,6 +19,7 @@ interface IFieldMaterial {
 	removeField: (index: number) => void
 	addNewField: () => void
 	fields: IMaterials[]
+	status?: boolean
 }
 
 const FieldMaterial: FC<IFieldMaterial> = ({
@@ -28,6 +29,7 @@ const FieldMaterial: FC<IFieldMaterial> = ({
 	errors,
 	removeField,
 	addNewField,
+	status = true,
 }) => {
 	return (
 		<div className={styles.fields}>
@@ -68,15 +70,19 @@ const FieldMaterial: FC<IFieldMaterial> = ({
 								/>
 							)}
 						/>
-						<div className={styles.removeBtn} onClick={() => removeField(index)}>
-							<MaterialIcon name="MdClose" />
-						</div>
+						{status && (
+							<div className={styles.removeBtn} onClick={() => removeField(index)}>
+								<MaterialIcon name="MdClose" />
+							</div>
+						)}
 					</div>
 				)
 			})}
-			<div className={styles.addBtn} onClick={() => addNewField()}>
-				<MaterialIcon name="MdAddCircle" />
-			</div>
+			{status && (
+				<div className={styles.addBtn} onClick={() => addNewField()}>
+					<MaterialIcon name="MdAddCircle" />
+				</div>
+			)}
 		</div>
 	)
 }

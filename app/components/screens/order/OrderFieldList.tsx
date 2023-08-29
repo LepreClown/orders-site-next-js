@@ -83,6 +83,7 @@ const OrderFieldList: FC<IOrderFields> = ({
 					removeField={removeField}
 					addNewField={addNewField}
 					fields={fields}
+					status={false}
 				/>
 				<SubHeading
 					title="Информация о объекте"

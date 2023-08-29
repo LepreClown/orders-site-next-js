@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import { ChangeEvent, useMemo, useState } from 'react'
-import { SubmitHandler } from 'react-hook-form'
+import { Control, SubmitHandler, useFieldArray } from 'react-hook-form'
 import { useMutation, useQuery } from 'react-query'
 import { toastr } from 'react-redux-toastr'
 
@@ -17,7 +17,7 @@ import { convertDate } from '@/utils/date/convertDate'
 
 import { getAdminUrl } from '../../../../config/url.config'
 
-export const useOrders = () => {
+export const useOrders = (control: Control<IOrderCreate, any>) => {
 	const [searchTerm, setSearchTerm] = useState('')
 	const [orderBy, setOrderBy] = useState<string>('-created_at')
 
@@ -83,8 +83,10 @@ export const useOrders = () => {
 				building_id: data.building_id,
 				system_id: data.system_id,
 				important_id: data.important_id,
-				material: data.material,
-				quantity: Number(data.quantity),
+				materials: data.materials.map((material) => ({
+					material: material.material,
+					quantity: material.quantity,
+				})),
 				creator_id: data.creator_id,
 				status_id: data.status_id,
 				expected_time: Date.now(),
@@ -107,11 +109,26 @@ export const useOrders = () => {
 		setCurrentPage(page)
 	}
 
+	const { fields, append, remove } = useFieldArray({
+		control,
+		name: 'materials',
+	})
+
+	const addNewField = () => {
+		append({ material: '', quantity: null })
+	}
+	const removeField = (index: number) => {
+		remove(index)
+	}
+
 	return useMemo(
 		() => ({
 			deleteAsync,
 			handleSearch,
 			createAsync,
+			fields,
+			addNewField,
+			removeField,
 			currentPage,
 			handleOrderByField,
 			createStatus,
@@ -128,6 +145,9 @@ export const useOrders = () => {
 			createStatus,
 			searchTerm,
 			deleteAsync,
+			fields,
+			addNewField,
+			removeField,
 			queryData,
 			createAsync,
 		],
