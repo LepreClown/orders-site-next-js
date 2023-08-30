@@ -35,14 +35,6 @@ const OrderAdminFieldsList: FC<IOrdersFields> = ({
 	return (
 		<>
 			<div className={formStyles.fieldsCreate}>
-				<FieldMaterial
-					control={control}
-					register={register}
-					errors={errors}
-					fields={fields}
-					removeField={removeField}
-					addNewField={addNewField}
-				/>
 				<Controller
 					name="creator_id"
 					control={control}
@@ -123,6 +115,16 @@ const OrderAdminFieldsList: FC<IOrdersFields> = ({
 							isLoading={isImportantsLoading}
 						/>
 					)}
+				/>
+			</div>
+			<div className={formStyles.material}>
+				<FieldMaterial
+					control={control}
+					register={register}
+					errors={errors}
+					fields={fields}
+					removeField={removeField}
+					addNewField={addNewField}
 				/>
 			</div>
 			<div className={formStyles.text}>

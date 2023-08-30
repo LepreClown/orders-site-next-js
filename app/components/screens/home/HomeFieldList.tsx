@@ -34,14 +34,6 @@ const HomeFieldList: FC<IOrderHomeFields> = ({
 	return (
 		<>
 			<div className={formStyles.fieldsCreate}>
-				<FieldMaterial
-					control={control}
-					register={register}
-					errors={errors}
-					fields={fields}
-					removeField={removeField}
-					addNewField={addNewField}
-				/>
 				<Controller
 					name="building_id"
 					control={control}
@@ -105,6 +97,16 @@ const HomeFieldList: FC<IOrderHomeFields> = ({
 							isLoading={isImportantsLoading}
 						/>
 					)}
+				/>
+			</div>
+			<div className={formStyles.material}>
+				<FieldMaterial
+					control={control}
+					register={register}
+					errors={errors}
+					fields={fields}
+					removeField={removeField}
+					addNewField={addNewField}
 				/>
 			</div>
 			<div className={formStyles.text}>

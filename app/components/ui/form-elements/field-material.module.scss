@@ -2,14 +2,15 @@
 	@apply mb-5;
 	width: 100%;
 	.field {
-		@apply flex gap-x-10 w-full;
+		@apply flex gap-x-10  w-full;
 
 		@media (max-width: 730px) {
 			@apply flex flex-col;
 		}
 	}
+
 	.addBtn {
-		@apply text-[26px] relative;
+		@apply text-[26px] relative w-[26px];
 
 		> svg {
 			@apply z-10 text-gray-950 dark:text-gray-600 cursor-pointer hover:text-primary hover:scale-150 dark:hover:text-primary transition-all;
@@ -18,7 +19,7 @@
 }
 
 .removeBtn {
-	@apply text-[18px] relative top-0 right-14 h-full;
+	@apply text-[18px] relative top-0 right-14 h-full w-[18px];
 	@media (max-width: 730px) {
 		@apply relative w-full ml-14 flex justify-end;
 		max-width: 450px;
@@ -30,7 +31,7 @@
 		max-width: 150px;
 	}
 	> svg {
-		@apply z-10 text-gray-950 dark:text-gray-600 cursor-pointer hover:text-primary hover:scale-150 dark:hover:text-primary transition-all;
+		@apply w-[18px] z-10 text-gray-950 dark:text-gray-600 cursor-pointer hover:text-primary hover:scale-150 dark:hover:text-primary transition-all;
 		@media (max-width: 730px) {
 			@apply absolute bottom-40;
 		}

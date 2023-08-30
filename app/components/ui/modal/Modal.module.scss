@@ -29,7 +29,9 @@
 }
 
 .modal {
-	@apply bg-white dark:bg-gray-900 p-4 w-1/2 h-full shadow-gray-700 dark:shadow-gray-950 shadow-xl rounded-xl border-gray-700 dark:border-gray-700 border-4;
+	@apply overflow-y-auto bg-white dark:bg-gray-900 p-4 w-1/2 h-full shadow-gray-700 dark:shadow-gray-950 shadow-xl rounded-xl border-gray-700 dark:border-gray-700 border-4;
+	max-height: 800px;
+
 	@media (max-width: 1650px) {
 		@apply w-full;
 	}
