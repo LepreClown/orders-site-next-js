@@ -1,5 +1,4 @@
 .fields {
-	@apply mb-5;
 	width: 100%;
 	.field {
 		@apply flex gap-x-10  w-full;
@@ -10,7 +9,7 @@
 	}
 
 	.addBtn {
-		@apply text-[26px] relative w-[26px];
+		@apply text-[26px] relative w-[26px] mb-5;
 
 		> svg {
 			@apply z-10 text-gray-950 dark:text-gray-600 cursor-pointer hover:text-primary hover:scale-150 dark:hover:text-primary transition-all;

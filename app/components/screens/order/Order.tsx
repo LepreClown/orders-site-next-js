@@ -13,7 +13,9 @@ import Meta from '@/utils/meta/Meta'
 const Order: FC = () => {
 	useRedirect()
 	const { user } = useAuth()
-
+	if (!user) {
+		return null
+	}
 	return (
 		<Meta title="Заявка">
 			<Heading title="Заявка" />
