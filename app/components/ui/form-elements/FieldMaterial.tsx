@@ -46,6 +46,7 @@ const FieldMaterial: FC<IFieldMaterial> = ({
 									{...register(materialField, {
 										required: 'Материал не указан',
 									})}
+									disabled={!status}
 									type="text"
 									placeholder="Материал"
 									error={errors?.materials && errors.materials[index]?.material}
@@ -62,6 +63,7 @@ const FieldMaterial: FC<IFieldMaterial> = ({
 									{...register(quantityField, {
 										required: 'Количество не указано',
 									})}
+									disabled={!status}
 									type="number"
 									placeholder="Количество"
 									error={errors?.materials && errors.materials[index]?.quantity}
