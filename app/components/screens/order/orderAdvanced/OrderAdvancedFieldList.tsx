@@ -84,6 +84,14 @@ const OrderFieldList: FC<IOrderEditFieldsAdvanced> = ({
 					title="Информация о заявки"
 					className="text-gray-800 dark:text-gray-300 text-opacity-80 text-[18px]"
 				/>
+				<Field
+					{...register('order_name', {
+						required: 'Название не указано',
+					})}
+					type="text"
+					placeholder="Название заявки"
+					error={errors.order_name}
+				/>
 				<FieldMaterial
 					errors={errors}
 					register={register}

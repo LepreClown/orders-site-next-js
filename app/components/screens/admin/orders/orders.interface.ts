@@ -5,6 +5,7 @@ import { IOption } from '@/ui/select/select.interface'
 import { IMaterials } from '@/shared/types/orders.types'
 
 export interface IOrderCreate {
+	order_name: string
 	building_id: number
 	system_id: number
 	important_id: number

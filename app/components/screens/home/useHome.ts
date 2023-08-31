@@ -40,6 +40,7 @@ export const useHome = (control: Control<IOrderCreate, any>) => {
 		? data.orders.map(
 				(order): IOrderItem => ({
 					id: order.id,
+					order_name: order.order_name,
 					editUrl: getOrderUrl(`${order.id}`),
 					building: order.building,
 					system: order.system,
@@ -62,6 +63,7 @@ export const useHome = (control: Control<IOrderCreate, any>) => {
 			OrderService.create({
 				building_id: data.building_id,
 				system_id: data.system_id,
+				order_name: data.order_name,
 				important_id: data.important_id,
 				materials: data.materials.map((material) => ({
 					material: material.material,

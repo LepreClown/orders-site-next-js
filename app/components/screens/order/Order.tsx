@@ -19,7 +19,6 @@ const Order: FC = () => {
 	return (
 		<Meta title="Заявка">
 			<Heading title="Заявка" />
-
 			{user.role === 'admin' || user.role === 'advanced_user' ? <OrderAdvanced /> : <OrderUser />}
 		</Meta>
 	)

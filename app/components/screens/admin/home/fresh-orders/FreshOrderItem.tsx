@@ -16,8 +16,8 @@ const FreshOrderItem: FC<{ order: IOrderElement }> = ({ order }) => {
 	return (
 		<Link href={getAdminUrl(`order/edit/${order.id}`)}>
 			<div className={styles.params}>
-				<span className={styles.material}>{order.materials[0]?.material}</span>
-				<span className={styles.quantity}>{order.materials[0]?.quantity}</span>
+				<span className={styles.quantity}>{order.order_name}</span>
+
 				<span className={styles.date}>{d}</span>
 				<span className={styles.important}>{order.important.important_name}</span>
 				<span

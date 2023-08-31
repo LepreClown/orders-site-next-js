@@ -52,9 +52,8 @@ export const useOrders = (control: Control<IOrderCreate, any>) => {
 					items: [
 						convertDate(order.created_at),
 						String(`${order.creator.name} ${order.creator.surname}`),
+						order.order_name,
 						order.building.building_name,
-						order.materials[0]?.material,
-						String(order.materials[0]?.quantity),
 					],
 				}),
 		  )
@@ -83,6 +82,7 @@ export const useOrders = (control: Control<IOrderCreate, any>) => {
 				building_id: data.building_id,
 				system_id: data.system_id,
 				important_id: data.important_id,
+				order_name: data.order_name,
 				materials: data.materials.map((material) => ({
 					material: material.material,
 					quantity: material.quantity,

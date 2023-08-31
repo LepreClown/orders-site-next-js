@@ -5,6 +5,7 @@ import { stripHtml } from 'string-strip-html'
 
 import { IOrdersFields } from '@/screens/admin/orders/orders.interface'
 
+import Field from '@/ui/form-elements/Field'
 import FieldMaterial from '@/ui/form-elements/FieldMaterial'
 import formStyles from '@/ui/form-elements/adminForm.module.scss'
 
@@ -35,6 +36,14 @@ const OrderAdminFieldsList: FC<IOrdersFields> = ({
 	return (
 		<>
 			<div className={formStyles.fieldsCreate}>
+				<Field
+					{...register('order_name', {
+						required: 'Название не указано',
+					})}
+					type="text"
+					placeholder="Название заявки"
+					error={errors.order_name}
+				/>
 				<Controller
 					name="creator_id"
 					control={control}

@@ -7,9 +7,9 @@ import { IOrder } from '@/shared/types/orders.types'
 import { getOrdersUrl } from '../../config/api.config'
 
 export const OrderService = {
-	async getAll(page: number, orderBy: string, search_by_material?: string) {
-		const searchTerm = search_by_material ? { search_by_material } : {}
-		const pageCount = search_by_material ? 0 : page
+	async getAll(page: number, orderBy: string, search_by_order_name?: string) {
+		const searchTerm = search_by_order_name ? { search_by_order_name } : {}
+		const pageCount = search_by_order_name ? 0 : page
 		const orderByField = orderBy ? orderBy : '-created_at'
 
 		return axios.get<IOrder>(
@@ -21,9 +21,9 @@ export const OrderService = {
 			},
 		)
 	},
-	async getAllHome(page: number, search_by_material?: string) {
-		const searchTerm = search_by_material ? { search_by_material } : {}
-		const pageCount = search_by_material ? 0 : page
+	async getAllHome(page: number, search_by_order_name?: string) {
+		const searchTerm = search_by_order_name ? { search_by_order_name } : {}
+		const pageCount = search_by_order_name ? 0 : page
 		return axios.get<IOrder>(getOrdersUrl(`?on_page=${10}&page=${pageCount ? pageCount : 0}`), {
 			params: searchTerm,
 		})

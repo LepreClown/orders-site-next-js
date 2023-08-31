@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic'
-import { FC } from 'react'
+import React, { FC } from 'react'
 import { Controller } from 'react-hook-form'
 import { stripHtml } from 'string-strip-html'
 
@@ -82,6 +82,14 @@ const OrderAdminFieldList: FC<IOrderEditFields> = ({
 			<SubHeading
 				title="Информация о заявки"
 				className="text-gray-800 dark:text-gray-300 text-opacity-80 text-[18px]"
+			/>
+			<Field
+				{...register('order_name', {
+					required: 'Название не указано',
+				})}
+				type="text"
+				placeholder="Название заявки"
+				error={errors.order_name}
 			/>
 			<FieldMaterial
 				errors={errors}

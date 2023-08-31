@@ -6,6 +6,7 @@ import { ISystem } from '@/shared/types/system.types'
 
 export interface IOrderItem {
 	id: number
+	order_name: string
 	building: IBuildingItem
 	system: ISystem
 	important: IImportant

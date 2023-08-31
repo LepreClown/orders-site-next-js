@@ -18,7 +18,7 @@ const OrderTableItem: FC<IOrderItemProps> = ({ order, variant }) => {
 			{order && (
 				<div className={styles.content}>
 					<div className={styles.building}>
-						<span>{order.building.building_name}</span>
+						<span>{order.order_name}</span>
 					</div>
 
 					<div className={styles.params}>

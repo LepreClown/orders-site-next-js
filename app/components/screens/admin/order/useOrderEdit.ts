@@ -41,8 +41,10 @@ export const useOrderEdit = () => {
 					? 'Пользователь'
 					: 'Менеджер',
 			)
+
 			setValue('creator.telephone', data.creator.telephone)
 			setValue('system.id', data.system.id)
+			setValue('order_name', data.order_name)
 			setValue('important.id', data.important.id)
 			setValue('materials', data.materials)
 			setValue('creator.id', data.creator.id)
@@ -64,6 +66,7 @@ export const useOrderEdit = () => {
 				building_id: data.building.id,
 				system_id: data.system.id,
 				important_id: data.important.id,
+				order_name: data.order_name,
 				materials: data.materials.map((material) => ({
 					material: material.material,
 					quantity: material.quantity,

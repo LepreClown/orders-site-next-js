@@ -6,6 +6,7 @@ import { IUserItem } from '@/shared/types/user.types'
 
 export interface IOrderElement {
 	id: number
+	order_name: string
 	building: IBuildingItem
 	system: ISystem
 	important: IImportant

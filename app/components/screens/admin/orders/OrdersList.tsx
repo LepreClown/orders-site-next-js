@@ -82,9 +82,8 @@ const OrdersList: FC = () => {
 	const headerItems = [
 		{ name: 'Дата создания', orderBy: 'created_at' },
 		{ name: 'Создатель', orderBy: 'creator__surname' },
+		{ name: 'Название заявки', orderBy: 'order_name' },
 		{ name: 'Объект', orderBy: 'building__building_name' },
-		{ name: 'Материал', orderBy: 'material' },
-		{ name: 'Количество', orderBy: 'quantity' },
 	]
 
 	return (
@@ -92,7 +91,7 @@ const OrdersList: FC = () => {
 			<AdminNavigation />
 			<Heading title="Заявки" />
 			<AdminHeader
-				inputSearch="материалу"
+				inputSearch="названию"
 				quantity={quantityOrders}
 				toggle={toggle}
 				title="заявку"

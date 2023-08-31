@@ -7,6 +7,7 @@ import { IOption } from '@/ui/select/select.interface'
 import { IMaterials } from '@/shared/types/orders.types'
 
 export interface IOrderHomeCreate {
+	order_name: string
 	building_id: number
 	system_id: number
 	important_id: number
