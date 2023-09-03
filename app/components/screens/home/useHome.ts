@@ -73,7 +73,7 @@ export const useHome = (control: Control<IOrderCreate, any>) => {
 				})),
 				creator_id: user.id,
 				status_id: data.status_id,
-				expected_time: String(Date.now()),
+				expected_time: Date.now(),
 				description: data.description,
 			}),
 		{

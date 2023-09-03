@@ -1,7 +1,6 @@
 import dynamic from 'next/dynamic'
 import React, { FC } from 'react'
 import { Controller } from 'react-hook-form'
-import { stripHtml } from 'string-strip-html'
 
 import { IOrdersFields } from '@/screens/admin/orders/orders.interface'
 
@@ -149,12 +148,6 @@ const OrderAdminFieldsList: FC<IOrdersFields> = ({
 							value={value}
 						/>
 					)}
-					rules={{
-						validate: {
-							required: (v) =>
-								(v && stripHtml(v).result.length >= 0) || 'Описание является обязательным полем!',
-						},
-					}}
 				/>
 			</div>
 		</>

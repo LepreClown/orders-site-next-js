@@ -1,7 +1,6 @@
 import dynamic from 'next/dynamic'
 import React, { FC } from 'react'
 import { Controller } from 'react-hook-form'
-import { stripHtml } from 'string-strip-html'
 
 import { IOrderEditFieldsAdvanced } from '@/screens/order/orderAdvanced/order-advanced-edit-interface'
 
@@ -153,12 +152,6 @@ const OrderFieldList: FC<IOrderEditFieldsAdvanced> = ({
 							value={value}
 						/>
 					)}
-					rules={{
-						validate: {
-							required: (v) =>
-								(v && stripHtml(v).result.length > 0) || 'Описание является обязательным полем!',
-						},
-					}}
 				/>
 				<SubHeading
 					title="Информация о статусе"
