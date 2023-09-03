@@ -15,6 +15,8 @@ import { OrderService } from '@/services/order/order.service'
 
 import { toastError } from '@/utils/api/withToastrErrorRedux'
 import { convertDate } from '@/utils/date/convertDate'
+import { extractMaterials } from '@/utils/string/extractMaterials'
+import { extractQuantities } from '@/utils/string/extractQuntities'
 
 import { getOrderUrl } from '../../../config/url.config'
 
@@ -45,8 +47,8 @@ export const useHome = (control: Control<IOrderCreate, any>) => {
 					building: order.building,
 					system: order.system,
 					important: order.important,
-					material: order.materials[0]?.material,
-					quantity: Number(order.materials[0]?.quantity),
+					material: extractMaterials(order.materials),
+					quantity: extractQuantities(order.materials),
 					creator: order.creator,
 					status: order.status,
 					created_at: convertDate(order.created_at),

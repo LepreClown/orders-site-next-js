@@ -3,7 +3,7 @@
 }
 
 .common {
-	@apply relative w-1/3 min-w-[200px] border-b  border-gray-950 dark:border-gray-600 transition-colors dark:focus-within:border-primary focus-within:border-primary;
+	@apply relative w-1/3 min-w-[200px] border-b  border-gray-950 dark:border-gray-600 transition-all dark:focus-within:border-primary focus-within:border-primary;
 
 	@media (min-width: 900px) {
 		max-width: 450px;

@@ -80,7 +80,7 @@ const OrderAdminFieldList: FC<IOrderEditFields> = ({
 			</div>
 
 			<SubHeading
-				title="Информация о заявки"
+				title="Информация о заявке"
 				className="text-gray-800 dark:text-gray-300 text-opacity-80 text-[18px]"
 			/>
 			<Field

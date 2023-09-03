@@ -11,7 +11,7 @@ export interface IOrderItem {
 	system: ISystem
 	important: IImportant
 	material: string
-	quantity: number
+	quantity: string
 	creator: ICreator
 	status: IStatus
 	created_at: string

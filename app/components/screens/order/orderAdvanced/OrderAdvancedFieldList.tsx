@@ -81,7 +81,7 @@ const OrderFieldList: FC<IOrderEditFieldsAdvanced> = ({
 					/>
 				</div>
 				<SubHeading
-					title="Информация о заявки"
+					title="Информация о заявке"
 					className="text-gray-800 dark:text-gray-300 text-opacity-80 text-[18px]"
 				/>
 				<Field
@@ -101,7 +101,7 @@ const OrderFieldList: FC<IOrderEditFieldsAdvanced> = ({
 					fields={fields}
 				/>
 				<SubHeading
-					title="Информация о объекте"
+					title="Информация об объекте"
 					className="text-gray-800 dark:text-gray-300 text-opacity-80 text-[18px] "
 				/>
 				<Controller

@@ -73,7 +73,7 @@ const OrderFieldList: FC<IOrderFields> = ({
 					/>
 				</div>
 				<SubHeading
-					title="Информация о заявки"
+					title="Информация о заявке"
 					className="text-gray-800  dark:text-gray-300 text-opacity-80 text-[18px]"
 				/>
 				<Field
@@ -95,7 +95,7 @@ const OrderFieldList: FC<IOrderFields> = ({
 					status={false}
 				/>
 				<SubHeading
-					title="Информация о объекте"
+					title="Информация об объекте"
 					className="text-gray-800 dark:text-gray-300  text-opacity-80  text-[18px]"
 				/>
 				<div>
