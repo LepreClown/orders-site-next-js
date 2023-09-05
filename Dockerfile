@@ -2,12 +2,12 @@ FROM node:alpine
 
 WORKDIR /usr/app
 
-RUN yarn install --global pm2
+RUN yarn global add pm2
 
 COPY ./package*.json ./
 
 # Install dependencies
-RUN yarn install --production
+RUN yarn install
 
 # Copy all files
 COPY ./ ./

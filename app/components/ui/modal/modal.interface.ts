@@ -1,5 +1,7 @@
+import { ReactNode } from 'react'
+
 export interface IModalProps {
-	children: React.ReactNode
+	children: ReactNode
 	toggle: () => void
 	title: string
 }
