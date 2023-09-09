@@ -1,8 +1,26 @@
 version: '3'
 services:
   nextjs:
-    build: ./
-  nginx:
-    build: ./nginx
+    build:
+      dockerfile: Dockerfile
+      context: ./
+    restart: always
+#    networks:
+#      - net
     ports:
-      - 80:80
+      - "3000:3000"
+  nginx:
+    build:
+      dockerfile: Dockerfile
+      context: ./nginx
+    restart: always
+    ports:
+      - "80:80"
+#    networks:
+#      - net
+#networks:
+#    net:
+#      driver: bridge
+#      ipam:
+#        config:
+#          - subnet: 192.168.220.0/24

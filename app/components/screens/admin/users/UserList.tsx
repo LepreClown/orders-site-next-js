@@ -129,6 +129,7 @@ const UserList: FC = () => {
 									required: 'Пожалуйста выберите роль!',
 								}}
 								render={({ field, fieldState: { error } }) => (
+									/*@ts-ignore*/
 									<DynamicSelect
 										error={error}
 										field={field}

@@ -41,6 +41,7 @@ const TextEditor: FC<ITextEditor> = ({ onChange, value, placeholder, error }) =>
 			<label>
 				<span>{placeholder}</span>
 				<div className={styles.wrapper}>
+					{/*@ts-ignore*/}
 					<Editor
 						toolbarClassName={styles.toolbar}
 						editorClassName={styles.editor}

@@ -62,6 +62,7 @@ const UserFiledList: FC<IUserFields> = ({ errors, register, control, roles, isRo
 					required: 'Пожалуйста выберите роль!',
 				}}
 				render={({ field, fieldState: { error } }) => (
+					/*@ts-ignore*/
 					<DynamicSelect
 						error={error}
 						field={field}

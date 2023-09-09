@@ -18,6 +18,7 @@ const Menu: FC<{ menu: IMenu }> = ({ menu: { items, title } }) => {
 				{items.map((item) => (
 					<MenuItem item={item} key={item.link} />
 				))}
+				{/*@ts-ignore*/}
 				{title === 'Общее' ? <DynamicAuthItems /> : null}
 			</ul>
 		</div>

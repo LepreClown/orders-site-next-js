@@ -50,6 +50,7 @@ const OrderAdminFieldsList: FC<IOrdersFields> = ({
 						required: 'Пожалуйста выберите пользователя!',
 					}}
 					render={({ field, fieldState: { error } }) => (
+						/*@ts-ignore*/
 						<DynamicSelect
 							error={error}
 							field={field}
@@ -66,6 +67,7 @@ const OrderAdminFieldsList: FC<IOrdersFields> = ({
 						required: 'Пожалуйста выберите объект!',
 					}}
 					render={({ field, fieldState: { error } }) => (
+						/*@ts-ignore*/
 						<DynamicSelect
 							error={error}
 							field={field}
@@ -82,6 +84,7 @@ const OrderAdminFieldsList: FC<IOrdersFields> = ({
 						required: 'Пожалуйста выберите статус!',
 					}}
 					render={({ field, fieldState: { error } }) => (
+						/*@ts-ignore*/
 						<DynamicSelect
 							error={error}
 							field={field}
@@ -98,6 +101,7 @@ const OrderAdminFieldsList: FC<IOrdersFields> = ({
 						required: 'Пожалуйста выберите систему!',
 					}}
 					render={({ field, fieldState: { error } }) => (
+						/*@ts-ignore*/
 						<DynamicSelect
 							error={error}
 							field={field}
@@ -115,6 +119,7 @@ const OrderAdminFieldsList: FC<IOrdersFields> = ({
 						required: 'Пожалуйста выберите срочность заявки!',
 					}}
 					render={({ field, fieldState: { error } }) => (
+						/*@ts-ignore*/
 						<DynamicSelect
 							error={error}
 							field={field}
@@ -141,6 +146,7 @@ const OrderAdminFieldsList: FC<IOrdersFields> = ({
 					control={control}
 					defaultValue=""
 					render={({ field: { value, onChange }, fieldState: { error } }) => (
+						/*@ts-ignore*/
 						<DynamicTextEditor
 							placeholder="Описание"
 							onChange={onChange}

@@ -152,6 +152,7 @@ const OrderFieldList: FC<IOrderFields> = ({
 					control={control}
 					defaultValue=""
 					render={({ field: { value, onChange }, fieldState: { error } }) => (
+						/*@ts-ignore*/
 						<DynamicTextEditor
 							placeholder="Описание"
 							onChange={onChange}

@@ -18,6 +18,7 @@ const Pagination: FC<IPaginationProps> = ({
 	if (pageCount === 1 || pageCount === 0) return null
 
 	return (
+		/*@ts-ignore*/
 		<ReactPaginate
 			pageCount={pageCount}
 			forcePage={currentPage - 1}

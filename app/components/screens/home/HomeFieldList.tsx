@@ -49,6 +49,7 @@ const HomeFieldList: FC<IOrderHomeFields> = ({
 						required: 'Пожалуйста выберите объект!',
 					}}
 					render={({ field, fieldState: { error } }) => (
+						/*@ts-ignore*/
 						<DynamicSelect
 							error={error}
 							field={field}
@@ -65,6 +66,7 @@ const HomeFieldList: FC<IOrderHomeFields> = ({
 						required: 'Пожалуйста выберите статус!',
 					}}
 					render={({ field, fieldState: { error } }) => (
+						/*@ts-ignore*/
 						<DynamicSelect
 							error={error}
 							field={field}
@@ -81,6 +83,7 @@ const HomeFieldList: FC<IOrderHomeFields> = ({
 						required: 'Пожалуйста выберите систему!',
 					}}
 					render={({ field, fieldState: { error } }) => (
+						/*@ts-ignore*/
 						<DynamicSelect
 							error={error}
 							field={field}
@@ -97,6 +100,7 @@ const HomeFieldList: FC<IOrderHomeFields> = ({
 						required: 'Пожалуйста выберите срочность заявки!',
 					}}
 					render={({ field, fieldState: { error } }) => (
+						/*@ts-ignore*/
 						<DynamicSelect
 							error={error}
 							field={field}
@@ -123,6 +127,7 @@ const HomeFieldList: FC<IOrderHomeFields> = ({
 					control={control}
 					defaultValue=""
 					render={({ field: { value, onChange }, fieldState: { error } }) => (
+						/*@ts-ignore*/
 						<DynamicTextEditor
 							placeholder="Описание"
 							onChange={onChange}

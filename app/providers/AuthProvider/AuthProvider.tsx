@@ -31,6 +31,7 @@ const AuthProvider: FC<PropsWithChildren<TypeComponentAuthFields>> = ({
 	return !isOnlyAdmin && !isOnlyUser ? (
 		<>{children}</>
 	) : (
+		/*@ts-ignore*/
 		<DynamicCheckRole Component={{ isOnlyAdmin, isOnlyUser }}>{children}</DynamicCheckRole>
 	)
 }

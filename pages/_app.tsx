@@ -1,6 +1,6 @@
-import type { AppProps } from 'next/app'
+import type {AppProps} from 'next/app'
 
-import { TypeComponentAuthFields } from '@/shared/types/auth.types'
+import {TypeComponentAuthFields} from '@/shared/types/auth.types'
 
 import '@/assets/styles/globals.scss'
 
@@ -9,20 +9,22 @@ import MainProviderForAuth from '../app/providers/MainProviderForAuth'
 
 type TypeAppProps = AppProps & TypeComponentAuthFields
 
-const MyApp = ({ Component, pageProps, ...appProps }: TypeAppProps) => {
-	if (['/auth'].includes(appProps.router.pathname)) {
-		return (
-			<MainProviderForAuth Component={Component}>
-				<Component {...pageProps} />
-			</MainProviderForAuth>
-		)
-	}
+const MyApp = ({Component, pageProps, ...appProps}: TypeAppProps) => {
+  if (['/auth'].includes(appProps.router.pathname)) {
+    return (
+      <MainProviderForAuth Component={Component}>
+        {/*@ts-ignore*/}
+        <Component {...pageProps} />
+      </MainProviderForAuth>
+    )
+  }
 
-	return (
-		<MainProvider Component={Component}>
-			<Component {...pageProps} />
-		</MainProvider>
-	)
+  return (
+    <MainProvider Component={Component}>
+			{/*@ts-ignore*/}
+      <Component {...pageProps} />
+    </MainProvider>
+  )
 }
 
 export default MyApp

@@ -3,6 +3,7 @@ import ReduxToastr from 'react-redux-toastr'
 
 const ReduxToast: FC = () => {
 	return (
+		/*@ts-ignore*/
 		<ReduxToastr
 			timeOut={4000}
 			newestOnTop={false}

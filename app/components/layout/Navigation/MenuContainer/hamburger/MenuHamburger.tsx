@@ -20,6 +20,7 @@ const MenuHamburger: FC<IMenuHamburger> = ({ isShow, menu: { items, title } }) =
 				{items.map((item) => (
 					<MenuItem item={item} key={item.link} />
 				))}
+				{/*@ts-ignore*/}
 				{title === 'Общее' ? <DynamicAuthItems /> : null}
 			</ul>
 		</div>

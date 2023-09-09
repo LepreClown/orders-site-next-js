@@ -29,8 +29,8 @@ instance.interceptors.response.use(
 		const originalRequest = error.config
 		// TODO : check
 		if (
-			(error.response.status === 403 ||
-				error.message === 'Request failed with status code 403' ||
+			(error.response.status === 401 ||
+				error.message === 'Request failed with status code 401' ||
 				error.response.data.detail === 'Access token is expired' ||
 				errorCatch(error) === 'jwt expired' ||
 				errorCatch(error) === 'jwt must be provided') &&
