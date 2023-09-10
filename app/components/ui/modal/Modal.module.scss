@@ -39,6 +39,12 @@
 	@media (max-width: 650px) {
 		max-height: 550px;
 	}
+	@media (max-height: 700px) {
+		max-height: 500px;
+	}
+	@media (max-height: 650px) {
+		max-height: 450px;
+	}
 	> div:first-child {
 		@apply flex items-center justify-between;
 		> div:last-child {
