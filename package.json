@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "compose:up": "docker compose up -d",
-    "compose:build": "docker compose up --build",
+    "compose:build": "docker compose up -d --build",
     "compose:stop": "docker compose stop",
     "compose:rm": "docker compose rm"
   },

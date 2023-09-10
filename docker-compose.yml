@@ -1,14 +1,16 @@
-version: '3.8'
+version: '3.9'
 services:
   nextjs:
     build: ./
     restart: always
     networks:
       - net
+    ports:
+       - "3000:3000"
     command: "yarn run start"
   nginx:
     build:
-      dockerfile: nginx/Dockerfile
+      dockerfile: Dockerfile
       context: ./nginx
     restart: always
     ports:
@@ -16,7 +18,7 @@ services:
     networks:
       - net
 networks:
-    net:
+  net:
       driver: bridge
       ipam:
         config:

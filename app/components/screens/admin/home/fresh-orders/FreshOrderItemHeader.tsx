@@ -8,7 +8,7 @@ const FreshOrderItemHeader: FC = () => {
 			<span className={styles.material}>Название заявки</span>
 			<span className={styles.date}>Время создания</span>
 			<span className={styles.important}>Срочность</span>
-			<span>Статус</span>
+			<span className={styles.status}>Статус</span>
 		</div>
 	)
 }

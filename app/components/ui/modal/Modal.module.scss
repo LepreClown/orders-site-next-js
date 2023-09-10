@@ -36,6 +36,9 @@
 		@apply w-full;
 	}
 
+	@media (max-width: 650px) {
+		max-height: 550px;
+	}
 	> div:first-child {
 		@apply flex items-center justify-between;
 		> div:last-child {

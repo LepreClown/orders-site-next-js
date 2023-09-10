@@ -43,6 +43,7 @@ a {
 	}
 	> div:first-child {
 		color: #a6ce47;
+
 	}
 }
 .close-toastr {
@@ -53,6 +54,7 @@ a {
 
 .rrt-holder {
 	@apply flex items-center h-full;
+	padding-left:10px;
 }
 .toastr-icon {
 	@apply h-full;
