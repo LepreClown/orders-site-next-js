@@ -1,26 +1,23 @@
-version: '3'
+version: '3.8'
 services:
   nextjs:
-    build:
-      dockerfile: Dockerfile
-      context: ./
+    build: ./
     restart: always
-#    networks:
-#      - net
-    ports:
-      - "3000:3000"
+    networks:
+      - net
+    command: "yarn run start"
   nginx:
     build:
-      dockerfile: Dockerfile
+      dockerfile: nginx/Dockerfile
       context: ./nginx
     restart: always
     ports:
       - "80:80"
-#    networks:
-#      - net
-#networks:
-#    net:
-#      driver: bridge
-#      ipam:
-#        config:
-#          - subnet: 192.168.220.0/24
+    networks:
+      - net
+networks:
+    net:
+      driver: bridge
+      ipam:
+        config:
+          - subnet: 192.168.220.0/24

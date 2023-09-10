@@ -3,7 +3,6 @@ const nextConfig = {
 	experimental: {
 		appDir: true,
 	},
-
 	poweredByHeader: false,
 	env: {
 		APP_URL: process.env.REACT_APP_URL,
