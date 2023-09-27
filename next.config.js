@@ -27,7 +27,7 @@ module.exports = withSentryConfig(
     // Suppresses source map uploading logs during build
     silent: true,
     org: "prime-95d684ac5",
-    project: "prime_frontend2",
+    project: "prime_frontend",
   },
   {
     // For all available options, see:
