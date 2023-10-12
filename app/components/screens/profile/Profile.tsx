@@ -16,12 +16,16 @@ import SkeletonLoader from '@/ui/skeleton-loader/SkeletonLoader'
 
 import { useAuth } from '@/hooks/useAuth'
 import { useModal } from '@/hooks/useModal'
+import { useRedirect } from '@/hooks/useRedirect'
 
 import Meta from '@/utils/meta/Meta'
+
+import { checkAuth } from '@/store/user/user.actions'
 
 import styles from './Profile.module.scss'
 
 const Profile: FC = () => {
+	useRedirect()
 	const { handleSubmit, register, formState, setValue } = useForm<IProfile>({
 		mode: 'onChange',
 	})

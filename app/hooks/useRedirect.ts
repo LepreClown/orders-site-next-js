@@ -12,5 +12,5 @@ export const useRedirect = () => {
 		if (!user) {
 			push('/auth')
 		}
-	}, [])
+	}, [user, push])
 }

@@ -30,6 +30,7 @@ instance.interceptors.response.use(
 		// TODO : check
 		if (
 			(error.response.status === 401 ||
+				error.response.status === 403 ||
 				error.message === 'Request failed with status code 401' ||
 				error.response.data.detail === 'Access token is expired' ||
 				errorCatch(error) === 'jwt expired' ||

@@ -30,7 +30,7 @@ export const useProfile = (setValue: UseFormSetValue<IProfile>) => {
 			setValue('created_at', data.created_at)
 		},
 		onError(error) {
-			toastError(error, 'Профиль не удалосб получить')
+			toastError(error, 'Профиль не удалось получить')
 		},
 	})
 
